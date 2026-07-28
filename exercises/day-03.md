@@ -27,41 +27,41 @@ bool ready{false};
 
    结果：
 
-   > 
+   > false
 
    原因：
 
-   > 
+   > 为假
 
 2. `battery >= 20.0 && battery < 50.0`
 
    结果：
 
-   > 
+   > true
 
    原因：
 
-   > 
+   > 都为真
 
 3. `mode == 1 || mode == 2`
 
    结果：
 
-   > 
+   > true
 
    原因：
 
-   > 
+   > 右边为真
 
 4. `!ready`
 
    结果：
 
-   > 
+   > 真
 
    原因：
 
-   > 
+   > ！取反
 
 ---
 
@@ -90,7 +90,7 @@ int main() {
 **预测：**
 
 ```text
-
+Normal
 ```
 
 **实际运行结果：**
@@ -101,7 +101,7 @@ int main() {
 
 **程序为什么选择这一条路线？**
 
-> 
+> 条件判断语句依次判断，到第一个判断为true的运行
 
 ---
 
@@ -127,16 +127,27 @@ int main() {
 
 1. 哪一处写错了？
 
-   > 
+   > if (mode = 1)
 
 2. `=` 和 `==` 在这里分别表示什么？
 
-   > 
+   > = 是赋值
+   >== 是判断相等
 
 3. 写出修复后的完整代码：
 
 ```cpp
+int main() {
+    int mode{2};
 
+    if (mode == 1) {
+        std::cout << "Manual\n";
+    } else {
+        std::cout << "Other\n";
+    }
+
+    return 0;
+}
 
 
 ```
@@ -165,21 +176,31 @@ int main() {
 
 1. 这段代码能否成功编译？
 
-   > 
+   > 不能
 
 2. 如果不能，哪一行有问题？
 
-   > 
+   > std::cout << doubled << '\n';
 
 3. 为什么 `speed` 能在 `if` 代码块中使用，而 `doubled` 不能在代码块外使用？
 
-   > 
+   > speed在if 代码块的外侧，未超出其作用域；局部变量doubled的作用域限制在了if代码块中
 
 4. 写出一种修复方法：
 
 ```cpp
 
+int main() {
+    int speed{10};
+	int doubled{}；
+    if (speed > 0) {
+        doubled = speed * 2;
+        std::cout << doubled << '\n';
+    }
 
+    std::cout << doubled << '\n';
+    return 0;
+}
 
 ```
 
@@ -196,8 +217,20 @@ int main() {
 必须使用 `switch`。
 
 ```cpp
+int mode{};
+std::cin >> mode >> '\n';
 
-
+switch (mode) {
+    case 1:
+        std::cout << "Manual\n";
+        break;
+    case 2:
+        std::cout << "Automatic\n";
+        break;
+    default:
+        std::cout << "Unknown\n";
+        break;
+}
 
 
 
@@ -233,11 +266,11 @@ int main() {
 填写每轮结束时的值：
 
 | 第几轮 | `i` | `total` |
-|---:|---:|---:|
-| 1 |  |  |
-| 2 |  |  |
-| 3 |  |  |
-| 4 |  |  |
+| --: | --: | ------: |
+|   1 |   1 |       1 |
+|   2 |   2 |       3 |
+|   3 |   3 |       6 |
+|   4 |   4 |      10 |
 
 **预测的完整输出：**
 
@@ -272,8 +305,15 @@ Start
 
 ```cpp
 
+int count{4};
 
+while (count <= 0) {
+    --count;
+    std::cout << count << '\n';
+}
 
+std::string Start{Start};
+std::cout << Start << '\n';
 
 
 ```
@@ -327,23 +367,24 @@ Start
 
 1. `if` 有什么作用？
 
-   > 
+   > 作为一个条件语句，根据if语句中的判断条件，使程序判断所需要执行的代码；
 
 2. `for` 和 `while` 都能循环，它们通常分别适合什么情况？
 
-   > 
+   > for适合已知所需循环次数的情况；
+   >while适合根据条件判断，确定是否需要程序继续循环的情况；
 
 3. 什么是代码块？
 
-   > 
+   > 花括号{}内部的代码叫做代码块；
 
 4. 什么是变量的作用域？
 
-   > 
+   > 变量名字可以被使用的代码区域；
 
 5. 为什么循环中经常需要修改计数变量？
 
-   > 
+   > 不然容易导致死循环
 
 ---
 
