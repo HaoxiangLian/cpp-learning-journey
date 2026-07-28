@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LEARNING_PLAN.md",
+                "file": "days/day-04.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LEARNING_PLAN"
+              "title": "day-04"
             }
           }
         ]
@@ -197,21 +197,21 @@
   },
   "active": "f17dc739917e3eb3",
   "lastOpenFiles": [
+    "PROGRESS.md",
+    "days/day-02.md",
+    "days/day-01.md",
     "days/day-04.md",
+    "LEARNING_PLAN.md",
+    "README.md",
+    "COVERAGE_MAP.md",
     "days/day-03.md",
     "reviews/day-03.md",
-    "PROGRESS.md",
     "exercises/day-04.md",
     "examples/day-04/pipeline.cpp",
     "examples/day-04/status.cpp",
     "examples/day-04/link_main.cpp",
     "examples/day-04",
-    "LEARNING_PLAN.md",
-    "COVERAGE_MAP.md",
     "exercises/day-03.md",
-    "days/day-01.md",
-    "README.md",
-    "days/day-02.md",
     "exercises/day-01.md",
     "reviews/day-01.md",
     "reviews/day-02.md",
