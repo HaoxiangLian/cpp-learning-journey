@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "42b5b3ce11c56dbf",
@@ -180,8 +181,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -195,8 +195,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f17dc739917e3eb3",
+  "active": "9c197e2a4b0d0748",
   "lastOpenFiles": [
+    "COVERAGE_MAP.md",
+    "reviews/day-02.md",
+    "exercises/day-03.md",
+    "examples/day-03/robot_control.cpp",
+    "examples/day-03",
+    "days/day-03.md",
     "exercises/day-01.md",
     "exercises/day-02.md",
     "days/day-01.md",
