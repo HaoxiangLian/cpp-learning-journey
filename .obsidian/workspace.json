@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "exercises/day-03.md",
-                "mode": "source",
+                "file": "PROGRESS.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "day-03"
+              "title": "PROGRESS"
             }
           }
         ]
@@ -197,11 +197,13 @@
   },
   "active": "f17dc739917e3eb3",
   "lastOpenFiles": [
-    "days/day-03.md",
-    "exercises/day-03.md",
-    "days/day-02.md",
+    "LEARNING_PLAN.md",
     "COVERAGE_MAP.md",
+    "exercises/day-03.md",
+    "days/day-03.md",
     "days/day-01.md",
+    "README.md",
+    "days/day-02.md",
     "exercises/day-01.md",
     "reviews/day-01.md",
     "reviews/day-02.md",
@@ -211,7 +213,6 @@
     "reviews",
     "examples/day-02/variables.cpp",
     "examples/day-02",
-    "README.md",
     "Obsidian Git 测试笔记.md"
   ]
 }
