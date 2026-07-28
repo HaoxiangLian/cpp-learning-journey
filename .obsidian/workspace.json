@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "exercises/day-01.md",
+                "file": "exercises/day-02.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "day-01"
+              "title": "day-02"
             }
           }
         ]
@@ -197,8 +197,14 @@
   },
   "active": "f17dc739917e3eb3",
   "lastOpenFiles": [
-    "days/day-01.md",
     "exercises/day-01.md",
+    "reviews/day-01.md",
+    "reviews",
+    "exercises/day-02.md",
+    "examples/day-02/variables.cpp",
+    "examples/day-02",
+    "days/day-02.md",
+    "days/day-01.md",
     "README.md",
     "Obsidian Git 测试笔记.md"
   ]
