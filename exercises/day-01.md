@@ -18,6 +18,7 @@ int main() {
 
 然后亲自运行并核对。
 
+
 ## 练习 2：修改程序
 
 修改 `examples/day-01/hello.cpp`，使它输出：
@@ -58,18 +59,37 @@ Day: 1
 ```text
 练习1的预测：
 
+Robot
+Learning 
+
 练习2的代码：
 
+#include <iostream>
+
+int main() {
+    std::cout << "Robot learning started!\n";
+    return 0;
+}
+
 练习3的代码：
+
+#include <iostream>
+
+int main() {
+    std::cout << "Name: HaoxiangLian\n";
+    std::cout << "Direction: Robotics\n";
+    std::cout << "Day: 1\n";
+    return 0;
+}
 
 练习4的关键报错：
 
 练习5的回答：
-1.
-2.
-3.
-4.
-5.
+1.是程序员编写的可以让人读懂的代码文本
+2.编译器是把源文件翻译成计算机可以读懂的代码
+3.编译生成的可执行程序
+4.程序运行时跑的主函数
+5.编译以后才能将改动更新到新的可执行文件中。
 
 我仍然不理解的地方：
 ```
