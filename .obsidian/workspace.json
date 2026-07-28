@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian Git 测试笔记.md",
-                "mode": "source",
+                "file": "days/day-01.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Obsidian Git 测试笔记"
+              "title": "day-01"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "42b5b3ce11c56dbf",
@@ -94,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Obsidian Git 测试笔记.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Obsidian Git 测试笔记 的反向链接列表"
+              "title": "README 的反向链接列表"
             }
           },
           {
@@ -113,12 +114,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Obsidian Git 测试笔记.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Obsidian Git 测试笔记 的出链列表"
+              "title": "README 的出链列表"
             }
           },
           {
@@ -156,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Obsidian Git 测试笔记.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Obsidian Git 测试笔记 的大纲"
+              "title": "README 的大纲"
             }
           },
           {
@@ -195,5 +196,9 @@
     }
   },
   "active": "f17dc739917e3eb3",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Obsidian Git 测试笔记.md",
+    "days/day-01.md",
+    "README.md"
+  ]
 }
