@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "exercises/day-02.md",
+                "file": "reviews/day-01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "day-02"
+              "title": "day-01"
             }
           }
         ]
@@ -180,7 +180,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,14 +197,14 @@
   },
   "active": "f17dc739917e3eb3",
   "lastOpenFiles": [
-    "days/day-02.md",
-    "exercises/day-02.md",
-    "reviews/day-01.md",
     "exercises/day-01.md",
+    "exercises/day-02.md",
+    "days/day-01.md",
+    "reviews/day-01.md",
+    "days/day-02.md",
     "reviews",
     "examples/day-02/variables.cpp",
     "examples/day-02",
-    "days/day-01.md",
     "README.md",
     "Obsidian Git 测试笔记.md"
   ]
