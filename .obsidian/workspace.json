@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "days/day-04.md",
+                "file": "days/第04天-源码到可执行文件的完整链路.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "day-04"
+              "title": "第04天-源码到可执行文件的完整链路"
             }
           }
         ]
@@ -197,13 +197,13 @@
   "active": "f17dc739917e3eb3",
   "lastOpenFiles": [
     "PROGRESS.md",
-    "days/day-02.md",
-    "days/day-01.md",
-    "days/day-04.md",
+    "days/第02天-变量、类型、初始化与表达式.md",
+    "days/第01天-程序、源代码、构建命令与运行.md",
+    "days/第04天-源码到可执行文件的完整链路.md",
     "LEARNING_PLAN.md",
     "README.md",
     "COVERAGE_MAP.md",
-    "days/day-03.md",
+    "days/第03天-条件、循环与代码块.md",
     "reviews/day-03.md",
     "exercises/day-04.md",
     "examples/day-04/pipeline.cpp",

@@ -187,6 +187,12 @@ flowchart TD
 
 更细的逐项状态见 [COVERAGE_MAP.md](COVERAGE_MAP.md)。
 
+## 课程文件命名规则
+
+- 每日讲义使用 `days/第NN天-主题.md`，其中 `NN` 是两位单元编号，`主题` 是根据当日实际学习内容提炼的简洁中文标题。
+- 文件名中的主题应与讲义一级标题一致，不能只使用 `day-XX.md` 这类纯编号名称。
+- 练习单 `exercises/day-XX.md`、示例目录 `examples/day-XX/` 和批改记录 `reviews/day-XX.md` 继续使用短编号，便于代码命令和路径引用。
+
 ## 课程结束时的能力检查
 
 完成 36 个单元后，应当能够：
