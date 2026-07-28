@@ -30,20 +30,20 @@ std::string name{"Arm-A"};
 **你的答案：**
 
 1. `joint_count`
-   - 类型：
-   - 初始值：
-2. `angle`
-   - 类型：
-   - 初始值：
-3. `axis`
-   - 类型：
-   - 初始值：
-4. `ready`
-   - 类型：
-   - 初始值：
-5. `name`
-   - 类型：
-   - 初始值：
+   - 类型：int
+   - 初始值：6
+1. `angle`
+   - 类型：double
+   - 初始值：45.5
+1. `axis`
+   - 类型：char
+   - 初始值：Z
+1. `ready`
+   - 类型：bool
+   - 初始值：true
+1. `name`
+   - 类型：std::string
+   - 初始值：Arm-A
 
 ---
 
@@ -70,7 +70,10 @@ int main() {
 **你的预测：**
 
 ```text
-
+9
+3
+1
+3.5
 ```
 
 **实际运行结果：**
@@ -99,20 +102,20 @@ int result{speed + 5};
 
 1. 哪一行创建并初始化了 `speed`？
 
-   > 
+   > 第一行
 
 2. 哪一行给已经存在的 `speed` 赋新值？
 
-   > 
+   > 第二行
 
 3. `speed + 5` 是什么？它的结果是多少？
 
-   > 
+   > 表达式；25
 
 4. 三行全部执行后，`speed` 和 `result` 分别是多少？
 
-   > `speed`：  
-   > `result`：
+   > `speed`：  20
+   > `result`：25
 
 ---
 
@@ -146,7 +149,19 @@ int main() {
 **你的代码：**
 
 ```cpp
+#include <iostream>
+#include <string>
 
+int main() {
+    int joint_count;
+    std::cin << joint_count << '\n';
+
+    int speed{3};
+    char axis{'Z'};
+    std::string name{"Arm"};
+
+    return 0;
+}
 ```
 
 **你一共发现了几处问题？分别是什么？**
@@ -207,7 +222,21 @@ double total_time{joint_count * cycle_time};
 **你的完整代码：**
 
 ```cpp
+#include <iostream>
+#include <string>
 
+int main() {
+    double left_joint;
+    std::cin << left_joint << '\n';
+	
+	double right_joint;
+    std::cin << right_joint << '\n';
+    
+    double average_value{(left_joint+right_joint)/2};
+    std::cout >> average_value >> '\n';
+    
+    return 0;
+}
 ```
 
 **输入和实际输出：**
@@ -224,23 +253,26 @@ double total_time{joint_count * cycle_time};
 
 1. 什么是变量？
 
-   > 
+   > 程序中一个有名字，可以存储数据的位置
 
 2. 类型有什么作用？
 
-   > 
+   > 确定对象的种类
+   > 确定对象可以进行怎样的操作
+   > 程序怎么保存该对象
 
 3. 初始化和赋值有什么区别？
 
-   > 
+   > 初始化只进行一次；
+   > 赋值在初始化之后，可以进行很多次；
 
 4. 什么是表达式？
 
-   > 
+   > 可以计算并得到结果的一段代码
 
 5. 为什么 `7 / 2` 的结果是 `3`，而不是 `3.5`？
 
-   > 
+   > 因为进行的是整数除法
 
 ---
 
@@ -252,7 +284,7 @@ double total_time{joint_count * cycle_time};
 
 **仍然不理解或想继续追问的地方：**
 
-> 
+> 我虽然知道初始化、赋值以及表达式等这些基础概念所表示的东西是干什么的，但是让我复述出其定义有点困难
 
 完成后保存并同步到 GitHub，然后在对话中告诉我：
 
