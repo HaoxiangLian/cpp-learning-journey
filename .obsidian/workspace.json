@@ -196,8 +196,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4ddd2deb878a8460",
+  "active": "f17dc739917e3eb3",
   "lastOpenFiles": [
+    "days/第05天-函数的声明、定义、调用与返回.md",
+    "days/第04天-源码到可执行文件的完整链路.md",
     "exercises/day-08.md",
     "exercises/day-07.md",
     "exercises/day-06.md",
@@ -215,13 +217,11 @@
     "days/第08天-枚举、类型别名、命名空间与类对象.md",
     "days/第07天-原生数组、字符串类与向量容器.md",
     "days/第06天-值传递、引用传递、函数重载、默认参数与递归.md",
-    "days/第05天-函数的声明、定义、调用与返回.md",
     "days/第03天-条件、循环与代码块.md",
     "days/第02天-变量、类型、初始化与表达式.md",
     "days/第01天-程序、源代码、构建命令与运行.md",
     "PROGRESS.md",
     "days/day-04.md",
-    "days/第04天-源码到可执行文件的完整链路.md",
     "days/day-02.md",
     "days/day-01.md",
     "LEARNING_PLAN.md",
