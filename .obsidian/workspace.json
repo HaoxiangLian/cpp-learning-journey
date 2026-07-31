@@ -80,7 +80,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "42b5b3ce11c56dbf",
@@ -182,7 +183,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,6 +200,24 @@
   },
   "active": "f17dc739917e3eb3",
   "lastOpenFiles": [
+    "exercises/day-08.md",
+    "exercises/day-07.md",
+    "exercises/day-06.md",
+    "exercises/day-05.md",
+    "examples/day-08/robot_types.cpp",
+    "examples/day-08/scoped_enum_error.cpp",
+    "examples/day-08",
+    "examples/day-07/sequences.cpp",
+    "examples/day-07/bounds_error.cpp",
+    "examples/day-07",
+    "examples/day-06/function_tools.cpp",
+    "examples/day-06",
+    "examples/day-05/robot_functions.cpp",
+    "examples/day-05",
+    "days/第08天-枚举、类型别名、命名空间与类对象.md",
+    "days/第07天-原生数组、字符串类与向量容器.md",
+    "days/第06天-值传递、引用传递、函数重载、默认参数与递归.md",
+    "days/第05天-函数的声明、定义、调用与返回.md",
     "days/第03天-条件、循环与代码块.md",
     "days/第02天-变量、类型、初始化与表达式.md",
     "days/第01天-程序、源代码、构建命令与运行.md",
@@ -212,20 +232,9 @@
     "days/day-03.md",
     "reviews/day-03.md",
     "exercises/day-04.md",
-    "examples/day-04/pipeline.cpp",
-    "examples/day-04/status.cpp",
-    "examples/day-04/link_main.cpp",
-    "examples/day-04",
     "exercises/day-03.md",
     "exercises/day-01.md",
     "reviews/day-01.md",
-    "reviews/day-02.md",
-    "examples/day-03/robot_control.cpp",
-    "examples/day-03",
-    "exercises/day-02.md",
-    "reviews",
-    "examples/day-02/variables.cpp",
-    "examples/day-02",
-    "Obsidian Git 测试笔记.md"
+    "reviews/day-02.md"
   ]
 }
