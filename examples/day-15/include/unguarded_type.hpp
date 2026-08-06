@@ -1,0 +1,3 @@
+struct UnguardedType {
+    int value;
+};
