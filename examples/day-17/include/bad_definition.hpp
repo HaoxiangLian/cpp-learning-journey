@@ -1,6 +1,0 @@
-#ifndef CPP_LEARNING_DAY17_BAD_DEFINITION_HPP
-#define CPP_LEARNING_DAY17_BAD_DEFINITION_HPP
-
-int duplicated_mode{1};
-
-#endif
