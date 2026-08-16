@@ -1,3 +1,0 @@
-struct UnguardedType {
-    int value;
-};
