@@ -44,6 +44,12 @@ target_link_libraries(day02_example PRIVATE course_options)
 add_executable(day02_solution solutions/day02/sensor_snapshot.cpp)
 target_link_libraries(day02_solution PRIVATE course_options)
 
+add_executable(day03_example examples/day03/main.cpp)
+target_link_libraries(day03_example PRIVATE course_options)
+
+add_executable(day03_solution solutions/day03/sensor_filter.cpp)
+target_link_libraries(day03_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -64,6 +70,16 @@ set_tests_properties(day02_example_runs PROPERTIES
 add_test(NAME day02_solution_runs COMMAND day02_solution)
 set_tests_properties(day02_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "sample 1 position: 1.5 m"
+)
+
+add_test(NAME day03_example_runs COMMAND day03_example)
+set_tests_properties(day03_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "accepted samples: 3"
+)
+
+add_test(NAME day03_solution_runs COMMAND day03_solution)
+set_tests_properties(day03_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "processed samples: 4"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -98,4 +114,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day02/broken/const_assignment.cpp"
+)
+
+add_test(
+  NAME day03_duplicate_case_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day03/broken/duplicate_case.cpp"
 )
