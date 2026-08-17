@@ -15,7 +15,7 @@
 ## 从这里开始
 
 1. 阅读 [24 天全局路线图](ROADMAP_24_DAYS.md)，只了解知识顺序，不提前背结论。
-2. 开始当天讲义前，先回答“前置知识检查”。
+2. 开始当天讲义前，先回答“前置知识检查”；阅读核心机制时，沿着“问题 → 就地定义 → 代码 → 边界 → 反例修复”复述推理，不单独背术语卡。
 3. 独立运行当天讲义链接的最小示例，再完成对应 `exercises/dayXX/` 练习。
 4. 提交自己的答案后，再查看对应 `solutions/dayXX/` 答案与解析。
 5. 用 [术语表](docs/glossary.md)复述定义，用 [面试题索引](interview/question-bank.md)做连续追问。
@@ -52,6 +52,7 @@ ctest --test-dir build-sanitize --output-on-failure
 |---|---|
 | `ROADMAP_24_DAYS.md` | 唯一的 24 天知识依赖大纲 |
 | `docs/glossary.md` | 术语的唯一正式定义 |
+| `docs/lecture-writing-guide.md` | 讲义叙事、首次术语解释与资料使用规范 |
 | `days/dayXX.md` | 每日讲义 |
 | `examples/dayXX/` | 可独立构建的正确示例 |
 | `exercises/dayXX/` | 不含答案的当日练习 |
