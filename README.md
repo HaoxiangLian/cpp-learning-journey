@@ -9,6 +9,8 @@
 - 已发布：
   - [第 1 天：源代码如何变成可运行程序](days/day01.md)
   - [第 2 天：变量、对象、类型与初始化](days/day02.md)（提前发布）
+  - [第 3 天：表达式、转换与控制流](days/day03.md)（提前发布）
+  - [第 4 天：函数如何划分责任](days/day04.md)（提前发布）
 - 唯一进度源：[progress.md](progress.md)
 - 机器可读发布状态：[release/state.json](release/state.json)
 
