@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "days/day01.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -196,7 +196,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9c197e2a4b0d0748",
+  "active": "0c5058a70c7015e2",
   "lastOpenFiles": [
     "docs/glossary/day02.md",
     "docs/glossary/day01.md",
