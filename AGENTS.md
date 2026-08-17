@@ -6,7 +6,8 @@ These rules apply to every automated or manual course update.
 
 - Simplified Chinese prose, C++ identifiers and standard terms in English.
 - C++17 is the primary standard. Mark C++11/14 origins and C++20 additions explicitly.
-- `docs/glossary.md` owns the only formal definition of each term. A day card links to that definition and must not redefine it inconsistently.
+- Follow `docs/lecture-writing-guide.md`: do not create a standalone daily term-card section. Introduce a new term inside the relevant core mechanism, repeat the glossary's canonical one-sentence definition, and link its anchor at first use.
+- `docs/glossary.md` owns the canonical definition index. If a definition changes, audit the glossary, its first-use lecture, exercises, and interview answers together; do not create a competing paraphrased definition.
 - Introduce at most five major concepts per day. Do not use an unexplained technical term to define a new term.
 - Separate standard guarantees from common compiler, OS, ABI, stack/heap, vptr, and vtable implementations.
 - Never equate undefined behavior with a guaranteed crash or segmentation fault.
@@ -42,4 +43,5 @@ Repeated runs must be idempotent: an existing published day, branch, or PR is re
 - Markdown relative links resolve; conflict markers are absent.
 - Each daily lecture has every required section and the exercise answer remains separate.
 - Interview answers state conditions and boundaries rather than absolute implementation claims.
+- Every core mechanism contains `实际问题`, `概念落点`, `代码与机制`, and `错误做法与修复`, followed by a short retrieval check.
 - Final diff contains no unrelated files.

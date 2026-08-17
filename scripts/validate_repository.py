@@ -14,7 +14,6 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 REQUIRED_DAY_HEADINGS = (
     "## 🎯 今日攻坚目标",
     "## 🔁 前置知识检查",
-    "## 📚 今日术语卡",
     "## 📖 核心知识重构",
     "## 💻 最小可运行示例",
     "## 🐛 错误代码诊断",
@@ -22,6 +21,15 @@ REQUIRED_DAY_HEADINGS = (
     "## ✍️ 当日练习",
     "## 🧠 深度思考题",
     "## ✅ 完成标准",
+)
+BANNED_DAY_HEADINGS = ("## 📚 今日术语卡",)
+CORE_MECHANISM_PATTERN = re.compile(r"^### 机制(?:[一二三四]|[1-4])[:：].+$", re.MULTILINE)
+REQUIRED_MECHANISM_MARKERS = (
+    "**实际问题**",
+    "**概念落点**",
+    "**代码与机制**",
+    "**错误做法与修复**",
+    "**小检查**",
 )
 CONTROLLED_PATHS = (
     "README.md",
@@ -85,6 +93,7 @@ def main() -> int:
         "README.md",
         "ROADMAP_24_DAYS.md",
         "docs/glossary.md",
+        "docs/lecture-writing-guide.md",
         "interview/question-bank.md",
         "progress.md",
         "release/state.json",
@@ -141,8 +150,33 @@ def main() -> int:
             for heading in REQUIRED_DAY_HEADINGS:
                 if heading not in lecture_text:
                     fail(errors, f"{lecture.relative_to(ROOT)} missing heading: {heading}")
+            for heading in BANNED_DAY_HEADINGS:
+                if heading in lecture_text:
+                    fail(errors, f"{lecture.relative_to(ROOT)} uses banned standalone heading: {heading}")
             if "../docs/glossary.md#" not in lecture_text:
                 fail(errors, f"{lecture.relative_to(ROOT)} must reference formal glossary entries")
+
+            core_start = lecture_text.find("## 📖 核心知识重构")
+            core_end = lecture_text.find("## 💻 最小可运行示例", core_start + 1)
+            if core_start >= 0 and core_end > core_start:
+                core_text = lecture_text[core_start:core_end]
+                mechanisms = list(CORE_MECHANISM_PATTERN.finditer(core_text))
+                if not 2 <= len(mechanisms) <= 4:
+                    fail(
+                        errors,
+                        f"{lecture.relative_to(ROOT)} must contain 2..4 core mechanisms; "
+                        f"found {len(mechanisms)}",
+                    )
+                for index, mechanism in enumerate(mechanisms):
+                    section_end = mechanisms[index + 1].start() if index + 1 < len(mechanisms) else len(core_text)
+                    section = core_text[mechanism.start():section_end]
+                    for marker in REQUIRED_MECHANISM_MARKERS:
+                        if marker not in section:
+                            fail(
+                                errors,
+                                f"{lecture.relative_to(ROOT)} {mechanism.group(0)} "
+                                f"missing integrated marker: {marker}",
+                            )
 
     legacy = list((ROOT / "days").glob("第*.md")) + list((ROOT / "exercises").glob("day-*.md"))
     if legacy:
