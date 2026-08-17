@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "days/day02.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -198,6 +198,8 @@
   },
   "active": "0c5058a70c7015e2",
   "lastOpenFiles": [
+    "docs/glossary.md",
+    "days/day02.md",
     "days/day01.md",
     "solutions/day02/sensor_snapshot.cpp",
     "solutions/day02/README.md",
@@ -211,9 +213,7 @@
     "exercises/day02",
     "examples/day02/main.cpp",
     "examples/day02",
-    "days/day02.md",
     "ROADMAP_24_DAYS.md",
-    "docs/glossary.md",
     "progress.md",
     "LEARNING_PLAN.md",
     "AGENTS.md",
