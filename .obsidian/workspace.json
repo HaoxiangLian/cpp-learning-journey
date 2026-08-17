@@ -11,14 +11,10 @@
             "id": "0c5058a70c7015e2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PROGRESS.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "PROGRESS"
+              "title": "新标签页"
             }
           }
         ]
@@ -196,22 +192,32 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c5058a70c7015e2",
+  "active": "9c197e2a4b0d0748",
   "lastOpenFiles": [
+    "solutions/day01/mission.cpp",
+    "solutions/day01/README.md",
+    "solutions/day01",
+    "solutions",
+    "scripts/validate_repository.py",
+    "scripts/expect_failure.py",
+    "scripts",
+    "release/state.json",
+    "release/RECOVERY.md",
+    "release/manifest.json",
+    "release",
+    "progress.md",
+    "interview/question-bank.md",
+    "interview",
+    "exercises/day01/mission.cpp",
+    "exercises/day01/README.md",
+    "docs/glossary.md",
+    "days/day01.md",
+    "ROADMAP_24_DAYS.md",
+    "AGENTS.md",
     "LEARNING_PLAN.md",
     "days/第01天-从源代码到程序运行.md",
     "days/第05天-函数的声明、定义、调用与返回.md",
-    "examples/day-01/compile_error.cpp",
     "days/第04天-源码到可执行文件的完整链路.md",
-    "examples/day-21/shallow_copy_error.cpp",
-    "examples/day-21/int_buffer.hpp",
-    "examples/day-21/main.cpp",
-    "examples/day-21/int_buffer.cpp",
-    "examples/day-21/deleted_copy_error.cpp",
-    "examples/day-21",
-    "examples/day-20/main.cpp",
-    "examples/day-20/int_buffer.hpp",
-    "examples/day-20/int_buffer.cpp",
     "exercises/day-23.md",
     "exercises/day-22.md",
     "exercises/day-21.md",
@@ -223,16 +229,6 @@
     "exercises/day-15.md",
     "exercises/day-14.md",
     "exercises/day-13.md",
-    "exercises/day-12.md",
-    "days/第23天-智能指针与所有权.md",
-    "days/第22天-移动语义、右值引用与stdmove.md",
-    "days/第21天-拷贝构造、拷贝赋值与RuleofThree.md",
-    "days/第20天-析构函数与RAII.md",
-    "days/第19天-构造函数、成员初始化列表与this.md",
-    "days/第18天-警告、调试器、Sanitizer与错误分类.md",
-    "days/第17天-声明、定义、名称查找、链接与ODR.md",
-    "days/第16天-汇编、目标文件、符号、重定位、链接与库.md",
-    "days/第15天-预处理、头文件、宏与翻译单元.md",
-    "days/第14天-表达式求值、顺序、值类别与未定义行为.md"
+    "exercises/day-12.md"
   ]
 }
