@@ -21,7 +21,7 @@
 | 04 | 函数如何划分责任 | [形参与实参、返回值、值传递、函数重载、默认实参、递归](glossary/day04.md) | 已发布 |
 | 05 | 名字何时可见，对象活多久 | [作用域、生命周期、存储期、链接属性、`static`](glossary/day05.md) | 已发布 |
 | 06 | 间接访问与内存模型入门 | [调用栈与堆、指针、`nullptr`、引用、悬空](glossary/day06.md) | 已发布 |
-| 07 | 连续数据与手动资源管理 | `glossary/day07.md` | 随日发布 |
+| 07 | 连续数据与手动资源管理 | [数组、C 字符串、`std::string`、`new/delete`、`malloc/free`](glossary/day07.md) | 已发布 |
 | 08 | 类如何维护不变量 | `glossary/day08.md` | 随日发布 |
 | 09 | 对象怎样出生和结束 | `glossary/day09.md` | 随日发布 |
 | 10 | 复制资源为什么危险 | `glossary/day10.md` | 随日发布 |
