@@ -8,6 +8,7 @@ int main() {
 
     // TODO: 创建并初始化动态数组。
     int* samples{nullptr};
+    (void)count;
 
     // TODO: 在 [0, count) 内求和。
     int sum{0};
