@@ -56,6 +56,12 @@ target_link_libraries(day04_example PRIVATE course_options)
 add_executable(day04_solution solutions/day04/mission_score.cpp)
 target_link_libraries(day04_solution PRIVATE course_options)
 
+add_executable(day05_example examples/day05/main.cpp)
+target_link_libraries(day05_example PRIVATE course_options)
+
+add_executable(day05_solution solutions/day05/task_id.cpp)
+target_link_libraries(day05_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -96,6 +102,16 @@ set_tests_properties(day04_example_runs PROPERTIES
 add_test(NAME day04_solution_runs COMMAND day04_solution)
 set_tests_properties(day04_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "recursive sum: 6"
+)
+
+add_test(NAME day05_example_runs COMMAND day05_example)
+set_tests_properties(day05_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "file limit: 80"
+)
+
+add_test(NAME day05_solution_runs COMMAND day05_solution)
+set_tests_properties(day05_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "501 502 503"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -146,4 +162,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day04/broken/ambiguous_overload.cpp"
+)
+
+add_test(
+  NAME day05_missing_static_definition_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage link
+    --source "${CMAKE_SOURCE_DIR}/exercises/day05/broken/missing_static_definition.cpp"
 )
