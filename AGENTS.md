@@ -1,0 +1,44 @@
+# Repository maintenance rules
+
+These rules apply to every automated or manual course update.
+
+## Course invariants
+
+- Simplified Chinese prose, C++ identifiers and standard terms in English.
+- C++17 is the primary standard. Mark C++11/14 origins and C++20 additions explicitly.
+- `docs/glossary.md` owns the only formal definition of each term. A day card links to that definition and must not redefine it inconsistently.
+- Introduce at most five major concepts per day. Do not use an unexplained technical term to define a new term.
+- Separate standard guarantees from common compiler, OS, ABI, stack/heap, vptr, and vtable implementations.
+- Never equate undefined behavior with a guaranteed crash or segmentation fault.
+- Intentionally invalid code belongs under `exercises/dayXX/broken/`, carries an `INTENTIONALLY INVALID` banner, and is excluded from normal CMake targets.
+- Do not modify `.obsidian/` as part of course publication.
+
+## Required daily files
+
+- `days/dayXX.md`
+- `examples/dayXX/` with at least one independently runnable C++17 example
+- `exercises/dayXX/README.md` without answers
+- `solutions/dayXX/README.md` and solution code
+- updates, only when needed, to `docs/glossary.md`, `interview/question-bank.md`, `CMakeLists.txt`, `progress.md`, `release/manifest.json`, and `release/state.json`
+
+## Publication protocol
+
+1. Read `release/state.json` from the default branch.
+2. If `status` is `completed`, stop without writing.
+3. Use exactly `next_day`; if its day file is already present and the state disagrees, stop and report the inconsistency.
+4. Create one branch named `release/dayXX-YYYY-MM-DD` from the current default-branch head.
+5. Generate only that day's material and the allowed indexes/state files.
+6. Run the repository validator and GCC/Clang C++17 builds through CI. Do not merge on failure.
+7. Merge only after required checks pass. Then append the day to `published_days`, advance `next_day` by one, and record the commit/PR in state.
+8. After day 24, set `status` to `completed`, `next_day` to `null`, and never create day 25.
+
+Repeated runs must be idempotent: an existing published day, branch, or PR is resumed or reported, never duplicated.
+
+## Validation checklist
+
+- Correct examples compile with warnings enabled on GCC and Clang.
+- Relevant resource/lifetime examples run under AddressSanitizer and UndefinedBehaviorSanitizer.
+- Markdown relative links resolve; conflict markers are absent.
+- Each daily lecture has every required section and the exercise answer remains separate.
+- Interview answers state conditions and boundaries rather than absolute implementation claims.
+- Final diff contains no unrelated files.
