@@ -26,11 +26,12 @@ These rules apply to every automated or manual course update.
 1. Read `release/state.json` from the default branch.
 2. If `status` is `completed`, stop without writing.
 3. Use exactly `next_day`; if its day file is already present and the state disagrees, stop and report the inconsistency.
-4. Create one branch named `release/dayXX-YYYY-MM-DD` from the current default-branch head.
-5. Generate only that day's material and the allowed indexes/state files.
-6. Run the repository validator and GCC/Clang C++17 builds through CI. Do not merge on failure.
-7. Merge only after required checks pass. Then append the day to `published_days`, advance `next_day` by one, and record the commit/PR in state.
-8. After day 24, set `status` to `completed`, `next_day` to `null`, and never create day 25.
+4. A scheduled run must compare the manifest's `scheduled_date` for `next_day` with the current date in the state's timezone. If the date is still in the future, stop without writing. An explicit user request to “开始第 X 天学习” is a manual early-release override only when X equals `next_day`.
+5. Create one branch named `release/dayXX-YYYY-MM-DD` from the current default-branch head.
+6. Generate only that day's material and the allowed indexes/state files.
+7. Run the repository validator and GCC/Clang C++17 builds through CI. Do not merge on failure.
+8. Merge only after required checks pass. Then append the day to `published_days`, advance `next_day` by one, and record the commit/PR in state.
+9. After day 24, set `status` to `completed`, `next_day` to `null`, and never create day 25.
 
 Repeated runs must be idempotent: an existing published day, branch, or PR is resumed or reported, never duplicated.
 

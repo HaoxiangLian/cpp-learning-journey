@@ -6,7 +6,9 @@
 
 - 课程开始：2026-08-17
 - 每日发布：09:30（Asia/Shanghai）
-- 已发布：[第 1 天：源代码如何变成可运行程序](days/day01.md)
+- 已发布：
+  - [第 1 天：源代码如何变成可运行程序](days/day01.md)
+  - [第 2 天：变量、对象、类型与初始化](days/day02.md)（提前发布）
 - 唯一进度源：[progress.md](progress.md)
 - 机器可读发布状态：[release/state.json](release/state.json)
 
@@ -14,8 +16,8 @@
 
 1. 阅读 [24 天全局路线图](ROADMAP_24_DAYS.md)，只了解知识顺序，不提前背结论。
 2. 开始当天讲义前，先回答“前置知识检查”。
-3. 独立运行最小示例，再完成 [当日练习](exercises/day01/README.md)。
-4. 提交自己的答案后，再查看 [答案与解析](solutions/day01/README.md)。
+3. 独立运行当天讲义链接的最小示例，再完成对应 `exercises/dayXX/` 练习。
+4. 提交自己的答案后，再查看对应 `solutions/dayXX/` 答案与解析。
 5. 用 [术语表](docs/glossary.md)复述定义，用 [面试题索引](interview/question-bank.md)做连续追问。
 6. 在 [progress.md](progress.md)记录当日完成情况，并在第 2、7、14 天回顾错题。
 
