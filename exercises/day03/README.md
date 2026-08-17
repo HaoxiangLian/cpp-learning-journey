@@ -36,7 +36,11 @@ int main() {
     int total{8};
     int count{0};
     bool usable{count != 0 && total / count > 2};
-    std::cout << (usable ? "yes" : "no") << '\n';
+    if (usable) {
+        std::cout << "yes\n";
+    } else {
+        std::cout << "no\n";
+    }
 }
 ```
 
