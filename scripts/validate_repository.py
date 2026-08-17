@@ -50,6 +50,15 @@ CONTROLLED_PATHS = (
     ".github",
 )
 LINK_PATTERN = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
+GLOSSARY_FILE_PATTERN = re.compile(r"day(\d{2})\.md")
+GLOSSARY_TERM_PATTERN = re.compile(r"^### (.+)$", re.MULTILINE)
+REQUIRED_GLOSSARY_MARKERS = (
+    "- **定义**",
+    "- **决定什么**",
+    "- **不决定什么**",
+    "- **最小示例",
+    "- **常见误解**",
+)
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -84,6 +93,53 @@ def validate_links(errors: list[str], markdown: pathlib.Path) -> None:
             continue
         if not resolved.exists():
             fail(errors, f"broken link: {markdown.relative_to(ROOT)} -> {target}")
+
+
+def validate_glossary(errors: list[str], published: list[int]) -> None:
+    index = ROOT / "docs" / "glossary.md"
+    index_text = index.read_text(encoding="utf-8")
+    if re.search(r"^### ", index_text, flags=re.MULTILINE) or "- **定义**" in index_text:
+        fail(errors, "docs/glossary.md must be navigation only, not contain formal term entries")
+    index_days = re.findall(r"^\| (\d{2}) \|", index_text, flags=re.MULTILINE)
+    if index_days != [f"{day:02d}" for day in range(1, 25)]:
+        fail(errors, "glossary index must contain exactly ordered day rows 01 through 24")
+
+    glossary_dir = ROOT / "docs" / "glossary"
+    glossary_files = sorted(glossary_dir.glob("*.md")) if glossary_dir.exists() else []
+    unrecognized = [path.name for path in glossary_files if GLOSSARY_FILE_PATTERN.fullmatch(path.name) is None]
+    if unrecognized:
+        fail(errors, "unrecognized glossary files: " + ", ".join(unrecognized))
+
+    actual_days = [int(GLOSSARY_FILE_PATTERN.fullmatch(path.name).group(1)) for path in glossary_files]
+    if actual_days != published:
+        fail(errors, f"glossary day files must exactly match published_days: {published}; found {actual_days}")
+
+    term_owners: dict[str, pathlib.Path] = {}
+    for day, path in zip(actual_days, glossary_files):
+        relative = path.relative_to(ROOT)
+        text = path.read_text(encoding="utf-8")
+        code = f"day{day:02d}"
+        if f"(../../days/{code}.md)" not in text or "(../glossary.md)" not in text:
+            fail(errors, f"{relative} must link to its lecture and the glossary index")
+        if f"(glossary/{code}.md)" not in index_text:
+            fail(errors, f"docs/glossary.md must link published glossary file {code}.md")
+
+        terms = list(GLOSSARY_TERM_PATTERN.finditer(text))
+        if not terms:
+            fail(errors, f"{relative} must contain at least one formal term entry")
+        for term_index, term in enumerate(terms):
+            section_end = terms[term_index + 1].start() if term_index + 1 < len(terms) else len(text)
+            section = text[term.start():section_end]
+            heading = term.group(1).strip()
+            normalized = re.sub(r"\s+", "", heading).casefold()
+            previous = term_owners.get(normalized)
+            if previous is not None:
+                fail(errors, f"duplicate glossary term '{heading}' in {previous.relative_to(ROOT)} and {relative}")
+            else:
+                term_owners[normalized] = path
+            for marker in REQUIRED_GLOSSARY_MARKERS:
+                if marker not in section:
+                    fail(errors, f"{relative} term '{heading}' missing marker: {marker}")
 
 
 def main() -> int:
@@ -134,11 +190,14 @@ def main() -> int:
         if entry.get("status") != expected_status:
             fail(errors, f"manifest day {entry.get('day')} must be {expected_status}")
 
+    validate_glossary(errors, published)
+
     for day in published:
         code = f"day{day:02d}"
         lecture = ROOT / "days" / f"{code}.md"
         for path in (
             lecture,
+            ROOT / "docs" / "glossary" / f"{code}.md",
             ROOT / "examples" / code,
             ROOT / "exercises" / code / "README.md",
             ROOT / "solutions" / code / "README.md",
@@ -153,8 +212,14 @@ def main() -> int:
             for heading in BANNED_DAY_HEADINGS:
                 if heading in lecture_text:
                     fail(errors, f"{lecture.relative_to(ROOT)} uses banned standalone heading: {heading}")
-            if "../docs/glossary.md#" not in lecture_text:
-                fail(errors, f"{lecture.relative_to(ROOT)} must reference formal glossary entries")
+            expected_glossary_prefix = f"../docs/glossary/{code}.md#"
+            if expected_glossary_prefix not in lecture_text:
+                fail(
+                    errors,
+                    f"{lecture.relative_to(ROOT)} must reference its day-specific formal glossary entries",
+                )
+            if "../docs/glossary.md#" in lecture_text:
+                fail(errors, f"{lecture.relative_to(ROOT)} must not link formal terms to the glossary index")
 
             core_start = lecture_text.find("## 📖 核心知识重构")
             core_end = lecture_text.find("## 💻 最小可运行示例", core_start + 1)
