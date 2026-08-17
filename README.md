@@ -20,7 +20,7 @@
 2. 开始当天讲义前，先回答“前置知识检查”；阅读核心机制时，沿着“问题 → 就地定义 → 代码 → 边界 → 反例修复”复述推理，不单独背术语卡。
 3. 独立运行当天讲义链接的最小示例，再完成对应 `exercises/dayXX/` 练习。
 4. 提交自己的答案后，再查看对应 `solutions/dayXX/` 答案与解析。
-5. 从[按天术语索引](docs/glossary.md)进入当天术语文件复述定义，再用[面试题索引](interview/question-bank.md)做连续追问。
+5. 从[按天术语索引](docs/glossary.md)进入当天术语文件复述定义，再用[面试题索引](interview/question-bank.md)做连续追问；完成口述后，到[按天面试答案索引](interview/answers/README.md)逐题核对主回答和追问答案。
 6. 在 [progress.md](progress.md)记录当日完成情况，并在第 2、7、14 天回顾错题。
 
 每天建议投入 90—120 分钟：前置检查 5 分钟，讲义与示例 55—70 分钟，练习 25—35 分钟，口述与复盘 10 分钟。未达到当天“完成标准”时，不跳过前置知识。
@@ -61,6 +61,8 @@ ctest --test-dir build-sanitize --output-on-failure
 | `exercises/dayXX/` | 不含答案的当日练习 |
 | `solutions/dayXX/` | 答案与解析 |
 | `interview/question-bank.md` | 面试题索引与对应学习日 |
+| `interview/answers/dayXX.md` | 按学习日拆分的主问题与连续追问参考答案 |
+| `interview/answers/README.md` | 24 天面试答案导航 |
 | `release/` | 幂等发布状态和清单 |
 | `.github/workflows/ci.yml` | GCC/Clang、链接与仓库结构验证 |
 

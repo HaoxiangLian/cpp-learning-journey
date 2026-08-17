@@ -59,6 +59,16 @@ REQUIRED_GLOSSARY_MARKERS = (
     "- **最小示例",
     "- **常见误解**",
 )
+INTERVIEW_ANSWER_FILE_PATTERN = re.compile(r"day(\d{2})\.md")
+INTERVIEW_QUESTION_PATTERN = re.compile(r"^## (Q\d{3})$", re.MULTILINE)
+INTERVIEW_FOLLOWUP_PATTERN = re.compile(r"^#### 追问 \d+：(.+)$", re.MULTILINE)
+REQUIRED_INTERVIEW_ANSWER_MARKERS = (
+    "**主问题**",
+    "### 30 秒回答",
+    "### 完整答题逻辑",
+    "### 连续追问与参考答案",
+    "### 容易失分",
+)
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -142,6 +152,122 @@ def validate_glossary(errors: list[str], published: list[int]) -> None:
                     fail(errors, f"{relative} term '{heading}' missing marker: {marker}")
 
 
+def validate_interview_answers(errors: list[str], published: list[int]) -> None:
+    answer_dir = ROOT / "interview" / "answers"
+    index = answer_dir / "README.md"
+    if not index.exists():
+        fail(errors, "missing required path: interview/answers/README.md")
+        return
+
+    index_text = index.read_text(encoding="utf-8")
+    index_days = re.findall(r"^\| (\d{2}) \|", index_text, flags=re.MULTILINE)
+    if index_days != [f"{day:02d}" for day in range(1, 25)]:
+        fail(errors, "interview answer index must contain exactly ordered day rows 01 through 24")
+
+    answer_files = sorted(answer_dir.glob("day*.md"))
+    unrecognized = [
+        path.name for path in answer_files
+        if INTERVIEW_ANSWER_FILE_PATTERN.fullmatch(path.name) is None
+    ]
+    if unrecognized:
+        fail(errors, "unrecognized interview answer files: " + ", ".join(unrecognized))
+
+    actual_days = [
+        int(INTERVIEW_ANSWER_FILE_PATTERN.fullmatch(path.name).group(1))
+        for path in answer_files
+    ]
+    if actual_days != published:
+        fail(
+            errors,
+            f"interview answer day files must exactly match published_days: {published}; "
+            f"found {actual_days}",
+        )
+
+    question_ids: list[str] = []
+    question_bank = (ROOT / "interview" / "question-bank.md").read_text(encoding="utf-8")
+    for day, path in zip(actual_days, answer_files):
+        relative = path.relative_to(ROOT)
+        text = path.read_text(encoding="utf-8")
+        code = f"day{day:02d}"
+        if f"(../../days/{code}.md)" not in text or "(../question-bank.md)" not in text:
+            fail(errors, f"{relative} must link to its lecture and the interview question index")
+        if f"({code}.md)" not in index_text:
+            fail(errors, f"interview/answers/README.md must link published answer file {code}.md")
+        if f"(answers/{code}.md#" not in question_bank:
+            fail(errors, f"interview/question-bank.md must link question answers for {code}.md")
+
+        questions = list(INTERVIEW_QUESTION_PATTERN.finditer(text))
+        if len(questions) != 2:
+            fail(errors, f"{relative} must contain exactly two interview question sections")
+        answer_followups_by_question: list[list[str]] = []
+        for question_index, question in enumerate(questions):
+            section_end = (
+                questions[question_index + 1].start()
+                if question_index + 1 < len(questions)
+                else len(text)
+            )
+            section = text[question.start():section_end]
+            question_id = question.group(1)
+            question_ids.append(question_id)
+            for marker in REQUIRED_INTERVIEW_ANSWER_MARKERS:
+                if marker not in section:
+                    fail(errors, f"{relative} {question_id} missing marker: {marker}")
+            followups = list(INTERVIEW_FOLLOWUP_PATTERN.finditer(section))
+            if not followups:
+                fail(errors, f"{relative} {question_id} must contain at least one follow-up answer")
+            answer_followups_by_question.append([item.group(1).strip() for item in followups])
+            for followup_index, followup in enumerate(followups):
+                followup_end = (
+                    followups[followup_index + 1].start()
+                    if followup_index + 1 < len(followups)
+                    else len(section)
+                )
+                followup_section = section[followup.start():followup_end]
+                if "**参考答案**" not in followup_section:
+                    fail(
+                        errors,
+                        f"{relative} {question_id} follow-up {followup_index + 1} missing answer",
+                    )
+
+        lecture = ROOT / "days" / f"{code}.md"
+        if lecture.exists() and len(answer_followups_by_question) == 2:
+            lecture_text = lecture.read_text(encoding="utf-8")
+            interview_start = lecture_text.find("## 🎤 高频面试实战")
+            interview_end = lecture_text.find("## ✍️ 当日练习", interview_start + 1)
+            interview_text = lecture_text[interview_start:interview_end]
+            lecture_questions = list(re.finditer(r"^### 题 [12]：.+$", interview_text, re.MULTILINE))
+            if len(lecture_questions) != 2:
+                fail(errors, f"{lecture.relative_to(ROOT)} must contain exactly two interview questions")
+            else:
+                for question_index, lecture_question in enumerate(lecture_questions):
+                    lecture_section_end = (
+                        lecture_questions[question_index + 1].start()
+                        if question_index + 1 < len(lecture_questions)
+                        else len(interview_text)
+                    )
+                    lecture_section = interview_text[lecture_question.start():lecture_section_end]
+                    followup_start = lecture_section.find("**可能连续追问**")
+                    followup_end = lecture_section.find("**容易失分的说法**", followup_start + 1)
+                    lecture_followups = re.findall(
+                        r"^- (.+)$",
+                        lecture_section[followup_start:followup_end],
+                        flags=re.MULTILINE,
+                    )
+                    normalize = lambda value: value.replace("`", "").strip()
+                    if [normalize(item) for item in lecture_followups] != [
+                        normalize(item) for item in answer_followups_by_question[question_index]
+                    ]:
+                        fail(
+                            errors,
+                            f"{relative} {questions[question_index].group(1)} follow-ups must "
+                            f"exactly match the lecture",
+                        )
+
+    expected_ids = [f"Q{number:03d}" for number in range(1, len(published) * 2 + 1)]
+    if question_ids != expected_ids:
+        fail(errors, f"interview question IDs must be sequential: {expected_ids}; found {question_ids}")
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -151,6 +277,7 @@ def main() -> int:
         "docs/glossary.md",
         "docs/lecture-writing-guide.md",
         "interview/question-bank.md",
+        "interview/answers/README.md",
         "progress.md",
         "release/state.json",
         "release/manifest.json",
@@ -191,6 +318,7 @@ def main() -> int:
             fail(errors, f"manifest day {entry.get('day')} must be {expected_status}")
 
     validate_glossary(errors, published)
+    validate_interview_answers(errors, published)
 
     for day in published:
         code = f"day{day:02d}"
@@ -201,6 +329,7 @@ def main() -> int:
             ROOT / "examples" / code,
             ROOT / "exercises" / code / "README.md",
             ROOT / "solutions" / code / "README.md",
+            ROOT / "interview" / "answers" / f"{code}.md",
         ):
             if not path.exists():
                 fail(errors, f"published day {day} missing {path.relative_to(ROOT)}")
@@ -220,6 +349,9 @@ def main() -> int:
                 )
             if "../docs/glossary.md#" in lecture_text:
                 fail(errors, f"{lecture.relative_to(ROOT)} must not link formal terms to the glossary index")
+            expected_answer_link = f"../interview/answers/{code}.md"
+            if expected_answer_link not in lecture_text:
+                fail(errors, f"{lecture.relative_to(ROOT)} must link its day-specific interview answers")
 
             core_start = lecture_text.find("## 📖 核心知识重构")
             core_end = lecture_text.find("## 💻 最小可运行示例", core_start + 1)
