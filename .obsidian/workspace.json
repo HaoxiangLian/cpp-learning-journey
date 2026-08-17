@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "days/day03.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -198,10 +198,16 @@
   },
   "active": "0c5058a70c7015e2",
   "lastOpenFiles": [
+    "interview/answers/day01.md",
+    "days/day03.md",
+    "interview/answers/day04.md",
+    "interview/answers/README.md",
+    "interview/answers/day03.md",
+    "interview/answers/day02.md",
+    "interview/answers",
     "days/day02.md",
     "days/day01.md",
     "docs/glossary.md",
-    "days/day03.md",
     "docs/glossary/day01.md",
     "solutions/day04/README.md",
     "solutions/day04/mission_score.cpp",
@@ -215,7 +221,6 @@
     "exercises/day04/broken",
     "exercises/day04",
     "exercises/day03/broken/duplicate_case.cpp",
-    "exercises/day03/sensor_filter.cpp",
     "exercises/day03/README.md",
     "docs/glossary/day04.md",
     "docs/glossary/day03.md",
@@ -228,11 +233,6 @@
     "progress.md",
     "LEARNING_PLAN.md",
     "AGENTS.md",
-    "release/RECOVERY.md",
-    "interview/question-bank.md",
-    "PROGRESS.md",
-    "solutions/day01/README.md",
-    "exercises/day01/README.md",
-    "days/第01天-从源代码到程序运行.md"
+    "release/RECOVERY.md"
   ]
 }
