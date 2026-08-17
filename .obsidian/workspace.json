@@ -11,10 +11,14 @@
             "id": "0c5058a70c7015e2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "days/day01.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "day01"
             }
           }
         ]
@@ -192,8 +196,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9c197e2a4b0d0748",
+  "active": "0c5058a70c7015e2",
   "lastOpenFiles": [
+    "ROADMAP_24_DAYS.md",
+    "days/day01.md",
+    "docs/glossary.md",
+    "progress.md",
+    "LEARNING_PLAN.md",
+    "AGENTS.md",
+    "release/RECOVERY.md",
+    "interview/question-bank.md",
+    "PROGRESS.md",
     "solutions/day01/mission.cpp",
     "solutions/day01/README.md",
     "solutions/day01",
@@ -202,19 +215,10 @@
     "scripts/expect_failure.py",
     "scripts",
     "release/state.json",
-    "release/RECOVERY.md",
     "release/manifest.json",
     "release",
-    "progress.md",
-    "interview/question-bank.md",
     "interview",
-    "exercises/day01/mission.cpp",
     "exercises/day01/README.md",
-    "docs/glossary.md",
-    "days/day01.md",
-    "ROADMAP_24_DAYS.md",
-    "AGENTS.md",
-    "LEARNING_PLAN.md",
     "days/第01天-从源代码到程序运行.md",
     "days/第05天-函数的声明、定义、调用与返回.md",
     "days/第04天-源码到可执行文件的完整链路.md",
