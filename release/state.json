@@ -18,6 +18,6 @@
   "last_published_at": "2026-08-17T18:02:17+08:00",
   "last_publication_kind": "manual_early_release",
   "last_release_branch": "release/day07-2026-08-17",
-  "last_release_pr": null,
-  "last_release_commit": null
+  "last_release_pr": 12,
+  "last_release_commit": "e1b17ba9963e124159fe6f696ec75d6f91fdef21"
 }
