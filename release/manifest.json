@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "days": [
+    {"day": 1, "status": "published", "scheduled_date": "2026-08-17"},
+    {"day": 2, "status": "pending", "scheduled_date": "2026-08-18"},
+    {"day": 3, "status": "pending", "scheduled_date": "2026-08-19"},
+    {"day": 4, "status": "pending", "scheduled_date": "2026-08-20"},
+    {"day": 5, "status": "pending", "scheduled_date": "2026-08-21"},
+    {"day": 6, "status": "pending", "scheduled_date": "2026-08-22"},
+    {"day": 7, "status": "pending", "scheduled_date": "2026-08-23"},
+    {"day": 8, "status": "pending", "scheduled_date": "2026-08-24"},
+    {"day": 9, "status": "pending", "scheduled_date": "2026-08-25"},
+    {"day": 10, "status": "pending", "scheduled_date": "2026-08-26"},
+    {"day": 11, "status": "pending", "scheduled_date": "2026-08-27"},
+    {"day": 12, "status": "pending", "scheduled_date": "2026-08-28"},
+    {"day": 13, "status": "pending", "scheduled_date": "2026-08-29"},
+    {"day": 14, "status": "pending", "scheduled_date": "2026-08-30"},
+    {"day": 15, "status": "pending", "scheduled_date": "2026-08-31"},
+    {"day": 16, "status": "pending", "scheduled_date": "2026-09-01"},
+    {"day": 17, "status": "pending", "scheduled_date": "2026-09-02"},
+    {"day": 18, "status": "pending", "scheduled_date": "2026-09-03"},
+    {"day": 19, "status": "pending", "scheduled_date": "2026-09-04"},
+    {"day": 20, "status": "pending", "scheduled_date": "2026-09-05"},
+    {"day": 21, "status": "pending", "scheduled_date": "2026-09-06"},
+    {"day": 22, "status": "pending", "scheduled_date": "2026-09-07"},
+    {"day": 23, "status": "pending", "scheduled_date": "2026-09-08"},
+    {"day": 24, "status": "pending", "scheduled_date": "2026-09-09"}
+  ]
+}

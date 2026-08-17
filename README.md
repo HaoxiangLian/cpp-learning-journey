@@ -1,36 +1,68 @@
-# C++ 24 天求职基础重建
+# C++ 24 天基础重构与秋招面试突击
 
-这套课程面向 C++ 基础较薄弱、正在准备 C++ 或机器人软件岗位笔试与面试的学习者。课程使用 C++17，不追求堆砌术语，而是帮助你做到三件事：写得出、解释得清、遇到错误能定位。
+这是一套以 C++17 为主线、面向基础薄弱学习者的 24 天课程。课程先建立准确的语言模型，再训练代码辨析与面试表达；机器人、传感器和任务队列只用作轻量示例。
+
+## 当前发布状态
+
+- 课程开始：2026-08-17
+- 每日发布：09:30（Asia/Shanghai）
+- 已发布：[第 1 天：源代码如何变成可运行程序](days/day01.md)
+- 唯一进度源：[progress.md](progress.md)
+- 机器可读发布状态：[release/state.json](release/state.json)
 
 ## 从这里开始
 
-1. 查看 [24 天学习计划](LEARNING_PLAN.md)。
-2. 学习 [第 1 天：从源代码到程序运行](days/第01天-从源代码到程序运行.md)。
-3. 运行 `examples/day-01/` 中的代码。
-4. 在 [第 1 天练习](exercises/day-01.md) 的题目下直接作答。
-5. 提交后在对话中说“请批改第 1 天”。
+1. 阅读 [24 天全局路线图](ROADMAP_24_DAYS.md)，只了解知识顺序，不提前背结论。
+2. 开始当天讲义前，先回答“前置知识检查”。
+3. 独立运行最小示例，再完成 [当日练习](exercises/day01/README.md)。
+4. 提交自己的答案后，再查看 [答案与解析](solutions/day01/README.md)。
+5. 用 [术语表](docs/glossary.md)复述定义，用 [面试题索引](interview/question-bank.md)做连续追问。
+6. 在 [progress.md](progress.md)记录当日完成情况，并在第 2、7、14 天回顾错题。
 
-## 课程写法
+每天建议投入 90—120 分钟：前置检查 5 分钟，讲义与示例 55—70 分钟，练习 25—35 分钟，口述与复盘 10 分钟。未达到当天“完成标准”时，不跳过前置知识。
 
-每份讲义只保留与当天目标直接相关的内容：
+## 构建与验证
 
-- 3～5 个核心概念，每个概念只有一个主定义；
-- 一个贯穿全课的最小程序；
-- 一次真实执行过程；
-- 笔试常见判断、输出预测或改错题；
-- 面试高频问题和可复述的回答思路；
-- 一份独立练习和明确完成标准。
+需要 CMake 3.16+，以及支持 C++17 的 GCC 或 Clang。
 
-术语索引只负责跳转，不在文末再建立一套重复定义。完整构建链路、对象生命周期等内容会在对应课程准确展开，不会为了“简单”而删掉真实机制。
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --parallel
+ctest --test-dir build --output-on-failure
+python3 scripts/validate_repository.py
+```
+
+在 GCC/Clang 上启用 Sanitizer：
+
+```bash
+cmake -S . -B build-sanitize \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -DCPP_LEARNING_ENABLE_SANITIZERS=ON
+cmake --build build-sanitize --parallel
+ctest --test-dir build-sanitize --output-on-failure
+```
+
+`exercises/**/broken/` 中的代码是显著标注的故意错误示例，不进入正常构建目标。
 
 ## 仓库结构
 
-```text
-days/       每日讲义
-examples/   可编译示例与故障实验
-exercises/  笔试、编程、调试和面试练习
-PROGRESS.md 发布进度与个人学习状态
-```
+| 路径 | 作用 |
+|---|---|
+| `ROADMAP_24_DAYS.md` | 唯一的 24 天知识依赖大纲 |
+| `docs/glossary.md` | 术语的唯一正式定义 |
+| `days/dayXX.md` | 每日讲义 |
+| `examples/dayXX/` | 可独立构建的正确示例 |
+| `exercises/dayXX/` | 不含答案的当日练习 |
+| `solutions/dayXX/` | 答案与解析 |
+| `interview/question-bank.md` | 面试题索引与对应学习日 |
+| `release/` | 幂等发布状态和清单 |
+| `.github/workflows/ci.yml` | GCC/Clang、链接与仓库结构验证 |
 
-旧版课程已完整保存在 `archive/course-v1-2026-08-16` 分支，主分支只保留新版内容，避免两套讲义混在一起。
+## 课程边界
 
+- 正文以 C++17 为准；C++11/14 来源会标注，少量 C++20 内容会明确写为补充。
+- 标准保证与常见实现分开说明。比如虚函数表是常见实现技术，不是标准规定的数据结构。
+- “未定义行为”表示标准不约束结果，不等同于“一定崩溃”或“一定段错误”。
+- 算法练习只服务于 C++ 容器、迭代器和资源管理，不扩张为完整算法训练营。
+
+旧版未完成课程已由回滚分支 `archive/pre-24day-rebuild-2026-08-16` 保留；本路线图取代旧的 7 天及其他中间版本计划。

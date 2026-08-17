@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "course": "C++ 24 天基础重构与秋招面试突击",
+  "start_date": "2026-08-17",
+  "daily_time": "09:30",
+  "timezone": "Asia/Shanghai",
+  "status": "active",
+  "published_days": [
+    1
+  ],
+  "next_day": 2,
+  "last_published_at": "2026-08-17T11:35:15+08:00",
+  "last_publication_kind": "manual_catch_up",
+  "last_release_branch": "agent/rebuild-24-day-course",
+  "last_release_pr": 2,
+  "last_release_commit": "ae63639c6e8cddf1be534f65741e6085e089af2e"
+}
