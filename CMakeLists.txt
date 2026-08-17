@@ -50,6 +50,12 @@ target_link_libraries(day03_example PRIVATE course_options)
 add_executable(day03_solution solutions/day03/sensor_filter.cpp)
 target_link_libraries(day03_solution PRIVATE course_options)
 
+add_executable(day04_example examples/day04/main.cpp)
+target_link_libraries(day04_example PRIVATE course_options)
+
+add_executable(day04_solution solutions/day04/mission_score.cpp)
+target_link_libraries(day04_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -80,6 +86,16 @@ set_tests_properties(day03_example_runs PROPERTIES
 add_test(NAME day03_solution_runs COMMAND day03_solution)
 set_tests_properties(day03_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "processed samples: 4"
+)
+
+add_test(NAME day04_example_runs COMMAND day04_example)
+set_tests_properties(day04_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "sum to 4: 10"
+)
+
+add_test(NAME day04_solution_runs COMMAND day04_solution)
+set_tests_properties(day04_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "recursive sum: 6"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -122,4 +138,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day03/broken/duplicate_case.cpp"
+)
+
+add_test(
+  NAME day04_ambiguous_overload_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day04/broken/ambiguous_overload.cpp"
 )

@@ -8,12 +8,13 @@
   "published_days": [
     1,
     2,
-    3
+    3,
+    4
   ],
-  "next_day": 4,
-  "last_published_at": "2026-08-17T15:54:52+08:00",
+  "next_day": 5,
+  "last_published_at": "2026-08-17T16:05:09+08:00",
   "last_publication_kind": "manual_early_release",
-  "last_release_branch": "release/day03-2026-08-17",
-  "last_release_pr": 6,
-  "last_release_commit": "ca0efbbbc6e94c51576a40a51151b0b270252b34"
+  "last_release_branch": "release/day04-2026-08-17",
+  "last_release_pr": null,
+  "last_release_commit": null
 }
