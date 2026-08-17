@@ -2,7 +2,7 @@
   "schema_version": 1,
   "days": [
     {"day": 1, "status": "published", "scheduled_date": "2026-08-17"},
-    {"day": 2, "status": "pending", "scheduled_date": "2026-08-18"},
+    {"day": 2, "status": "published", "scheduled_date": "2026-08-18", "published_at": "2026-08-17T15:11:41+08:00", "publication_kind": "manual_early_release"},
     {"day": 3, "status": "pending", "scheduled_date": "2026-08-19"},
     {"day": 4, "status": "pending", "scheduled_date": "2026-08-20"},
     {"day": 5, "status": "pending", "scheduled_date": "2026-08-21"},
