@@ -38,6 +38,12 @@ target_link_libraries(day01_example PRIVATE course_options)
 add_executable(day01_solution solutions/day01/mission.cpp)
 target_link_libraries(day01_solution PRIVATE course_options)
 
+add_executable(day02_example examples/day02/main.cpp)
+target_link_libraries(day02_example PRIVATE course_options)
+
+add_executable(day02_solution solutions/day02/sensor_snapshot.cpp)
+target_link_libraries(day02_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -48,6 +54,16 @@ set_tests_properties(day01_example_runs PROPERTIES
 add_test(NAME day01_solution_runs COMMAND day01_solution)
 set_tests_properties(day01_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "mission code: 17"
+)
+
+add_test(NAME day02_example_runs COMMAND day02_example)
+set_tests_properties(day02_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "sample 1: 22.125 C"
+)
+
+add_test(NAME day02_solution_runs COMMAND day02_solution)
+set_tests_properties(day02_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "sample 1 position: 1.5 m"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -66,4 +82,20 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage link
     --source "${CMAKE_SOURCE_DIR}/exercises/day01/broken/missing_definition_main.cpp"
+)
+
+add_test(
+  NAME day02_narrowing_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day02/broken/narrowing.cpp"
+)
+
+add_test(
+  NAME day02_const_assignment_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day02/broken/const_assignment.cpp"
 )
