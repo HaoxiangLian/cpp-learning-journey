@@ -18,7 +18,7 @@
 2. 开始当天讲义前，先回答“前置知识检查”；阅读核心机制时，沿着“问题 → 就地定义 → 代码 → 边界 → 反例修复”复述推理，不单独背术语卡。
 3. 独立运行当天讲义链接的最小示例，再完成对应 `exercises/dayXX/` 练习。
 4. 提交自己的答案后，再查看对应 `solutions/dayXX/` 答案与解析。
-5. 用 [术语表](docs/glossary.md)复述定义，用 [面试题索引](interview/question-bank.md)做连续追问。
+5. 从[按天术语索引](docs/glossary.md)进入当天术语文件复述定义，再用[面试题索引](interview/question-bank.md)做连续追问。
 6. 在 [progress.md](progress.md)记录当日完成情况，并在第 2、7、14 天回顾错题。
 
 每天建议投入 90—120 分钟：前置检查 5 分钟，讲义与示例 55—70 分钟，练习 25—35 分钟，口述与复盘 10 分钟。未达到当天“完成标准”时，不跳过前置知识。
@@ -51,7 +51,8 @@ ctest --test-dir build-sanitize --output-on-failure
 | 路径 | 作用 |
 |---|---|
 | `ROADMAP_24_DAYS.md` | 唯一的 24 天知识依赖大纲 |
-| `docs/glossary.md` | 术语的唯一正式定义 |
+| `docs/glossary.md` | 24 天术语导航，不保存正式定义 |
+| `docs/glossary/dayXX.md` | 第 XX 天首次出现术语的唯一规范定义 |
 | `docs/lecture-writing-guide.md` | 讲义叙事、首次术语解释与资料使用规范 |
 | `days/dayXX.md` | 每日讲义 |
 | `examples/dayXX/` | 可独立构建的正确示例 |

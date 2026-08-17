@@ -6,8 +6,8 @@ These rules apply to every automated or manual course update.
 
 - Simplified Chinese prose, C++ identifiers and standard terms in English.
 - C++17 is the primary standard. Mark C++11/14 origins and C++20 additions explicitly.
-- Follow `docs/lecture-writing-guide.md`: do not create a standalone daily term-card section. Introduce a new term inside the relevant core mechanism, repeat the glossary's canonical one-sentence definition, and link its anchor at first use.
-- `docs/glossary.md` owns the canonical definition index. If a definition changes, audit the glossary, its first-use lecture, exercises, and interview answers together; do not create a competing paraphrased definition.
+- Follow `docs/lecture-writing-guide.md`: do not create a standalone daily term-card section. Introduce a new term inside the relevant core mechanism, repeat its canonical one-sentence definition, and link the exact `docs/glossary/dayXX.md` anchor at first use.
+- `docs/glossary.md` is navigation only. `docs/glossary/dayXX.md` owns the canonical definitions first introduced on that day. Before adding a term, search every file under `docs/glossary/`; if a definition changes, audit its first-use lecture, exercises, and interview answers together.
 - Introduce at most five major concepts per day. Do not use an unexplained technical term to define a new term.
 - Separate standard guarantees from common compiler, OS, ABI, stack/heap, vptr, and vtable implementations.
 - Never equate undefined behavior with a guaranteed crash or segmentation fault.
@@ -17,10 +17,11 @@ These rules apply to every automated or manual course update.
 ## Required daily files
 
 - `days/dayXX.md`
+- `docs/glossary/dayXX.md` containing only terms first introduced that day
 - `examples/dayXX/` with at least one independently runnable C++17 example
 - `exercises/dayXX/README.md` without answers
 - `solutions/dayXX/README.md` and solution code
-- updates, only when needed, to `docs/glossary.md`, `interview/question-bank.md`, `CMakeLists.txt`, `progress.md`, `release/manifest.json`, and `release/state.json`
+- updates, only when needed, to the glossary index `docs/glossary.md`, `interview/question-bank.md`, `CMakeLists.txt`, `progress.md`, `release/manifest.json`, and `release/state.json`
 
 ## Publication protocol
 
@@ -42,6 +43,7 @@ Repeated runs must be idempotent: an existing published day, branch, or PR is re
 - Relevant resource/lifetime examples run under AddressSanitizer and UndefinedBehaviorSanitizer.
 - Markdown relative links resolve; conflict markers are absent.
 - Each daily lecture has every required section and the exercise answer remains separate.
+- Every published day has exactly one matching `docs/glossary/dayXX.md`; term headings are unique across the glossary directory.
 - Interview answers state conditions and boundaries rather than absolute implementation claims.
 - Every core mechanism contains `实际问题`, `概念落点`, `代码与机制`, and `错误做法与修复`, followed by a short retrieval check.
 - Final diff contains no unrelated files.

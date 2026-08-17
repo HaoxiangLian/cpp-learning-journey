@@ -34,10 +34,10 @@ int sample_count{0};
 
 **概念落点**：
 
-- [对象（object）](../docs/glossary.md#对象object)是程序执行期间占据一段存储、具有类型，并可表示值的实体。上例运行时建立了一个 `int` 对象。
-- [变量（variable）](../docs/glossary.md#变量variable)是由声明引入的具名对象或具名引用。上例的变量名是 `sample_count`；引用到第 6 天再展开。
-- [值（value）](../docs/glossary.md#值value)是对象能够表示或表达式求值能够产生的抽象信息。该对象当前表示整数值 `0`。
-- [类型（type）](../docs/glossary.md#类型type)是 C++ 对对象、引用、函数和表达式进行分类的规则系统，它规定可表示的值、允许的操作及相关语义约束。这里的类型是 `int`。
+- [对象（object）](../docs/glossary/day02.md#对象object)是程序执行期间占据一段存储、具有类型，并可表示值的实体。上例运行时建立了一个 `int` 对象。
+- [变量（variable）](../docs/glossary/day02.md#变量variable)是由声明引入的具名对象或具名引用。上例的变量名是 `sample_count`；引用到第 6 天再展开。
+- [值（value）](../docs/glossary/day02.md#值value)是对象能够表示或表达式求值能够产生的抽象信息。该对象当前表示整数值 `0`。
+- [类型（type）](../docs/glossary/day02.md#类型type)是 C++ 对对象、引用、函数和表达式进行分类的规则系统，它规定可表示的值、允许的操作及相关语义约束。这里的类型是 `int`。
 
 把这四层对应回代码：
 
@@ -74,8 +74,8 @@ double temperature_celsius{21.75};
 
 **概念落点**：
 
-- [初始化（initialization）](../docs/glossary.md#初始化initialization)是在对象被创建时确定其初始状态的过程。
-- [赋值（assignment）](../docs/glossary.md#赋值assignment)是在对象已经完成初始化之后，用赋值运算修改其当前值或状态的操作。
+- [初始化（initialization）](../docs/glossary/day02.md#初始化initialization)是在对象被创建时确定其初始状态的过程。
+- [赋值（assignment）](../docs/glossary/day02.md#赋值assignment)是在对象已经完成初始化之后，用赋值运算修改其当前值或状态的操作。
 
 判断方法不是“代码里有没有 `=`”，而是先问：**此刻是否正在创建对象？**
 
@@ -137,7 +137,7 @@ int temperature{21};        // 需求明确只使用整数
 
 **实际问题**：传感器编号在一次运行中应保持不变。如果只写注释“不要修改”，后续代码仍可意外赋值；我们希望让错误在构建阶段暴露。
 
-**概念落点**：[const 限定（const qualification）](../docs/glossary.md#const-限定const-qualification)表示程序不得通过相应对象的普通访问方式修改其值或状态。它决定哪些修改表达式会被拒绝；它不等于“值必定在编译期已知”，也不规定对象必须位于硬件只读内存。
+**概念落点**：[const 限定（const qualification）](../docs/glossary/day02.md#const-限定const-qualification)表示程序不得通过相应对象的普通访问方式修改其值或状态。它决定哪些修改表达式会被拒绝；它不等于“值必定在编译期已知”，也不规定对象必须位于硬件只读内存。
 
 ```cpp
 const int sensor_id{12};
