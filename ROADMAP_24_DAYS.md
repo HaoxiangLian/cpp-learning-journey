@@ -53,6 +53,6 @@
 
 ## 跨天验收规则
 
-每一天都必须同时提供：前置检查、2—4 个核心机制、可运行 C++17 示例、显著标注的错误诊断、2 道高频同类面试题、三类练习、独立答案、深度思考题与完成标准。不得单列“今日术语卡”；首次出现的重要术语要在对应核心机制中按“实际问题 → 就地定义 → 代码映射 → 标准边界 → 反例修复”展开，并链接当日 `docs/glossary/dayXX.md` 的唯一规范条目。[`docs/glossary.md`](docs/glossary.md) 只负责按天导航，详细规则见[每日讲义编写规范](docs/lecture-writing-guide.md)。
+每一天都必须同时提供：前置检查、2—4 个核心机制、可运行 C++17 示例、显著标注的错误诊断、2 道高频同类面试题、三类练习、独立答案、深度思考题与完成标准。不得单列“今日术语卡”；首次出现的重要术语要在对应核心机制中按“实际问题 → 就地定义 → 代码映射 → 标准边界 → 反例修复”展开，并链接当日 `docs/glossary/dayXX.md` 的唯一规范条目。[`docs/glossary.md`](docs/glossary.md) 只负责按天导航。两道面试主问题继续保留在讲义上下文中，其全部连续追问参考答案必须同步写入 `interview/answers/dayXX.md`，并由 [`interview/answers/README.md`](interview/answers/README.md) 按天导航。详细规则见[每日讲义编写规范](docs/lecture-writing-guide.md)。
 
 发布时只允许推进 `release/state.json` 指定的 `next_day`。验证失败不更新状态；第 24 天成功后将状态设为 `completed`，后续重复运行只报告课程已完成。
