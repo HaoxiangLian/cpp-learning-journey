@@ -62,6 +62,12 @@ target_link_libraries(day05_example PRIVATE course_options)
 add_executable(day05_solution solutions/day05/task_id.cpp)
 target_link_libraries(day05_solution PRIVATE course_options)
 
+add_executable(day06_example examples/day06/main.cpp)
+target_link_libraries(day06_example PRIVATE course_options)
+
+add_executable(day06_solution solutions/day06/calibration.cpp)
+target_link_libraries(day06_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -112,6 +118,16 @@ set_tests_properties(day05_example_runs PROPERTIES
 add_test(NAME day05_solution_runs COMMAND day05_solution)
 set_tests_properties(day05_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "501 502 503"
+)
+
+add_test(NAME day06_example_runs COMMAND day06_example)
+set_tests_properties(day06_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "empty update: false"
+)
+
+add_test(NAME day06_solution_runs COMMAND day06_solution)
+set_tests_properties(day06_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "empty write: false"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -170,4 +186,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage link
     --source "${CMAKE_SOURCE_DIR}/exercises/day05/broken/missing_static_definition.cpp"
+)
+
+add_test(
+  NAME day06_uninitialized_reference_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day06/broken/uninitialized_reference.cpp"
 )
