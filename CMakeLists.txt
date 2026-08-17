@@ -56,6 +56,24 @@ target_link_libraries(day04_example PRIVATE course_options)
 add_executable(day04_solution solutions/day04/mission_score.cpp)
 target_link_libraries(day04_solution PRIVATE course_options)
 
+add_executable(day05_example examples/day05/main.cpp)
+target_link_libraries(day05_example PRIVATE course_options)
+
+add_executable(day05_solution solutions/day05/task_id.cpp)
+target_link_libraries(day05_solution PRIVATE course_options)
+
+add_executable(day06_example examples/day06/main.cpp)
+target_link_libraries(day06_example PRIVATE course_options)
+
+add_executable(day06_solution solutions/day06/calibration.cpp)
+target_link_libraries(day06_solution PRIVATE course_options)
+
+add_executable(day07_example examples/day07/main.cpp)
+target_link_libraries(day07_example PRIVATE course_options)
+
+add_executable(day07_solution solutions/day07/sample_buffer.cpp)
+target_link_libraries(day07_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -96,6 +114,36 @@ set_tests_properties(day04_example_runs PROPERTIES
 add_test(NAME day04_solution_runs COMMAND day04_solution)
 set_tests_properties(day04_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "recursive sum: 6"
+)
+
+add_test(NAME day05_example_runs COMMAND day05_example)
+set_tests_properties(day05_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "file limit: 80"
+)
+
+add_test(NAME day05_solution_runs COMMAND day05_solution)
+set_tests_properties(day05_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "501 502 503"
+)
+
+add_test(NAME day06_example_runs COMMAND day06_example)
+set_tests_properties(day06_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "empty update: false"
+)
+
+add_test(NAME day06_solution_runs COMMAND day06_solution)
+set_tests_properties(day06_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "empty write: false"
+)
+
+add_test(NAME day07_example_runs COMMAND day07_example)
+set_tests_properties(day07_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "released pointer reset: true"
+)
+
+add_test(NAME day07_solution_runs COMMAND day07_solution)
+set_tests_properties(day07_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "released: true"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -146,4 +194,28 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day04/broken/ambiguous_overload.cpp"
+)
+
+add_test(
+  NAME day05_missing_static_definition_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage link
+    --source "${CMAKE_SOURCE_DIR}/exercises/day05/broken/missing_static_definition.cpp"
+)
+
+add_test(
+  NAME day06_uninitialized_reference_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day06/broken/uninitialized_reference.cpp"
+)
+
+add_test(
+  NAME day07_negative_array_bound_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day07/broken/negative_array_bound.cpp"
 )
