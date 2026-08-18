@@ -80,6 +80,12 @@ target_link_libraries(day08_example PRIVATE course_options)
 add_executable(day08_solution solutions/day08/battery_level.cpp)
 target_link_libraries(day08_solution PRIVATE course_options)
 
+add_executable(day09_example examples/day09/main.cpp)
+target_link_libraries(day09_example PRIVATE course_options)
+
+add_executable(day09_solution solutions/day09/task_session.cpp)
+target_link_libraries(day09_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -162,6 +168,16 @@ set_tests_properties(day08_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "battery: 25"
 )
 
+add_test(NAME day09_example_runs COMMAND day09_example)
+set_tests_properties(day09_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "destroy sensor"
+)
+
+add_test(NAME day09_solution_runs COMMAND day09_solution)
+set_tests_properties(day09_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "session 42 closed"
+)
+
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 add_test(
@@ -242,4 +258,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day08/broken/private_access.cpp"
+)
+
+add_test(
+  NAME day09_implicit_conversion_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day09/broken/implicit_conversion.cpp"
 )
