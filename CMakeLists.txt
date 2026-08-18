@@ -86,6 +86,12 @@ target_link_libraries(day09_example PRIVATE course_options)
 add_executable(day09_solution solutions/day09/task_session.cpp)
 target_link_libraries(day09_solution PRIVATE course_options)
 
+add_executable(day10_example examples/day10/main.cpp)
+target_link_libraries(day10_example PRIVATE course_options)
+
+add_executable(day10_solution solutions/day10/owned_samples.cpp)
+target_link_libraries(day10_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -178,6 +184,16 @@ set_tests_properties(day09_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "session 42 closed"
 )
 
+add_test(NAME day10_example_runs COMMAND day10_example)
+set_tests_properties(day10_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "assigned\\[1\\]: 77"
+)
+
+add_test(NAME day10_solution_runs COMMAND day10_solution)
+set_tests_properties(day10_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "assigned: 5 100"
+)
+
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 add_test(
@@ -266,4 +282,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day09/broken/implicit_conversion.cpp"
+)
+
+add_test(
+  NAME day10_copy_disabled_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day10/broken/copy_disabled.cpp"
 )
