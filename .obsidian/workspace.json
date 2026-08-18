@@ -182,7 +182,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,8 +197,33 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9c197e2a4b0d0748",
+  "active": "7f7f6c2d7a6fb35f",
   "lastOpenFiles": [
+    "solutions/day10/README.md",
+    "solutions/day10/owned_samples.cpp",
+    "solutions/day10",
+    "solutions/day09/task_session.cpp",
+    "solutions/day09/README.md",
+    "solutions/day09",
+    "solutions/day08/README.md",
+    "solutions/day08/battery_level.cpp",
+    "solutions/day08",
+    "interview/answers/day10.md",
+    "interview/answers/day09.md",
+    "interview/answers/day08.md",
+    "exercises/day10/broken/shallow_copy.cpp",
+    "exercises/day10/broken/copy_disabled.cpp",
+    "exercises/day10/README.md",
+    "exercises/day10/owned_samples.cpp",
+    "exercises/day10/broken",
+    "exercises/day09/README.md",
+    "exercises/day08/README.md",
+    "docs/glossary/day10.md",
+    "docs/glossary/day09.md",
+    "docs/glossary/day08.md",
+    "days/day10.md",
+    "days/day09.md",
+    "days/day08.md",
     "docs/glossary/day07.md",
     "days/day07.md",
     "days/day05.md",
@@ -208,31 +234,6 @@
     "days/day02.md",
     "days/day03.md",
     "days/day04.md",
-    "exercises/day01/README.md",
-    "solutions/day07/sample_buffer.cpp",
-    "solutions/day07/README.md",
-    "solutions/day07",
-    "solutions/day06/README.md",
-    "solutions/day06/calibration.cpp",
-    "solutions/day06",
-    "solutions/day05/task_id.cpp",
-    "solutions/day05/README.md",
-    "solutions/day05",
-    "interview/answers/day07.md",
-    "interview/answers/day06.md",
-    "interview/answers/day05.md",
-    "exercises/day07/broken/negative_array_bound.cpp",
-    "exercises/day07/broken/mismatched_delete.cpp",
-    "exercises/day07/sample_buffer.cpp",
-    "exercises/day07/README.md",
-    "exercises/day07/broken",
-    "exercises/day06/README.md",
-    "exercises/day05/README.md",
-    "docs/glossary/day06.md",
-    "docs/glossary/day05.md",
-    "interview/answers/day01.md",
-    "interview/answers/day04.md",
-    "interview/answers/README.md",
-    "interview/answers/day03.md"
+    "exercises/day01/README.md"
   ]
 }
