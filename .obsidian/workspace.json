@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "days/day06.md",
-                "mode": "source",
+                "file": "ROADMAP_24_DAYS.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "day06"
+              "title": "ROADMAP_24_DAYS"
             }
           }
         ]
@@ -198,8 +198,8 @@
   },
   "active": "7f7f6c2d7a6fb35f",
   "lastOpenFiles": [
-    "days/day05.md",
     "days/day06.md",
+    "days/day05.md",
     "ROADMAP_24_DAYS.md",
     "未命名.md",
     "days/day01.md",
