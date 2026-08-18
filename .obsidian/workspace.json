@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ROADMAP_24_DAYS.md",
+                "file": "days/day07.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ROADMAP_24_DAYS"
+              "title": "day07"
             }
           }
         ]
@@ -196,10 +196,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7f7f6c2d7a6fb35f",
+  "active": "9c197e2a4b0d0748",
   "lastOpenFiles": [
-    "days/day06.md",
+    "docs/glossary/day07.md",
+    "days/day07.md",
     "days/day05.md",
+    "days/day06.md",
     "ROADMAP_24_DAYS.md",
     "未命名.md",
     "days/day01.md",
@@ -226,10 +228,8 @@
     "exercises/day07/broken",
     "exercises/day06/README.md",
     "exercises/day05/README.md",
-    "docs/glossary/day07.md",
     "docs/glossary/day06.md",
     "docs/glossary/day05.md",
-    "days/day07.md",
     "interview/answers/day01.md",
     "interview/answers/day04.md",
     "interview/answers/README.md",
