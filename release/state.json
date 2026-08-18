@@ -13,12 +13,13 @@
     5,
     6,
     7,
-    8
+    8,
+    9
   ],
-  "next_day": 9,
-  "last_published_at": "2026-08-18T21:18:44+08:00",
+  "next_day": 10,
+  "last_published_at": "2026-08-18T21:30:51+08:00",
   "last_publication_kind": "manual_early_release",
-  "last_release_branch": "release/day08-2026-08-18",
-  "last_release_pr": 14,
-  "last_release_commit": "0d37144721c4fc9ff39006865de54b4cf90b97b4"
+  "last_release_branch": "release/day09-2026-08-18",
+  "last_release_pr": 15,
+  "last_release_commit": "fd80b7c685ded1cef992e255fce0b8a66ef8d0c2"
 }
