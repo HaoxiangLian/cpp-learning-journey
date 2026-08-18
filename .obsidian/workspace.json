@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "days/day06.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -196,11 +196,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9c197e2a4b0d0748",
+  "active": "7f7f6c2d7a6fb35f",
   "lastOpenFiles": [
-    "ROADMAP_24_DAYS.md",
-    "days/day06.md",
     "days/day05.md",
+    "days/day06.md",
+    "ROADMAP_24_DAYS.md",
     "未命名.md",
     "days/day01.md",
     "days/day02.md",
