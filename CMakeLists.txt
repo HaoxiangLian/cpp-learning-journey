@@ -74,6 +74,12 @@ target_link_libraries(day07_example PRIVATE course_options)
 add_executable(day07_solution solutions/day07/sample_buffer.cpp)
 target_link_libraries(day07_solution PRIVATE course_options)
 
+add_executable(day08_example examples/day08/main.cpp)
+target_link_libraries(day08_example PRIVATE course_options)
+
+add_executable(day08_solution solutions/day08/battery_level.cpp)
+target_link_libraries(day08_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -144,6 +150,16 @@ set_tests_properties(day07_example_runs PROPERTIES
 add_test(NAME day07_solution_runs COMMAND day07_solution)
 set_tests_properties(day07_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "released: true"
+)
+
+add_test(NAME day08_example_runs COMMAND day08_example)
+set_tests_properties(day08_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "invariant holds: true"
+)
+
+add_test(NAME day08_solution_runs COMMAND day08_solution)
+set_tests_properties(day08_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "battery: 25"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -218,4 +234,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day07/broken/negative_array_bound.cpp"
+)
+
+add_test(
+  NAME day08_private_access_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day08/broken/private_access.cpp"
 )
