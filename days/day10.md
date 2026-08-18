@@ -222,7 +222,8 @@ int main() {
     SampleBuffer assigned{1};
     assigned = original;
     assigned.set(1, 77);
-    assigned = assigned;
+    const SampleBuffer* same_object{&assigned};
+    assigned = *same_object;  // 经别名测试自赋值路径
 
     std::cout << "original[0]: " << original.value(0) << '\n';
     std::cout << "copied[0]: " << copied.value(0) << '\n';

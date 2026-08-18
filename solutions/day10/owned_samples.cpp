@@ -65,7 +65,8 @@ int main() {
     OwnedSamples assigned{1};
     assigned = original;
     assigned.set(1, 100);
-    assigned = assigned;
+    const OwnedSamples* same_object{&assigned};
+    assigned = *same_object;
 
     std::cout << "original: " << original.value(0) << ' ' << original.value(1) << '\n';
     std::cout << "copied: " << copied.value(0) << ' ' << copied.value(1) << '\n';
