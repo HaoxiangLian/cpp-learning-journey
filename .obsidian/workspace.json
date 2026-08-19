@@ -196,11 +196,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7f7f6c2d7a6fb35f",
+  "active": "9c197e2a4b0d0748",
   "lastOpenFiles": [
     "days/day06.md",
-    "days/day07.md",
     "days/day05.md",
+    "days/day04.md",
+    "days/day07.md",
     "solutions/day10/README.md",
     "solutions/day10/owned_samples.cpp",
     "solutions/day10",
@@ -232,7 +233,6 @@
     "days/day01.md",
     "days/day02.md",
     "days/day03.md",
-    "days/day04.md",
     "exercises/day01/README.md"
   ]
 }
