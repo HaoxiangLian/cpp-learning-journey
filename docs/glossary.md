@@ -26,7 +26,7 @@
 | 09 | 对象怎样出生和结束 | [构造、初始化顺序、析构与 `explicit`](glossary/day09.md) | 已发布 |
 | 10 | 复制资源为什么危险 | [所有权、拷贝操作、深浅拷贝与 Rule of Three](glossary/day10.md) | 已发布 |
 | 11 | 转移资源而不是复制 | [右值引用、移动操作、移后状态与 Rule of Zero/Five](glossary/day11.md) | 已发布 |
-| 12 | 继承表达什么关系 | `glossary/day12.md` | 随日发布 |
+| 12 | 继承表达什么关系 | [基类/派生类、公有继承、组合、对象切片与虚析构](glossary/day12.md) | 已发布 |
 | 13 | 运行时多态与对象模型 | `glossary/day13.md` | 随日发布 |
 | 14 | 一份代码怎样适配多种类型 | `glossary/day14.md` | 随日发布 |
 | 15 | STL 如何把数据与操作解耦 | `glossary/day15.md` | 随日发布 |
