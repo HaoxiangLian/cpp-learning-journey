@@ -92,6 +92,12 @@ target_link_libraries(day10_example PRIVATE course_options)
 add_executable(day10_solution solutions/day10/owned_samples.cpp)
 target_link_libraries(day10_solution PRIVATE course_options)
 
+add_executable(day11_example examples/day11/main.cpp)
+target_link_libraries(day11_example PRIVATE course_options)
+
+add_executable(day11_solution solutions/day11/move_only_batch.cpp)
+target_link_libraries(day11_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -194,6 +200,16 @@ set_tests_properties(day10_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "assigned: 5 100"
 )
 
+add_test(NAME day11_example_runs COMMAND day11_example)
+set_tests_properties(day11_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "target empty: true"
+)
+
+add_test(NAME day11_solution_runs COMMAND day11_solution)
+set_tests_properties(day11_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "moved: 4 9"
+)
+
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 add_test(
@@ -290,4 +306,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day10/broken/copy_disabled.cpp"
+)
+
+add_test(
+  NAME day11_copy_move_only_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day11/broken/copy_move_only.cpp"
 )
