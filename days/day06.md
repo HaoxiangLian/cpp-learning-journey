@@ -24,6 +24,18 @@
 
 **实际问题**：面试中常问“局部变量在栈上，`new` 出来的对象在堆上吗？”如果直接回答“是”，初学者很容易进一步误以为“指针一定在堆上”或“出了函数，所有相关对象都会一起消失”。真正需要先判断的是每个对象何时创建、何时结束。
 
+先跟踪代码中的三个对象，不使用“栈”和“堆”作判断：
+
+```cpp
+void process() {
+    int local{7};
+    int* dynamic_value{new int{9}};
+    delete dynamic_value;  // 动态 int 在这里结束
+}                          // local 和指针对象在这里结束
+```
+
+普通话结论：`dynamic_value` 这个指针变量本身是局部对象；`new int{9}` 创建的整数是另一个对象。`delete` 结束后者，右花括号结束前者和 `local`。先把“谁在什么时候结束”说清楚，再补充常见机器会把它们安排在哪里。
+
 **概念落点**：先把问题拆成两层：
 
 1. **时间问题**：这个对象的存储至少保留到什么时候？C++ 用 automatic、static、dynamic 等存储期回答。
@@ -34,18 +46,6 @@
 ==初学者先记：普通局部对象通常随所属块结束；`new` 创建的动态对象由相应释放操作结束。栈与堆是常见放置方式，不是这两个时间规则的定义。==
 
 **代码与机制**：
-
-```cpp
-void process() {
-    int local{7};
-    int* dynamic_value{new int{9}};
-
-    local = 8;
-    *dynamic_value = 10;
-
-    delete dynamic_value;
-}  // local 和 dynamic_value 在这里结束
-```
 
 `new/delete` 的完整规则在第 7 天学习；这里先只跟踪三个不同对象：
 
