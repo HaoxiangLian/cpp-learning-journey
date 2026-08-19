@@ -22,11 +22,6 @@
 
 **实际问题**：`SampleBuffer` 析构时释放 `data_`。如果直接写 `SampleBuffer second{first};` 而类没有自定义拷贝操作，编译器可能生成逐成员拷贝：`size_` 和 `data_` 的值都被复制。此时两个对象的 `data_` 指向同一数组。
 
-**概念落点**：
-
-- [资源所有权（resource ownership）](../docs/glossary/day10.md#资源所有权resource-ownership)是对象或程序组件承担在约定时机结束所管理资源的有效使用并执行恰好一次相应释放操作的责任关系。
-- [浅拷贝与深拷贝（shallow copy and deep copy）](../docs/glossary/day10.md#浅拷贝与深拷贝shallow-copy-and-deep-copy)：在本课程资源类语境中，浅拷贝只复制资源句柄或指针值，使多个对象指向同一底层资源；深拷贝则为目标建立独立资源并复制资源内容。
-
 ```cpp
 class BrokenBuffer {
 public:
@@ -39,14 +34,26 @@ private:
     std::size_t size_;
     int* data_;
 };
+
+BrokenBuffer first{3};
+BrokenBuffer second{first};
 ```
+
+先画复制后的关系：
+
+| 对象 | `size_` | `data_` 指向 |
+|---|---:|---|
+| `first` | `3` | 数组 A |
+| `second` | `3` | 仍是同一个数组 A |
+
+默认逐成员复制只把地址值复制给 `second.data_`，不会自动新建“数组 B”。但两个析构函数都执行 `delete[] data_`，于是同一个数组会被释放两次。
+
+**概念落点**：
+
+- [资源所有权（resource ownership）](../docs/glossary/day10.md#资源所有权resource-ownership)是对象或程序组件承担在约定时机结束所管理资源的有效使用并执行恰好一次相应释放操作的责任关系。
+- [浅拷贝与深拷贝（shallow copy and deep copy）](../docs/glossary/day10.md#浅拷贝与深拷贝shallow-copy-and-deep-copy)：在本课程资源类语境中，浅拷贝只复制资源句柄或指针值，使多个对象指向同一底层资源；深拷贝则为目标建立独立资源并复制资源内容。
 
 **代码与机制**：若没有用户声明的相应拷贝构造函数，语言可能隐式声明并定义一个逐成员拷贝版本。对 `std::size_t`，复制数值；对 `int*`，复制指针值。它不会沿指针自动遍历数组，更不知道该指针是拥有、共享还是观察关系。
-
-```cpp
-BrokenBuffer first{3};
-BrokenBuffer second{first};  // 两个 data_ 保存相同地址值
-```
 
 离开作用域时两个析构函数都会对同一动态数组执行 `delete[]`。第一次释放后，另一个对象的指针悬空；第二次释放不是“什么也不做”，而是**重复释放导致的未定义行为**。程序不保证崩溃、报错或稳定输出。
 
@@ -60,8 +67,6 @@ BrokenBuffer second{first};  // 两个 data_ 保存相同地址值
 
 **实际问题**：我们希望 `SampleBuffer copied{original};` 得到相同样本内容，但修改 `copied` 不影响 `original`，且两个对象都能独立析构。
 
-**概念落点**：[拷贝构造函数（copy constructor）](../docs/glossary/day10.md#拷贝构造函数copy-constructor)是用同类对象初始化一个新对象的构造函数，其首个参数通常写作 `const T&`，并负责建立新对象的独立有效状态。
-
 ```cpp
 SampleBuffer(const SampleBuffer& other)
     : size_{other.size_},
@@ -71,6 +76,16 @@ SampleBuffer(const SampleBuffer& other)
     }
 }
 ```
+
+按三步读：先取得 `other.size_`，再为新对象申请自己的数组，最后逐个复制元素。完成后两个数组内容相同，但地址不同；修改副本不会改动原对象。
+
+| 比较项 | `original` | `copied` |
+|---|---|---|
+| 元素内容 | 例如 `{2, 4, 6}` | 同样是 `{2, 4, 6}` |
+| 底层数组 | 数组 A | 新建的数组 B |
+| 最终释放 | 自己释放 A | 自己释放 B |
+
+**概念落点**：[拷贝构造函数（copy constructor）](../docs/glossary/day10.md#拷贝构造函数copy-constructor)是用同类对象初始化一个新对象的构造函数，其首个参数通常写作 `const T&`，并负责建立新对象的独立有效状态。
 
 **代码与机制**：`other` 使用 `const&`，因为复制不应修改源对象，也要避免为了传参再产生一次同类拷贝。新对象先复制元素数量，再申请自己的数组，最后复制元素内容。完成后两对象的 `size_` 相同、元素值相同，但 `data_` 指向不同分配。
 
@@ -98,6 +113,22 @@ SampleBuffer(const SampleBuffer& other)
 ### 机制三：拷贝赋值必须先处理目标旧资源，并考虑自赋值
 
 **实际问题**：`target = source;` 中，`target` 已经完成初始化，甚至已经拥有另一块数组。若直接覆盖 `target.data_`，旧数组会泄漏；若先删除旧数组再从 `source` 复制，而 `target` 与 `source` 是同一个对象，又会读取已释放数据。
+
+先看赋值前后目标要承担什么：
+
+```cpp
+SampleBuffer source{3};
+SampleBuffer target{2};
+target = source;
+```
+
+| 时刻 | `source` 管理 | `target` 管理 |
+|---|---|---|
+| 赋值前 | 源数组 A | 旧数组 B |
+| 准备新状态 | A 保持不变 | 先建立替代数组 C |
+| 提交后 | 仍管理 A | 释放 B，改为管理 C |
+
+普通话结论：拷贝构造面对“新对象还没有旧东西”，拷贝赋值面对“目标早已存在，必须安全处理它原来的资源”。
 
 **概念落点**：
 

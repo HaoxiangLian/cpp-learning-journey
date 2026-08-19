@@ -24,13 +24,6 @@
 
 **实际问题**：机器人关节角必须位于 `[-180, 180]`。如果程序到处传递一个裸 `double`，调用者看不出单位和范围，也能随手写入 `500.0`。我们需要一种新类型，把状态的含义和允许的操作放在一起。
 
-**概念落点**：
-
-- [类（class）](../docs/glossary/day08.md#类class)是用户定义的类型，它在一个类定义中规定该类型对象所包含的非静态数据成员、可执行的成员函数以及相关访问规则。
-- [成员（member）](../docs/glossary/day08.md#成员member)是在类定义中声明并属于该类的实体；本日重点是保存每个对象状态的非静态数据成员，以及通过对象操作状态的非静态成员函数。
-
-直观地说，类像一份统一规则，对象是按这份规则创建的具体实体。这个比喻只帮助入门：专业上，`JointAngle` 是类型，`left_joint` 和 `right_joint` 是两个独立对象；每个对象各有自己的非静态数据成员。
-
 ```cpp
 class JointAngle {
 public:
@@ -45,6 +38,22 @@ private:
 JointAngle left_joint;
 JointAngle right_joint;
 ```
+
+先只看数量：`JointAngle` 的规则写一遍；程序随后创建了 `left_joint`、`right_joint` 两个对象，所以每个对象各有一个自己的 `degrees_`。改变左关节的角度，不会自动改变右关节。
+
+| 代码中的名字 | 先怎样理解 |
+|---|---|
+| `JointAngle` | 一种自己设计的类型和共同规则 |
+| `left_joint`、`right_joint` | 按这套规则创建的两个具体对象 |
+| `degrees_` | 每个对象各自保存的角度状态 |
+| `degrees()` | 对象提供的查询操作 |
+
+**概念落点**：
+
+- [类（class）](../docs/glossary/day08.md#类class)是用户定义的类型，它在一个类定义中规定该类型对象所包含的非静态数据成员、可执行的成员函数以及相关访问规则。
+- [成员（member）](../docs/glossary/day08.md#成员member)是在类定义中声明并属于该类的实体；本日重点是保存每个对象状态的非静态数据成员，以及通过对象操作状态的非静态成员函数。
+
+直观地说，类像一份统一规则，对象是按这份规则创建的具体实体。这个比喻只帮助入门：专业上，`JointAngle` 是类型，`left_joint` 和 `right_joint` 是两个独立对象；每个对象各有自己的非静态数据成员。
 
 **代码与机制**：`degrees_` 是每个 `JointAngle` 对象内部的成员子对象，两个关节对象的角度状态彼此独立。`degrees()` 是成员函数，通过某个对象调用：
 
@@ -72,22 +81,26 @@ double right_joint_angle{0.0};
 
 **实际问题**：仅仅把角度和函数放进同一个 `struct`，如果类外仍能直接写数据，就可以绕过检查。真正目标不是“隐藏”，而是让每次公开操作结束后，对象仍处于可用状态。
 
+先看一次修改怎样被拦住：
+
+```cpp
+bool set(double candidate) {
+    if (candidate < -180.0 || candidate > 180.0) {
+        return false;                 // 拒绝，原角度不变
+    }
+    degrees_ = candidate;             // 合法才提交
+    return true;
+}
+```
+
+输入 `45.0` 时对象更新并返回 `true`；输入 `500.0` 时直接返回 `false`，成员保持原值。这里真正要维护的规则是“公开操作完成后，角度仍在范围内”。
+
 **概念落点**：
 
 - [封装与类不变量（encapsulation and class invariant）](../docs/glossary/day08.md#封装与类不变量encapsulation-and-class-invariant)：封装是把状态及维护该状态的操作组织在类型边界内并限制不受控访问的设计；类不变量是每个对外可观察的有效对象在其公开操作完成前后都应满足的条件。
 - [成员访问控制（member access control）](../docs/glossary/day08.md#成员访问控制member-access-control)是通过 `public`、`protected` 和 `private` 规定某个成员声明能够在哪些程序上下文中被命名的语言规则。
 
-本例不变量是：`degrees_` 始终在 `[-180, 180]`。公开修改函数先检查候选值，只有合法时才提交状态：
-
-```cpp
-bool set(double candidate) {
-    if (candidate < -180.0 || candidate > 180.0) {
-        return false;
-    }
-    degrees_ = candidate;
-    return true;
-}
-```
+本例不变量是：`degrees_` 始终在 `[-180, 180]`。公开修改函数先检查候选值，只有合法时才提交状态。
 
 **代码与机制**：`public` 成员可由普通类外代码命名；`private` 成员只能在该类成员及友元等允许上下文中命名。`class` 默认访问级别是 `private`，`struct` 默认是 `public`；除此以外二者都能拥有数据成员、成员函数和访问说明符，因此不能把 `struct` 简化为“只能放数据”。
 
@@ -122,8 +135,6 @@ private:
 
 **实际问题**：同一个 `set` 函数能分别修改左关节和右关节。函数体中的 `degrees_` 到底属于谁？查询函数为什么应该能被 `const JointAngle` 调用？
 
-**概念落点**：[this 指针与 const 成员函数（this pointer and const member function）](../docs/glossary/day08.md#this-指针与-const-成员函数this-pointer-and-const-member-function)：在非静态成员函数中，`this` 是指向该次调用所作用对象的指针；函数末尾的 `const` 表示通过这次调用不能修改该对象的非 `mutable` 数据成员。
-
 ```cpp
 bool set(double candidate) {
     this->degrees_ = candidate;
@@ -134,6 +145,10 @@ double degrees() const {
     return this->degrees_;
 }
 ```
+
+把调用翻译成普通话：`left_joint.set(30.0)` 是“让这个函数操作 `left_joint`”，`right_joint.set(-20.0)` 是“让同一段函数代码操作 `right_joint`”。函数内部用 `this` 表示本次究竟是哪个对象；通常可以省略 `this->`。
+
+**概念落点**：[this 指针与 const 成员函数（this pointer and const member function）](../docs/glossary/day08.md#this-指针与-const-成员函数this-pointer-and-const-member-function)：在非静态成员函数中，`this` 是指向该次调用所作用对象的指针；函数末尾的 `const` 表示通过这次调用不能修改该对象的非 `mutable` 数据成员。
 
 **代码与机制**：调用 `left_joint.set(30.0)` 时，函数作用于 `left_joint`；调用 `right_joint.set(-20.0)` 时，作用于 `right_joint`。在普通成员访问中通常省略 `this->`，因此 `degrees_` 与 `this->degrees_` 在这里表示同一成员。
 
