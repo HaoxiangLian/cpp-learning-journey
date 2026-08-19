@@ -9,6 +9,9 @@ These rules apply to every automated or manual course update.
 - Follow `docs/lecture-writing-guide.md`: do not create a standalone daily term-card section. Introduce a new term inside the relevant core mechanism, repeat its canonical one-sentence definition, and link the exact `docs/glossary/dayXX.md` anchor at first use.
 - `docs/glossary.md` is navigation only. `docs/glossary/dayXX.md` owns the canonical definitions first introduced on that day. Before adding a term, search every file under `docs/glossary/`; if a definition changes, audit its first-use lecture, exercises, and interview answers together.
 - Introduce at most five major concepts per day. Do not use an unexplained technical term to define a new term.
+- Write for a learner whose C++ foundation is weak. Before a formal definition, show a concrete code state, execution step, or before/after table that answers “which object”, “what changed”, and “when it stops being usable”.
+- Raise the abstraction level only after the learner can predict the current example. Phrases such as “language semantics”, “implementation model”, “observable behavior”, “ABI”, “register”, “optimizer”, and “allocation mechanism” must be translated in place; they must not carry the first explanation of a concept.
+- Treat implementation boundaries as a second-pass supplement. Removing the implementation paragraph must not remove the rule needed to read, write, or diagnose the current C++ code.
 - Separate standard guarantees from common compiler, OS, ABI, stack/heap, vptr, and vtable implementations.
 - Never equate undefined behavior with a guaranteed crash or segmentation fault.
 - Intentionally invalid code belongs under `exercises/dayXX/broken/`, carries an `INTENTIONALLY INVALID` banner, and is excluded from normal CMake targets.
@@ -48,4 +51,5 @@ Repeated runs must be idempotent: an existing published day, branch, or PR is re
 - Every published day has exactly one matching `interview/answers/dayXX.md`; each file contains exactly two stable question IDs and answers every listed follow-up.
 - Interview answers state conditions and boundaries rather than absolute implementation claims.
 - Every core mechanism contains `实际问题`, `概念落点`, `代码与机制`, and `错误做法与修复`, followed by a short retrieval check.
+- A beginner can answer each retrieval check from the example and its state changes without needing assembly, ABI knowledge, or an unstated memory-layout assumption.
 - Final diff contains no unrelated files.
