@@ -51,5 +51,6 @@ Repeated runs must be idempotent: an existing published day, branch, or PR is re
 - Every published day has exactly one matching `interview/answers/dayXX.md`; each file contains exactly two stable question IDs and answers every listed follow-up.
 - Interview answers state conditions and boundaries rather than absolute implementation claims.
 - Every core mechanism contains `实际问题`, `概念落点`, `代码与机制`, and `错误做法与修复`, followed by a short retrieval check.
+- Before `概念落点`, every core mechanism shows minimal code or a state table and states the observable result in beginner-friendly language; this rule applies equally to maintenance of published lectures and generation of future lectures.
 - A beginner can answer each retrieval check from the example and its state changes without needing assembly, ABI knowledge, or an unstated memory-layout assumption.
 - Final diff contains no unrelated files.

@@ -374,6 +374,32 @@ def main() -> int:
                                 f"{lecture.relative_to(ROOT)} {mechanism.group(0)} "
                                 f"missing integrated marker: {marker}",
                             )
+                    marker_positions = [section.find(marker) for marker in REQUIRED_MECHANISM_MARKERS]
+                    if all(position >= 0 for position in marker_positions):
+                        if marker_positions != sorted(marker_positions):
+                            fail(
+                                errors,
+                                f"{lecture.relative_to(ROOT)} {mechanism.group(0)} "
+                                "must keep mechanism markers in learning order",
+                            )
+
+                        concept_position = section.find("**概念落点**")
+                        observation = section[:concept_position]
+                        has_code_fence = re.search(
+                            r"^```(?:[A-Za-z0-9_+.-]+)?\s*$",
+                            observation,
+                            flags=re.MULTILINE,
+                        ) is not None
+                        table_lines = [
+                            line for line in observation.splitlines()
+                            if line.lstrip().startswith("|")
+                        ]
+                        if not has_code_fence and len(table_lines) < 2:
+                            fail(
+                                errors,
+                                f"{lecture.relative_to(ROOT)} {mechanism.group(0)} "
+                                "must show minimal code or a state table before the formal concept",
+                            )
 
     legacy = list((ROOT / "days").glob("第*.md")) + list((ROOT / "exercises").glob("day-*.md"))
     if legacy:

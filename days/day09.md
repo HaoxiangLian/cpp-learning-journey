@@ -22,11 +22,6 @@
 
 **实际问题**：`RobotTask` 创建后必须立即拥有任务编号，不能先产生“没有编号的半成品”再等待调用者补写。如何保证对象一完成初始化就满足不变量？
 
-**概念落点**：
-
-- [构造函数（constructor）](../docs/glossary/day09.md#构造函数constructor)是类的特殊成员函数，在类类型对象初始化时被选择调用，以建立该对象及其成员的初始状态。
-- [成员初始化列表（member initializer list）](../docs/glossary/day09.md#成员初始化列表member-initializer-list)是构造函数声明体之前、冒号之后的一组初始化器，用来直接指定基类和非静态数据成员的初始化参数。
-
 ```cpp
 class RobotTask {
 public:
@@ -40,6 +35,21 @@ private:
     bool active_;
 };
 ```
+
+创建 `RobotTask task{7};` 时，先看三个时刻：
+
+| 时刻 | `id_` | `active_` |
+|---|---:|---:|
+| 进入构造函数体之前 | 已用 `7` 初始化 | 已用 `true` 初始化 |
+| 执行构造函数体时 | 已经可用 | 已经可用 |
+| 构造完成后 | 对象对外可用 | 对象对外可用 |
+
+冒号后的 `id_{id}, active_{true}` 不是“先创建空成员，再在函数体里赋值”，而是在成员建立时直接给出初始状态。
+
+**概念落点**：
+
+- [构造函数（constructor）](../docs/glossary/day09.md#构造函数constructor)是类的特殊成员函数，在类类型对象初始化时被选择调用，以建立该对象及其成员的初始状态。
+- [成员初始化列表（member initializer list）](../docs/glossary/day09.md#成员初始化列表member-initializer-list)是构造函数声明体之前、冒号之后的一组初始化器，用来直接指定基类和非静态数据成员的初始化参数。
 
 **代码与机制**：构造函数名称写成类名，没有返回类型。创建 `RobotTask task{7};` 时，语言先为完整对象及其子对象提供存储，再按初始化规则建立成员，最后进入构造函数体。函数体适合执行需要成员已经有效的检查或日志，不是 `id_` 第一次存在的地方。
 
@@ -76,8 +86,6 @@ private:
 
 **实际问题**：一个成员的初始值依赖另一个成员。如果只看初始化列表的排列，代码审查者可能以为依赖已经满足，实际却读取了尚未初始化的成员。
 
-**概念落点**：[初始化与析构顺序（initialization and destruction order）](../docs/glossary/day09.md#初始化与析构顺序initialization-and-destruction-order)是类子对象按语言固定次序建立并按相反次序销毁的规则；非静态数据成员按它们在类定义中的声明顺序初始化，并按逆序析构。
-
 危险示例：
 
 ```cpp
@@ -91,6 +99,10 @@ private:
     int raw_;
 };
 ```
+
+不要先看冒号后的排列，先看类中成员从上到下的声明：`doubled_` 写在前，所以它先初始化；但它的表达式读取了此时尚未初始化的 `raw_`。普通话规则就是：**成员排队看类里的声明顺序，不看构造函数列表写的顺序。**
+
+**概念落点**：[初始化与析构顺序（initialization and destruction order）](../docs/glossary/day09.md#初始化与析构顺序initialization-and-destruction-order)是类子对象按语言固定次序建立并按相反次序销毁的规则；非静态数据成员按它们在类定义中的声明顺序初始化，并按逆序析构。
 
 **代码与机制**：虽然列表先写 `raw_`，真实次序仍是 `doubled_`、`raw_`，因为它们在类定义中如此声明。`doubled_` 的初始化表达式读取尚未初始化的 `raw_`，在 C++17 中会触发未定义行为；编译器可能警告，但诊断不是该语义规则的替代品。
 
@@ -116,8 +128,6 @@ public:
 
 **实际问题**：一个任务对象离开作用域时，内部传感器会话和规划器会话应按可靠顺序关闭。如何理解析构函数体与成员析构之间的先后？
 
-**概念落点**：[析构函数（destructor）](../docs/glossary/day09.md#析构函数destructor)是类的特殊成员函数，在类对象销毁过程中被调用，用于执行该类层级的结束操作，并由语言继续销毁成员和基类子对象。
-
 ```cpp
 class RobotTask {
 public:
@@ -129,6 +139,10 @@ private:
     Trace planner_;
 };
 ```
+
+假设 `sensor_` 先构造、`planner_` 后构造。对象结束时先执行 `RobotTask` 的析构函数体，然后成员按相反顺序结束：先 `planner_`，再 `sensor_`。可以先记成“后建立的成员先收尾”。
+
+**概念落点**：[析构函数（destructor）](../docs/glossary/day09.md#析构函数destructor)是类的特殊成员函数，在类对象销毁过程中被调用，用于执行该类层级的结束操作，并由语言继续销毁成员和基类子对象。
 
 **代码与机制**：对象销毁时先执行 `RobotTask` 析构函数体，然后按声明的逆序销毁成员：`planner_` 先，`sensor_` 后。逆序规则让后构造、可能依赖先构造成员的对象先结束。
 
@@ -153,8 +167,6 @@ private:
 
 **实际问题**：函数要求 `RetryLimit`，调用者却写 `schedule(3)`。编译器若自动把 `3` 构造成重试策略，单位或语义错误会被隐藏在一次隐式转换中。
 
-**概念落点**：[explicit 构造函数（explicit constructor）](../docs/glossary/day09.md#explicit-构造函数explicit-constructor)是不能作为普通隐式用户定义转换被自动采用、但仍可通过直接初始化或显式转换调用的构造函数。
-
 ```cpp
 class RetryLimit {
 public:
@@ -166,6 +178,10 @@ private:
 RetryLimit limit{3};       // 直接初始化：合法
 // RetryLimit other = 3;   // 复制初始化：不能使用 explicit 构造函数
 ```
+
+先看调用意图是否写出来：`RetryLimit{3}` 明确说“把整数 3 变成重试次数对象”，而 `schedule(3)` 只出现一个裸整数。`explicit` 要求调用者把前一种类型形成动作写出来，避免单位和含义被悄悄猜测。
+
+**概念落点**：[explicit 构造函数（explicit constructor）](../docs/glossary/day09.md#explicit-构造函数explicit-constructor)是不能作为普通隐式用户定义转换被自动采用、但仍可通过直接初始化或显式转换调用的构造函数。
 
 **代码与机制**：`explicit` 不改变构造函数体，也不验证 `count` 是否非负；范围不变量仍需构造函数自己维护。它解决的是调用表达式是否可以悄悄插入用户定义转换。
 
