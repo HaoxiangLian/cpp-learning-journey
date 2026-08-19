@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "days/day07.md",
+                "file": "days/day08.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "day07"
+              "title": "day08"
             }
           }
         ]
@@ -199,9 +199,9 @@
   "active": "9c197e2a4b0d0748",
   "lastOpenFiles": [
     "days/day06.md",
+    "days/day07.md",
     "days/day05.md",
     "days/day04.md",
-    "days/day07.md",
     "solutions/day10/README.md",
     "solutions/day10/owned_samples.cpp",
     "solutions/day10",
