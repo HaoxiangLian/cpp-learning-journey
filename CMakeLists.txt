@@ -92,6 +92,18 @@ target_link_libraries(day10_example PRIVATE course_options)
 add_executable(day10_solution solutions/day10/owned_samples.cpp)
 target_link_libraries(day10_solution PRIVATE course_options)
 
+add_executable(day11_example examples/day11/main.cpp)
+target_link_libraries(day11_example PRIVATE course_options)
+
+add_executable(day11_solution solutions/day11/move_only_batch.cpp)
+target_link_libraries(day11_solution PRIVATE course_options)
+
+add_executable(day12_example examples/day12/main.cpp)
+target_link_libraries(day12_example PRIVATE course_options)
+
+add_executable(day12_solution solutions/day12/sensor_hierarchy.cpp)
+target_link_libraries(day12_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -194,6 +206,26 @@ set_tests_properties(day10_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "assigned: 5 100"
 )
 
+add_test(NAME day11_example_runs COMMAND day11_example)
+set_tests_properties(day11_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "target empty: true"
+)
+
+add_test(NAME day11_solution_runs COMMAND day11_solution)
+set_tests_properties(day11_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "moved: 4 9"
+)
+
+add_test(NAME day12_example_runs COMMAND day12_example)
+set_tests_properties(day12_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "destroy scan task"
+)
+
+add_test(NAME day12_solution_runs COMMAND day12_solution)
+set_tests_properties(day12_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "robot lidar: 42 32"
+)
+
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 add_test(
@@ -290,4 +322,20 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day10/broken/copy_disabled.cpp"
+)
+
+add_test(
+  NAME day11_copy_move_only_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day11/broken/copy_move_only.cpp"
+)
+
+add_test(
+  NAME day12_private_inheritance_conversion_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day12/broken/private_inheritance_conversion.cpp"
 )
