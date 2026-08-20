@@ -46,7 +46,17 @@ BrokenBuffer second{first};
 | `first` | `3` | 数组 A |
 | `second` | `3` | 仍是同一个数组 A |
 
+> [!NOTE] 拷贝构造
+> 代码 `BrokenBuffer second{first};` 的标准学名叫做：**拷贝构造（Copy Construction）**。
+> [[notes for day10]]
+
+
 默认逐成员复制只把地址值复制给 `second.data_`，不会自动新建“数组 B”。但两个析构函数都执行 `delete[] data_`，于是同一个数组会被释放两次。
+
+
+> [!NOTE] 为什么 `data_` 必须用指针？不能直接用数组吗？
+> 因为数组的大小 `count` 是在程序“运行期间”才决定的，而普通的 C++ 数组必须在“编译期间”就知道大小。
+
 
 **概念落点**：
 
