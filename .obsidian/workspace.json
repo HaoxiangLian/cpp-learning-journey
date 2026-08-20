@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "days/day10.md",
-                "mode": "preview",
+                "file": "days/notes/notes for day10.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "day10"
+              "title": "notes for day10"
             }
           }
         ],
@@ -213,8 +213,8 @@
   },
   "active": "7221330270341f0f",
   "lastOpenFiles": [
-    "days/notes/notes for day10.md",
     "days/day10.md",
+    "days/notes/notes for day10.md",
     "days/day09.md",
     "days/notes/notes for day09_3.md",
     "days/notes/notes for day09_2.md",
