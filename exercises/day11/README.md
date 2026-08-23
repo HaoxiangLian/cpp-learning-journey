@@ -16,7 +16,7 @@
 
 ## 二、代码输出与错误分析
 
-1. 阅读下面的状态变化，说明 `std::move` 和移动构造各承担哪一步：
+1. 先比较 `DeepBuffer copied{source};` 的深拷贝意图与下面的移动意图：两种写法完成后各有几块底层数组，源对象分别保持什么状态？再说明 `std::move` 和移动构造各承担哪一步：
 
    ```cpp
    MoveOnlyBuffer target{std::move(source)};
