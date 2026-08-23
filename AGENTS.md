@@ -9,6 +9,11 @@ These rules apply to every automated or manual course update.
 - Follow `docs/lecture-writing-guide.md`: do not create a standalone daily term-card section. Introduce a new term inside the relevant core mechanism, repeat its canonical one-sentence definition, and link the exact `docs/glossary/dayXX.md` anchor at first use.
 - `docs/glossary.md` is navigation only. `docs/glossary/dayXX.md` owns the canonical definitions first introduced on that day. Before adding a term, search every file under `docs/glossary/`; if a definition changes, audit its first-use lecture, exercises, and interview answers together.
 - Introduce at most five major concepts per day. Do not use an unexplained technical term to define a new term.
+- Write `🎯 今日攻坚目标` as 2--4 ordered, testable actions. The item count must equal the number of core mechanisms, and objective item N must be fully taught by mechanism N in the same order.
+- Respect concept dependencies across mechanisms: explain a prerequisite concept's purpose, definition, trigger, and nearest contrast before asking the learner to reason about its default behavior, risks, or engineering repair. A pre-check may recall only already-published material or invite observation without requiring today's undefined term.
+- A glossary entry, Obsidian note, interview answer, or exercise solution never substitutes for the first in-context explanation in the matching core mechanism.
+- When one mechanism needs several same-day terms, state their dependency order and introduce them one at a time against the same observable example. Split the mechanism if an earlier term can only be understood through a later undefined term. A temporarily unexplained syntax token may appear only as an explicitly labeled observation placeholder whose required reasoning is deferred to a named later point.
+- Isolate the new operation in the smallest ordinary value-state example before combining it with raw ownership, inheritance, concurrency, undefined behavior, or implementation details, unless all of those prerequisites were already published.
 - Write for a learner whose C++ foundation is weak. Before a formal definition, show a concrete code state, execution step, or before/after table that answers “which object”, “what changed”, and “when it stops being usable”.
 - Raise the abstraction level only after the learner can predict the current example. Phrases such as “language semantics”, “implementation model”, “observable behavior”, “ABI”, “register”, “optimizer”, and “allocation mechanism” must be translated in place; they must not carry the first explanation of a concept.
 - Treat implementation boundaries as a second-pass supplement. Removing the implementation paragraph must not remove the rule needed to read, write, or diagnose the current C++ code.
@@ -51,6 +56,7 @@ Repeated runs must be idempotent: an existing published day, branch, or PR is re
 - Every published day has exactly one matching `interview/answers/dayXX.md`; each file contains exactly two stable question IDs and answers every listed follow-up.
 - Interview answers state conditions and boundaries rather than absolute implementation claims.
 - Every core mechanism contains `实际问题`, `概念落点`, `代码与机制`, and `错误做法与修复`, followed by a short retrieval check.
+- Every objective item has a matching mechanism, observable example/state change, retrieval check, and same-day exercise; no goal may be assessed only in the exercise or interview section.
 - Before `概念落点`, every core mechanism shows minimal code or a state table and states the observable result in beginner-friendly language; this rule applies equally to maintenance of published lectures and generation of future lectures.
 - A beginner can answer each retrieval check from the example and its state changes without needing assembly, ABI knowledge, or an unstated memory-layout assumption.
 - Final diff contains no unrelated files.
