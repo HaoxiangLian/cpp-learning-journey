@@ -14,7 +14,7 @@
     {"day": 11, "status": "published", "scheduled_date": "2026-08-27", "published_at": "2026-08-19T22:32:09+08:00", "publication_kind": "manual_early_release"},
     {"day": 12, "status": "published", "scheduled_date": "2026-08-28", "published_at": "2026-08-19T22:39:04+08:00", "publication_kind": "manual_early_release"},
     {"day": 13, "status": "published", "scheduled_date": "2026-08-29", "published_at": "2026-08-23T18:29:45+08:00", "publication_kind": "manual_early_release"},
-    {"day": 14, "status": "pending", "scheduled_date": "2026-08-30"},
+    {"day": 14, "status": "published", "scheduled_date": "2026-08-30", "published_at": "2026-08-23T19:34:14+08:00", "publication_kind": "manual_early_release"},
     {"day": 15, "status": "pending", "scheduled_date": "2026-08-31"},
     {"day": 16, "status": "pending", "scheduled_date": "2026-09-01"},
     {"day": 17, "status": "pending", "scheduled_date": "2026-09-02"},
