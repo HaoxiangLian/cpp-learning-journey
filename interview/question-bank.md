@@ -28,5 +28,7 @@
 | Q022 | Rule of Five 与 Rule of Zero 有什么关系？为什么现代 C++ 更偏好 Rule of Zero？ | [Day 11](../days/day11.md#题-2rule-of-five-与-rule-of-zero-有什么关系为什么现代-c-更偏好-rule-of-zero) | [答案与追问](answers/day11.md#q022) | 特殊成员审计；资源成员组合 |
 | Q023 | 公有继承与组合分别表达什么？怎样选择？ | [Day 12](../days/day12.md#题-1公有继承与组合分别表达什么怎样选择) | [答案与追问](answers/day12.md#q023) | 基类子对象；is-a/has-a；转换访问性 |
 | Q024 | 什么是对象切片？为什么多态基类通常需要虚析构函数？ | [Day 12](../days/day12.md#题-2什么是对象切片为什么多态基类通常需要虚析构函数) | [答案与追问](answers/day12.md#q024) | 按值切片；析构契约；UB 边界 |
+| Q025 | 运行时多态成立需要哪些条件？`override` 有什么作用？ | [Day 13](../days/day13.md#题-1运行时多态成立需要哪些条件override-有什么作用) | [答案与追问](answers/day13.md#q025) | 虚调用条件；覆盖检查；切片边界 |
+| Q026 | 纯虚函数和抽象类有什么作用？vtable 是标准保证吗？ | [Day 13](../days/day13.md#题-2纯虚函数和抽象类有什么作用vtable-是标准保证吗) | [答案与追问](answers/day13.md#q026) | 抽象接口；标准与实现；大小对齐 |
 
 后续题目随对应学习日发布，编号保持稳定。
