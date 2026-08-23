@@ -110,6 +110,12 @@ target_link_libraries(day13_example PRIVATE course_options)
 add_executable(day13_solution solutions/day13/polymorphic_sensors.cpp)
 target_link_libraries(day13_solution PRIVATE course_options)
 
+add_executable(day14_example examples/day14/main.cpp)
+target_link_libraries(day14_example PRIVATE course_options)
+
+add_executable(day14_solution solutions/day14/template_readings.cpp)
+target_link_libraries(day14_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -242,6 +248,16 @@ set_tests_properties(day13_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "force: 12.5"
 )
 
+add_test(NAME day14_example_runs COMMAND day14_example)
+set_tests_properties(day14_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "type bool: boolean"
+)
+
+add_test(NAME day14_solution_runs COMMAND day14_solution)
+set_tests_properties(day14_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "bool label: boolean"
+)
+
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 add_test(
@@ -370,4 +386,28 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day13/broken/instantiate_abstract.cpp"
+)
+
+add_test(
+  NAME day14_mixed_template_arguments_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day14/broken/mixed_template_arguments.cpp"
+)
+
+add_test(
+  NAME day14_unsupported_instantiation_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day14/broken/unsupported_instantiation.cpp"
+)
+
+add_test(
+  NAME day14_late_specialization_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day14/broken/late_specialization.cpp"
 )
