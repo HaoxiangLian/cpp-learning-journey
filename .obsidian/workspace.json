@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "days/notes/notes for day10.md",
-                "mode": "source",
+                "file": "days/day10.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "notes for day10"
+              "title": "day10"
             }
           }
         ],
@@ -213,9 +213,11 @@
   },
   "active": "7221330270341f0f",
   "lastOpenFiles": [
+    "days/day09.md",
+    "days/day08.md",
+    "days/day07.md",
     "days/day10.md",
     "days/notes/notes for day10.md",
-    "days/day09.md",
     "days/notes/notes for day09_3.md",
     "days/notes/notes for day09_2.md",
     "solutions/day12/sensor_hierarchy.cpp",
@@ -239,11 +241,9 @@
     "days/day12.md",
     "days/day11.md",
     "days/notes/notes for day09.md",
-    "days/day08.md",
     "days/notes/notes for day08.md",
     "days/notes/notes for day08_2.md",
     "days/day06.md",
-    "days/day07.md",
     "days/day05.md",
     "days/day04.md",
     "solutions/day10/README.md",
