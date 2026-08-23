@@ -104,6 +104,12 @@ target_link_libraries(day12_example PRIVATE course_options)
 add_executable(day12_solution solutions/day12/sensor_hierarchy.cpp)
 target_link_libraries(day12_solution PRIVATE course_options)
 
+add_executable(day13_example examples/day13/main.cpp)
+target_link_libraries(day13_example PRIVATE course_options)
+
+add_executable(day13_solution solutions/day13/polymorphic_sensors.cpp)
+target_link_libraries(day13_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -226,6 +232,16 @@ set_tests_properties(day12_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "robot lidar: 42 32"
 )
 
+add_test(NAME day13_example_runs COMMAND day13_example)
+set_tests_properties(day13_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "virtual kind: lidar"
+)
+
+add_test(NAME day13_solution_runs COMMAND day13_solution)
+set_tests_properties(day13_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "force: 12.5"
+)
+
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 add_test(
@@ -338,4 +354,20 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day12/broken/private_inheritance_conversion.cpp"
+)
+
+add_test(
+  NAME day13_mismatched_override_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day13/broken/mismatched_override.cpp"
+)
+
+add_test(
+  NAME day13_abstract_instantiation_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day13/broken/instantiate_abstract.cpp"
 )
