@@ -24,6 +24,7 @@ REQUIRED_DAY_HEADINGS = (
 )
 BANNED_DAY_HEADINGS = ("## 📚 今日术语卡",)
 CORE_MECHANISM_PATTERN = re.compile(r"^### 机制(?:[一二三四]|[1-4])[:：].+$", re.MULTILINE)
+OBJECTIVE_ITEM_PATTERN = re.compile(r"^(\d+)\.\s+\S.+$", re.MULTILINE)
 REQUIRED_MECHANISM_MARKERS = (
     "**实际问题**",
     "**概念落点**",
@@ -301,6 +302,20 @@ def main() -> int:
     if any(not isinstance(day, int) or not 1 <= day <= 24 for day in published):
         fail(errors, "published_days values must be integers in 1..24")
 
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme_published_start = readme.find("- 已发布：")
+    readme_published_end = readme.find("- 唯一进度源", readme_published_start + 1)
+    readme_published_section = readme[readme_published_start:readme_published_end]
+    readme_published_days = [
+        int(day) for day in re.findall(r"\(days/day(\d{2})\.md\)", readme_published_section)
+    ]
+    if readme_published_days != published:
+        fail(
+            errors,
+            f"README published-day links must match release/state.json: "
+            f"expected {published}, found {readme_published_days}",
+        )
+
     if state.get("status") == "completed":
         if published != list(range(1, 25)) or state.get("next_day") is not None:
             fail(errors, "completed state requires days 1..24 and next_day null")
@@ -363,6 +378,20 @@ def main() -> int:
                         errors,
                         f"{lecture.relative_to(ROOT)} must contain 2..4 core mechanisms; "
                         f"found {len(mechanisms)}",
+                    )
+
+                objective_start = lecture_text.find("## 🎯 今日攻坚目标")
+                objective_end = lecture_text.find("## 🔁 前置知识检查", objective_start + 1)
+                objective_text = lecture_text[objective_start:objective_end]
+                objective_numbers = [
+                    int(match.group(1)) for match in OBJECTIVE_ITEM_PATTERN.finditer(objective_text)
+                ]
+                expected_numbers = list(range(1, len(mechanisms) + 1))
+                if objective_numbers != expected_numbers:
+                    fail(
+                        errors,
+                        f"{lecture.relative_to(ROOT)} must contain one ordered objective item per "
+                        f"core mechanism; expected {expected_numbers}, found {objective_numbers}",
                     )
                 for index, mechanism in enumerate(mechanisms):
                     section_end = mechanisms[index + 1].start() if index + 1 < len(mechanisms) else len(core_text)
