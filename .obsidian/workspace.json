@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "days/day08.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -199,6 +199,7 @@
   "active": "866d4eeb1b42f85c",
   "lastOpenFiles": [
     "days/day09.md",
+    "days/day08.md",
     "days/第04天-条件、循环与作用域.md",
     "conflict-files-obsidian-git.md",
     "exercises/day15/broken/sort_input_iterator.cpp",
@@ -232,7 +233,6 @@
     "solutions/day06/README.md",
     "solutions/day05/README.md",
     "solutions/day04/README.md",
-    "solutions/day02/README.md",
-    "solutions/day03/README.md"
+    "solutions/day02/README.md"
   ]
 }
