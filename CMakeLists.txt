@@ -122,6 +122,12 @@ target_link_libraries(day15_example PRIVATE course_options)
 add_executable(day15_solution solutions/day15/algorithm_samples.cpp)
 target_link_libraries(day15_solution PRIVATE course_options)
 
+add_executable(day16_example examples/day16/main.cpp)
+target_link_libraries(day16_example PRIVATE course_options)
+
+add_executable(day16_solution solutions/day16/sequence_choices.cpp)
+target_link_libraries(day16_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -272,6 +278,16 @@ set_tests_properties(day15_example_runs PROPERTIES
 add_test(NAME day15_solution_runs COMMAND day15_solution)
 set_tests_properties(day15_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "sorted: 1 2 4 7 9"
+)
+
+add_test(NAME day16_example_runs COMMAND day16_example)
+set_tests_properties(day16_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "kept list value: 10"
+)
+
+add_test(NAME day16_solution_runs COMMAND day16_solution)
+set_tests_properties(day16_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "refreshed reading: 9"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -442,4 +458,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day15/broken/sort_input_iterator.cpp"
+)
+
+add_test(
+  NAME day16_list_subscript_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day16/broken/list_subscript.cpp"
 )

@@ -34,5 +34,7 @@
 | Q028 | 类模板和显式特化分别解决什么问题？`concepts` 改善了什么？ | [Day 14](../days/day14.md#题-2类模板和显式特化分别解决什么问题concepts-改善了什么) | [答案与追问](answers/day14.md#q028) | 具体类类型；例外实现；约束边界 |
 | Q029 | 迭代器和半开区间怎样让标准算法与数据结构解耦？ | [Day 15](../days/day15.md#题-1迭代器和半开区间怎样让标准算法与数据结构解耦) | [答案与追问](answers/day15.md#q029) | 位置与边界；失败返回；数据生命周期 |
 | Q030 | 谓词和 Lambda 有什么关系？为什么 `std::sort` 不是任何迭代器都能用？ | [Day 15](../days/day15.md#题-2谓词和-lambda-有什么关系为什么-stdsort-不是任何迭代器都能用) | [答案与追问](answers/day15.md#q030) | 可调用角色；捕获；算法能力要求 |
+| Q031 | `std::vector` 的 `size`、`capacity`、`reserve` 和 `resize` 有什么区别？ | [Day 16](../days/day16.md#题-1stdvector-的-sizecapacityreserve-和-resize-有什么区别) | [答案与追问](answers/day16.md#q031) | 元素与容量；重新分配；摊销复杂度 |
+| Q032 | `vector`、`deque`、`list` 应该怎样选择？容器修改后迭代器何时失效？ | [Day 16](../days/day16.md#题-2vectordequelist-应该怎样选择容器修改后迭代器何时失效) | [答案与追问](answers/day16.md#q032) | 操作模式；复杂度；失效边界 |
 
 后续题目随对应学习日发布，编号保持稳定。
