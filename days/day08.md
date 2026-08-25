@@ -155,6 +155,13 @@ double degrees() const {
 **概念落点**：[this 指针与 const 成员函数（this pointer and const member function）](../docs/glossary/day08.md#this-指针与-const-成员函数this-pointer-and-const-member-function)：在非静态成员函数中，`this` 是指向该次调用所作用对象的指针；函数末尾的 `const` 表示通过这次调用不能修改该对象的非 `mutable` 数据成员。
 
 
+> [!NOTE]  `mutable`告诉编译器：
+>“这个变量即使对象看起来是只读，也允许改变。
+
+
+
+
+
 **代码与机制**：调用 `left_joint.set(30.0)` 时，函数作用于 `left_joint`；调用 `right_joint.set(-20.0)` 时，作用于 `right_joint`。在普通成员访问中通常省略 `this->`，因此 `degrees_` 与 `this->degrees_` 在这里表示同一成员。
 
 对 `const` 对象只能调用不会通过该调用普通修改对象的成员函数：
