@@ -21,6 +21,7 @@
   - [第 12 天：继承表达什么关系](days/day12.md)（提前发布）
   - [第 13 天：运行时多态与对象模型](days/day13.md)（提前发布）
   - [第 14 天：一份代码怎样适配多种类型](days/day14.md)（提前发布）
+  - [第 15 天：STL 如何把数据与操作解耦](days/day15.md)（提前发布）
 - 唯一进度源：[progress.md](progress.md)
 - 机器可读发布状态：[release/state.json](release/state.json)
 
