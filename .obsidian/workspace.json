@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c21915bbe02fc63f",
+        "id": "ce833691ba34e9c2",
         "type": "tabs",
         "children": [
           {
-            "id": "0c5058a70c7015e2",
+            "id": "866d4eeb1b42f85c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "days/第04天-条件、循环与作用域.md",
-                "mode": "preview",
-                "source": false
+                "aFile": "PROGRESS.md",
+                "bFile": "PROGRESS.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "第04天-条件、循环与作用域"
+              "icon": "diff",
+              "title": "Diff: PROGRESS  (Working Tree)"
             }
           }
         ]
@@ -196,43 +196,43 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c5058a70c7015e2",
+  "active": "866d4eeb1b42f85c",
   "lastOpenFiles": [
-    "days/第03天-表达式、类型转换、const与constexpr.md",
-    "days/第02天-变量、类型、初始化与赋值.md",
-    "days/第01天-从源代码到程序运行.md",
-    "days/第06天-参数传递、引用与函数重载.md",
-    "days/第05天-函数的声明、定义、调用与返回.md",
     "days/第04天-条件、循环与作用域.md",
-    "PROGRESS.md",
     "conflict-files-obsidian-git.md",
-    "exercises/day-08.md",
-    "exercises/day-07.md",
-    "exercises/day-06.md",
-    "exercises/day-05.md",
-    "exercises/day-04.md",
-    "exercises/day-03.md",
-    "exercises/day-02.md",
-    "examples/day-08/joint_samples.cpp",
-    "examples/day-08/at_out_of_range.cpp",
-    "examples/day-08",
-    "examples/day-07/scoped_enum_error.cpp",
-    "examples/day-07/robot_state.cpp",
-    "examples/day-07",
-    "examples/day-06/parameter_passing.cpp",
-    "examples/day-06/non_const_reference_error.cpp",
-    "examples/day-06",
-    "examples/day-05/missing_declaration.cpp",
-    "days/第08天-string、array与vector.md",
-    "days/第07天-枚举、命名空间、类型别名与struct.md",
-    "LEARNING_PLAN.md",
-    "days/第04天-源码到可执行文件的完整链路.md",
-    "exercises/day-23.md",
-    "exercises/day-22.md",
-    "exercises/day-21.md",
-    "exercises/day-20.md",
-    "exercises/day-19.md",
-    "exercises/day-18.md",
-    "exercises/day-17.md"
+    "exercises/day15/broken/sort_input_iterator.cpp",
+    "exercises/day15/broken/missing_lambda_capture.cpp",
+    "exercises/day15/README.md",
+    "exercises/day15/broken",
+    "exercises/day15/algorithm_samples.cpp",
+    "exercises/day15",
+    "exercises/day14/broken/unsupported_instantiation.cpp",
+    "exercises/day14/broken/mixed_template_arguments.cpp",
+    "exercises/day14/broken/late_specialization.cpp",
+    "exercises/day14/template_readings.cpp",
+    "exercises/day14/README.md",
+    "exercises/day14/broken",
+    "exercises/day13/README.md",
+    "exercises/day05/README.md",
+    "exercises/day04/README.md",
+    "exercises/day03/README.md",
+    "exercises/day02/README.md",
+    "exercises/day01/README.md",
+    "solutions/day16/README.md",
+    "solutions/day15/README.md",
+    "solutions/day14/README.md",
+    "solutions/day13/README.md",
+    "solutions/day12/README.md",
+    "solutions/day10/README.md",
+    "solutions/day11/README.md",
+    "solutions/day09/README.md",
+    "solutions/day08/README.md",
+    "solutions/day07/README.md",
+    "solutions/day06/README.md",
+    "solutions/day05/README.md",
+    "solutions/day04/README.md",
+    "solutions/day02/README.md",
+    "solutions/day03/README.md",
+    "solutions/day01/README.md"
   ]
 }
