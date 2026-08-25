@@ -16,7 +16,7 @@ int main() {
         std::cout << "found: " << *found << '\n';
     }
 
-    const int threshold = 5;
+    int threshold = 5;
     const auto at_least_threshold = [threshold](int value) {
         return value >= threshold;
     };

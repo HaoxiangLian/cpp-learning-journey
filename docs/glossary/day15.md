@@ -54,7 +54,7 @@
 - **最小示例**：
 
   ```cpp
-  const int threshold = 5;
+  int threshold = 5;
   const auto accepted = [threshold] (int value) {
       return value >= threshold;
   };

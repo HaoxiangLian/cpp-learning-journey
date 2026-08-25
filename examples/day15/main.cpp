@@ -18,7 +18,7 @@ int main() {
     std::cout << std::boolalpha
               << "found 7: " << (found != last) << '\n';
 
-    const int threshold = 5;
+    int threshold = 5;
     const auto at_least_threshold = [threshold](int value) {
         return value >= threshold;
     };
