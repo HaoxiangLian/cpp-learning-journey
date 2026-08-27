@@ -43,7 +43,7 @@
               "type": "markdown",
               "state": {
                 "file": "days/day10.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
@@ -228,8 +228,9 @@
   },
   "active": "a4f5ecf535b576f0",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
+    "ROADMAP_24_DAYS.md",
     "days/day10.md",
+    "conflict-files-obsidian-git.md",
     "days/day09.md",
     "days/day08.md",
     "days/day07.md",
@@ -262,7 +263,6 @@
     "days/day06.md",
     "days/day05.md",
     "days/day04.md",
-    "solutions/day10/README.md",
-    "solutions/day09/README.md"
+    "solutions/day10/README.md"
   ]
 }
