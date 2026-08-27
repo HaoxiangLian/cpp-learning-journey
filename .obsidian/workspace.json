@@ -42,12 +42,12 @@
             "state": {
               "type": "split-diff-view",
               "state": {
-                "aFile": "PROGRESS.md",
-                "bFile": "PROGRESS.md",
+                "aFile": "progress.md",
+                "bFile": "progress.md",
                 "aRef": ""
               },
               "icon": "diff",
-              "title": "Diff: PROGRESS  (Working Tree)"
+              "title": "Diff: progress  (Working Tree)"
             }
           }
         ],
@@ -226,8 +226,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a4f5ecf535b576f0",
+  "active": "9c197e2a4b0d0748",
   "lastOpenFiles": [
+    "progress.md",
     "days/day10.md",
     "PROGRESS.md",
     "ROADMAP_24_DAYS.md",
@@ -262,7 +263,6 @@
     "days/notes/notes for day08.md",
     "days/notes/notes for day08_2.md",
     "days/day06.md",
-    "days/day05.md",
-    "days/day04.md"
+    "days/day05.md"
   ]
 }
