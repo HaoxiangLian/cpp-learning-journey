@@ -11,35 +11,6 @@
             "id": "f9eb4488496f0200",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "days/day10.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "day10"
-            }
-          },
-          {
-            "id": "7221330270341f0f",
-            "type": "leaf",
-            "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": "docs/glossary/day10.md",
-                "bFile": "docs/glossary/day10.md",
-                "aRef": "HEAD",
-                "bRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: day10  (Index)"
-            }
-          },
-          {
-            "id": "a4f5ecf535b576f0",
-            "type": "leaf",
-            "state": {
               "type": "split-diff-view",
               "state": {
                 "aFile": "progress.md",
@@ -50,8 +21,7 @@
               "title": "Diff: progress  (Working Tree)"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -226,43 +196,42 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9c197e2a4b0d0748",
+  "active": "f9eb4488496f0200",
   "lastOpenFiles": [
     "progress.md",
     "days/day10.md",
-    "PROGRESS.md",
-    "ROADMAP_24_DAYS.md",
     "conflict-files-obsidian-git.md",
-    "days/day09.md",
-    "days/day08.md",
-    "days/day07.md",
-    "days/notes/notes for day10.md",
-    "days/notes/notes for day09_3.md",
-    "days/notes/notes for day09_2.md",
-    "solutions/day12/sensor_hierarchy.cpp",
-    "solutions/day12/README.md",
-    "solutions/day12",
-    "solutions/day11/move_only_batch.cpp",
-    "solutions/day11/README.md",
-    "solutions/day11",
-    "interview/answers/day12.md",
-    "interview/answers/day11.md",
-    "exercises/day12/broken/private_inheritance_conversion.cpp",
-    "exercises/day12/sensor_hierarchy.cpp",
-    "exercises/day12/README.md",
-    "exercises/day12/broken",
-    "exercises/day12",
-    "exercises/day11/move_only_batch.cpp",
-    "exercises/day11/broken/copy_move_only.cpp",
-    "exercises/day11/README.md",
-    "docs/glossary/day12.md",
-    "docs/glossary/day11.md",
-    "days/day12.md",
-    "days/day11.md",
-    "days/notes/notes for day09.md",
-    "days/notes/notes for day08.md",
-    "days/notes/notes for day08_2.md",
-    "days/day06.md",
-    "days/day05.md"
+    "solutions/day16/sequence_choices.cpp",
+    "solutions/day16/README.md",
+    "solutions/day16",
+    "solutions/day15/README.md",
+    "solutions/day15/algorithm_samples.cpp",
+    "solutions/day15",
+    "solutions/day14/template_readings.cpp",
+    "solutions/day14/README.md",
+    "solutions/day14",
+    "solutions/day13/README.md",
+    "solutions/day13/polymorphic_sensors.cpp",
+    "solutions/day13",
+    "interview/answers/day16.md",
+    "interview/answers/day15.md",
+    "interview/answers/day14.md",
+    "interview/answers/day13.md",
+    "exercises/day16/broken/stale_vector_iterator.cpp",
+    "exercises/day16/broken/list_subscript.cpp",
+    "exercises/day16/README.md",
+    "exercises/day15/README.md",
+    "exercises/day14/README.md",
+    "exercises/day13/README.md",
+    "docs/glossary/day16.md",
+    "docs/glossary/day15.md",
+    "docs/glossary/day14.md",
+    "docs/glossary/day13.md",
+    "days/day16.md",
+    "days/day15.md",
+    "days/day14.md",
+    "days/day13.md",
+    "PROGRESS.md",
+    "ROADMAP_24_DAYS.md"
   ]
 }

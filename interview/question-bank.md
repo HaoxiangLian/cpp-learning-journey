@@ -28,5 +28,13 @@
 | Q022 | Rule of Five 与 Rule of Zero 有什么关系？为什么现代 C++ 更偏好 Rule of Zero？ | [Day 11](../days/day11.md#题-2rule-of-five-与-rule-of-zero-有什么关系为什么现代-c-更偏好-rule-of-zero) | [答案与追问](answers/day11.md#q022) | 特殊成员审计；资源成员组合 |
 | Q023 | 公有继承与组合分别表达什么？怎样选择？ | [Day 12](../days/day12.md#题-1公有继承与组合分别表达什么怎样选择) | [答案与追问](answers/day12.md#q023) | 基类子对象；is-a/has-a；转换访问性 |
 | Q024 | 什么是对象切片？为什么多态基类通常需要虚析构函数？ | [Day 12](../days/day12.md#题-2什么是对象切片为什么多态基类通常需要虚析构函数) | [答案与追问](answers/day12.md#q024) | 按值切片；析构契约；UB 边界 |
+| Q025 | 运行时多态成立需要哪些条件？`override` 有什么作用？ | [Day 13](../days/day13.md#题-1运行时多态成立需要哪些条件override-有什么作用) | [答案与追问](answers/day13.md#q025) | 虚调用条件；覆盖检查；切片边界 |
+| Q026 | 纯虚函数和抽象类有什么作用？vtable 是标准保证吗？ | [Day 13](../days/day13.md#题-2纯虚函数和抽象类有什么作用vtable-是标准保证吗) | [答案与追问](answers/day13.md#q026) | 抽象接口；标准与实现；大小对齐 |
+| Q027 | 函数模板怎样生成可调用函数？模板实参推导和实例化分别做什么？ | [Day 14](../days/day14.md#题-1函数模板怎样生成可调用函数模板实参推导和实例化分别做什么) | [答案与追问](answers/day14.md#q027) | 参数/实参；推导冲突；实例化错误 |
+| Q028 | 类模板和显式特化分别解决什么问题？`concepts` 改善了什么？ | [Day 14](../days/day14.md#题-2类模板和显式特化分别解决什么问题concepts-改善了什么) | [答案与追问](answers/day14.md#q028) | 具体类类型；例外实现；约束边界 |
+| Q029 | 迭代器和半开区间怎样让标准算法与数据结构解耦？ | [Day 15](../days/day15.md#题-1迭代器和半开区间怎样让标准算法与数据结构解耦) | [答案与追问](answers/day15.md#q029) | 位置与边界；失败返回；数据生命周期 |
+| Q030 | 谓词和 Lambda 有什么关系？为什么 `std::sort` 不是任何迭代器都能用？ | [Day 15](../days/day15.md#题-2谓词和-lambda-有什么关系为什么-stdsort-不是任何迭代器都能用) | [答案与追问](answers/day15.md#q030) | 可调用角色；捕获；算法能力要求 |
+| Q031 | `std::vector` 的 `size`、`capacity`、`reserve` 和 `resize` 有什么区别？ | [Day 16](../days/day16.md#题-1stdvector-的-sizecapacityreserve-和-resize-有什么区别) | [答案与追问](answers/day16.md#q031) | 元素与容量；重新分配；摊销复杂度 |
+| Q032 | `vector`、`deque`、`list` 应该怎样选择？容器修改后迭代器何时失效？ | [Day 16](../days/day16.md#题-2vectordequelist-应该怎样选择容器修改后迭代器何时失效) | [答案与追问](answers/day16.md#q032) | 操作模式；复杂度；失效边界 |
 
 后续题目随对应学习日发布，编号保持稳定。

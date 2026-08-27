@@ -104,6 +104,30 @@ target_link_libraries(day12_example PRIVATE course_options)
 add_executable(day12_solution solutions/day12/sensor_hierarchy.cpp)
 target_link_libraries(day12_solution PRIVATE course_options)
 
+add_executable(day13_example examples/day13/main.cpp)
+target_link_libraries(day13_example PRIVATE course_options)
+
+add_executable(day13_solution solutions/day13/polymorphic_sensors.cpp)
+target_link_libraries(day13_solution PRIVATE course_options)
+
+add_executable(day14_example examples/day14/main.cpp)
+target_link_libraries(day14_example PRIVATE course_options)
+
+add_executable(day14_solution solutions/day14/template_readings.cpp)
+target_link_libraries(day14_solution PRIVATE course_options)
+
+add_executable(day15_example examples/day15/main.cpp)
+target_link_libraries(day15_example PRIVATE course_options)
+
+add_executable(day15_solution solutions/day15/algorithm_samples.cpp)
+target_link_libraries(day15_solution PRIVATE course_options)
+
+add_executable(day16_example examples/day16/main.cpp)
+target_link_libraries(day16_example PRIVATE course_options)
+
+add_executable(day16_solution solutions/day16/sequence_choices.cpp)
+target_link_libraries(day16_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -226,6 +250,46 @@ set_tests_properties(day12_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "robot lidar: 42 32"
 )
 
+add_test(NAME day13_example_runs COMMAND day13_example)
+set_tests_properties(day13_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "virtual kind: lidar"
+)
+
+add_test(NAME day13_solution_runs COMMAND day13_solution)
+set_tests_properties(day13_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "force: 12.5"
+)
+
+add_test(NAME day14_example_runs COMMAND day14_example)
+set_tests_properties(day14_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "type bool: boolean"
+)
+
+add_test(NAME day14_solution_runs COMMAND day14_solution)
+set_tests_properties(day14_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "bool label: boolean"
+)
+
+add_test(NAME day15_example_runs COMMAND day15_example)
+set_tests_properties(day15_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "sorted: 1 2 4 7 9"
+)
+
+add_test(NAME day15_solution_runs COMMAND day15_solution)
+set_tests_properties(day15_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "sorted: 1 2 4 7 9"
+)
+
+add_test(NAME day16_example_runs COMMAND day16_example)
+set_tests_properties(day16_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "kept list value: 10"
+)
+
+add_test(NAME day16_solution_runs COMMAND day16_solution)
+set_tests_properties(day16_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "refreshed reading: 9"
+)
+
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 add_test(
@@ -338,4 +402,68 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day12/broken/private_inheritance_conversion.cpp"
+)
+
+add_test(
+  NAME day13_mismatched_override_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day13/broken/mismatched_override.cpp"
+)
+
+add_test(
+  NAME day13_abstract_instantiation_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day13/broken/instantiate_abstract.cpp"
+)
+
+add_test(
+  NAME day14_mixed_template_arguments_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day14/broken/mixed_template_arguments.cpp"
+)
+
+add_test(
+  NAME day14_unsupported_instantiation_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day14/broken/unsupported_instantiation.cpp"
+)
+
+add_test(
+  NAME day14_late_specialization_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day14/broken/late_specialization.cpp"
+)
+
+add_test(
+  NAME day15_missing_lambda_capture_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day15/broken/missing_lambda_capture.cpp"
+)
+
+add_test(
+  NAME day15_sort_input_iterator_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day15/broken/sort_input_iterator.cpp"
+)
+
+add_test(
+  NAME day16_list_subscript_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day16/broken/list_subscript.cpp"
 )

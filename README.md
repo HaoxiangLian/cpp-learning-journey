@@ -19,6 +19,10 @@
   - [第 10 天：复制资源为什么危险](days/day10.md)（提前发布）
   - [第 11 天：转移资源而不是复制](days/day11.md)（提前发布）
   - [第 12 天：继承表达什么关系](days/day12.md)（提前发布）
+  - [第 13 天：运行时多态与对象模型](days/day13.md)（提前发布）
+  - [第 14 天：一份代码怎样适配多种类型](days/day14.md)（提前发布）
+  - [第 15 天：STL 如何把数据与操作解耦](days/day15.md)（提前发布）
+  - [第 16 天：顺序容器怎样选](days/day16.md)（提前发布）
 - 唯一进度源：[progress.md](progress.md)
 - 机器可读发布状态：[release/state.json](release/state.json)
 

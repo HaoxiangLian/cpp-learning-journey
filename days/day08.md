@@ -55,7 +55,7 @@ JointAngle right_joint;
 **概念落点**：
 
 - [类（class）](../docs/glossary/day08.md#类class)是用户定义的类型，它在一个类定义中规定该类型对象所包含的非静态数据成员、可执行的成员函数以及相关访问规则。
-- [成员（member）](../docs/glossary/day08.md#成员member)是在类定义中声明并属于该类的实体；本日重点是保存每个对象状态的非静态数据成员，以及通过对象操作状态的非静态成员函数。
+- [成员（member）](../docs/glossary/day08.md#成员member)是在类定义中声明并属于该类的实体；本日重点是保存每个对象状态的非静态数据成员，以及通过对象操作状态的非静态成员函数。==ps：**成员是属于某个类或对象内部的变量和函数，它们描述了这个类（对象）具有的数据和行为。**==
 
 直观地说，类像一份统一规则，对象是按这份规则创建的具体实体。这个比喻只帮助入门：专业上，`JointAngle` 是类型，`left_joint` 和 `right_joint` 是两个独立对象；每个对象各有自己的非静态数据成员。
 
@@ -134,7 +134,7 @@ private:
 分类：代码**有明确定义但结果可能不符合类型承诺**。修复是明确不变量，在每个能改变状态的公开操作中先验证，再修改；查询函数则只暴露调用者真正需要的信息。
 
 **小检查**：把 `degrees_` 设为 `private` 后，为什么仍不能自动证明 `JointAngle` 永远有效？
-
+	类不变量设置的没有意义；
 ### 机制三：非静态成员函数通过 this 作用于具体对象，尾置 const 限制普通修改
 
 **实际问题**：同一个 `set` 函数能分别修改左关节和右关节。函数体中的 `degrees_` 到底属于谁？查询函数为什么应该能被 `const JointAngle` 调用？
@@ -153,6 +153,13 @@ double degrees() const {
 把调用翻译成普通话：`left_joint.set(30.0)` 是“让这个函数操作 `left_joint`”，`right_joint.set(-20.0)` 是“让同一段函数代码操作 `right_joint`”。函数内部用 `this` 表示本次究竟是哪个对象；通常可以省略 `this->`。
 
 **概念落点**：[this 指针与 const 成员函数（this pointer and const member function）](../docs/glossary/day08.md#this-指针与-const-成员函数this-pointer-and-const-member-function)：在非静态成员函数中，`this` 是指向该次调用所作用对象的指针；函数末尾的 `const` 表示通过这次调用不能修改该对象的非 `mutable` 数据成员。
+
+
+> [!NOTE]  `mutable`告诉编译器：
+>“这个变量即使对象看起来是只读，也允许改变。
+
+
+
 
 
 **代码与机制**：调用 `left_joint.set(30.0)` 时，函数作用于 `left_joint`；调用 `right_joint.set(-20.0)` 时，作用于 `right_joint`。在普通成员访问中通常省略 `this->`，因此 `degrees_` 与 `this->degrees_` 在这里表示同一成员。
