@@ -40,14 +40,14 @@
             "id": "a4f5ecf535b576f0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "days/day10.md",
-                "mode": "preview",
-                "source": true
+                "aFile": "PROGRESS.md",
+                "bFile": "PROGRESS.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "day10"
+              "icon": "diff",
+              "title": "Diff: PROGRESS  (Working Tree)"
             }
           }
         ],
@@ -228,8 +228,9 @@
   },
   "active": "a4f5ecf535b576f0",
   "lastOpenFiles": [
-    "ROADMAP_24_DAYS.md",
     "days/day10.md",
+    "PROGRESS.md",
+    "ROADMAP_24_DAYS.md",
     "conflict-files-obsidian-git.md",
     "days/day09.md",
     "days/day08.md",
@@ -262,7 +263,6 @@
     "days/notes/notes for day08_2.md",
     "days/day06.md",
     "days/day05.md",
-    "days/day04.md",
-    "solutions/day10/README.md"
+    "days/day04.md"
   ]
 }
