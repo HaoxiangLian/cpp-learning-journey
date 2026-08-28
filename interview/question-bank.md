@@ -36,5 +36,7 @@
 | Q030 | 谓词和 Lambda 有什么关系？为什么 `std::sort` 不是任何迭代器都能用？ | [Day 15](../days/day15.md#题-2谓词和-lambda-有什么关系为什么-stdsort-不是任何迭代器都能用) | [答案与追问](answers/day15.md#q030) | 可调用角色；捕获；算法能力要求 |
 | Q031 | `std::vector` 的 `size`、`capacity`、`reserve` 和 `resize` 有什么区别？ | [Day 16](../days/day16.md#题-1stdvector-的-sizecapacityreserve-和-resize-有什么区别) | [答案与追问](answers/day16.md#q031) | 元素与容量；重新分配；摊销复杂度 |
 | Q032 | `vector`、`deque`、`list` 应该怎样选择？容器修改后迭代器何时失效？ | [Day 16](../days/day16.md#题-2vectordequelist-应该怎样选择容器修改后迭代器何时失效) | [答案与追问](answers/day16.md#q032) | 操作模式；复杂度；失效边界 |
+| Q033 | `std::map` 和 `std::set` 有什么区别？比较器为什么必须满足严格弱序？ | [Day 17](../days/day17.md#题-1stdmap-和-stdset-有什么区别比较器为什么必须满足严格弱序) | [答案与追问](answers/day17.md#q033) | 键/映射值；比较器等价；下标副作用 |
+| Q034 | `map` 与 `unordered_map` 怎样选择？哈希冲突和重新散列会带来什么影响？ | [Day 17](../days/day17.md#题-2map-与-unorderedmap-怎样选择哈希冲突和重新散列会带来什么影响) | [答案与追问](answers/day17.md#q034) | 顺序需求；平均/最坏复杂度；失效边界 |
 
 后续题目随对应学习日发布，编号保持稳定。

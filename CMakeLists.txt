@@ -128,6 +128,12 @@ target_link_libraries(day16_example PRIVATE course_options)
 add_executable(day16_solution solutions/day16/sequence_choices.cpp)
 target_link_libraries(day16_solution PRIVATE course_options)
 
+add_executable(day17_example examples/day17/main.cpp)
+target_link_libraries(day17_example PRIVATE course_options)
+
+add_executable(day17_solution solutions/day17/associative_choices.cpp)
+target_link_libraries(day17_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -288,6 +294,16 @@ set_tests_properties(day16_example_runs PROPERTIES
 add_test(NAME day16_solution_runs COMMAND day16_solution)
 set_tests_properties(day16_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "refreshed reading: 9"
+)
+
+add_test(NAME day17_example_runs COMMAND day17_example)
+set_tests_properties(day17_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "bucket count enough: true"
+)
+
+add_test(NAME day17_solution_runs COMMAND day17_solution)
+set_tests_properties(day17_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "refreshed key: 12"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -466,4 +482,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day16/broken/list_subscript.cpp"
+)
+
+add_test(
+  NAME day17_missing_key_order_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day17/broken/missing_key_order.cpp"
 )
