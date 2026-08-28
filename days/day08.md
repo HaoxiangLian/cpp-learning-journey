@@ -137,6 +137,27 @@ private:
 	类不变量设置的没有意义；
 ### 机制三：非静态成员函数通过 this 作用于具体对象，尾置 const 限制普通修改
 
+
+
+> [!NOTE] ==在类的非静态成员函数中，直接写成员变量 `value`，通常就等价于写 `this->value`==
+> 
+> ```
+> class Data {
+> private:
+>     int value;
+> 
+> public:
+>     Data& operator=(const Data& other)
+>     {
+>         value = other.value;          
+>         //等价于this->value = other.value;
+> 
+>         return *this;
+>     }
+> };
+> ```
+> 
+
 **实际问题**：同一个 `set` 函数能分别修改左关节和右关节。函数体中的 `degrees_` 到底属于谁？查询函数为什么应该能被 `const JointAngle` 调用？
 
 ```cpp

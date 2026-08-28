@@ -11,17 +11,74 @@
             "id": "f9eb4488496f0200",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "progress.md",
-                "bFile": "progress.md",
-                "aRef": ""
+                "file": "days/day09.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: progress  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "day09"
+            }
+          },
+          {
+            "id": "36d9cb13e64bfc18",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "days/notes/notes for day09_2.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "notes for day09_2"
+            }
+          },
+          {
+            "id": "476809dd68b003c6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "days/day09.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "day09"
+            }
+          },
+          {
+            "id": "2e1e9f7e8b32755d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "days/day10.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "day10"
+            }
+          },
+          {
+            "id": "5dd58e7f9b717294",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "days/day10.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "day10"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -80,7 +137,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 279.5
   },
   "right": {
     "id": "42b5b3ce11c56dbf",
@@ -182,7 +239,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 373.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,10 +253,27 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f9eb4488496f0200",
+  "active": "5dd58e7f9b717294",
   "lastOpenFiles": [
-    "progress.md",
+    "days/notes/运算符重载.md",
     "days/day10.md",
+    "days/day08.md",
+    "ROADMAP_24_DAYS.md",
+    "days/day07.md",
+    "days/day11.md",
+    "days/day06.md",
+    "days/day05.md",
+    "days/day09.md",
+    "days/notes/notes for day09_4.md",
+    "days/notes/notes for day09_5.md",
+    "days/notes/notes for day09_2.md",
+    "days/notes/notes for day09_3.md",
+    "days/notes/notes for day09.md",
+    "exercises/day03/README.md",
+    "README.md",
+    "LEARNING_PLAN.md",
+    "AGENTS.md",
+    "progress.md",
     "conflict-files-obsidian-git.md",
     "solutions/day16/sequence_choices.cpp",
     "solutions/day16/README.md",
@@ -215,23 +289,7 @@
     "solutions/day13",
     "interview/answers/day16.md",
     "interview/answers/day15.md",
-    "interview/answers/day14.md",
-    "interview/answers/day13.md",
     "exercises/day16/broken/stale_vector_iterator.cpp",
-    "exercises/day16/broken/list_subscript.cpp",
-    "exercises/day16/README.md",
-    "exercises/day15/README.md",
-    "exercises/day14/README.md",
-    "exercises/day13/README.md",
-    "docs/glossary/day16.md",
-    "docs/glossary/day15.md",
-    "docs/glossary/day14.md",
-    "docs/glossary/day13.md",
-    "days/day16.md",
-    "days/day15.md",
-    "days/day14.md",
-    "days/day13.md",
-    "PROGRESS.md",
-    "ROADMAP_24_DAYS.md"
+    "exercises/day16/broken/list_subscript.cpp"
   ]
 }
