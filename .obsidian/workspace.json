@@ -28,7 +28,7 @@
               "type": "markdown",
               "state": {
                 "file": "days/day13.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -226,7 +226,7 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "4bb538f7ef89bfac",
+  "active": "9c197e2a4b0d0748",
   "lastOpenFiles": [
     "days/day12.md",
     "days/day13.md",
