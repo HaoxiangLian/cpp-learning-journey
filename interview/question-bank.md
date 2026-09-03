@@ -38,5 +38,7 @@
 | Q032 | `vector`、`deque`、`list` 应该怎样选择？容器修改后迭代器何时失效？ | [Day 16](../days/day16.md#题-2vectordequelist-应该怎样选择容器修改后迭代器何时失效) | [答案与追问](answers/day16.md#q032) | 操作模式；复杂度；失效边界 |
 | Q033 | `std::map` 和 `std::set` 有什么区别？比较器为什么必须满足严格弱序？ | [Day 17](../days/day17.md#题-1stdmap-和-stdset-有什么区别比较器为什么必须满足严格弱序) | [答案与追问](answers/day17.md#q033) | 键/映射值；比较器等价；下标副作用 |
 | Q034 | `map` 与 `unordered_map` 怎样选择？哈希冲突和重新散列会带来什么影响？ | [Day 17](../days/day17.md#题-2map-与-unorderedmap-怎样选择哈希冲突和重新散列会带来什么影响) | [答案与追问](answers/day17.md#q034) | 顺序需求；平均/最坏复杂度；失效边界 |
+| Q035 | `unique_ptr` 与 `shared_ptr` 有什么区别？应该怎样选择？ | [Day 18](../days/day18.md#题-1unique_ptr-与-shared_ptr-有什么区别应该怎样选择) | [答案与追问](answers/day18.md#q035) | 唯一/共享责任；移动；借用边界 |
+| Q036 | `weak_ptr` 为什么能打破 `shared_ptr` 循环引用？`lock()` 做了什么？ | [Day 18](../days/day18.md#题-2weak_ptr-为什么能打破-shared_ptr-循环引用lock-做了什么) | [答案与追问](answers/day18.md#q036) | 非拥有观察；循环共享；安全锁定 |
 
 后续题目随对应学习日发布，编号保持稳定。
