@@ -140,6 +140,12 @@ target_link_libraries(day18_example PRIVATE course_options)
 add_executable(day18_solution solutions/day18/smart_pointer_choices.cpp)
 target_link_libraries(day18_solution PRIVATE course_options)
 
+add_executable(day19_example examples/day19/main.cpp)
+target_link_libraries(day19_example PRIVATE course_options)
+
+add_executable(day19_solution solutions/day19/exception_safe_update.cpp)
+target_link_libraries(day19_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -320,6 +326,16 @@ set_tests_properties(day18_example_runs PROPERTIES
 add_test(NAME day18_solution_runs COMMAND day18_solution)
 set_tests_properties(day18_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "after reset: -1"
+)
+
+add_test(NAME day19_example_runs COMMAND day19_example)
+set_tests_properties(day19_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "limit after failure: 3"
+)
+
+add_test(NAME day19_solution_runs COMMAND day19_solution)
+set_tests_properties(day19_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "size: 2"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -514,4 +530,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day18/broken/copy_unique_ptr.cpp"
+)
+
+add_test(
+  NAME day19_noexcept_contract_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day19/broken/noexcept_contract.cpp"
 )
