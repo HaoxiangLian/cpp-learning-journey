@@ -25,6 +25,7 @@
   - [第 16 天：顺序容器怎样选](days/day16.md)（提前发布）
   - [第 17 天：有序与哈希容器怎样选](days/day17.md)（提前发布）
   - [第 18 天：智能指针——先说清谁负责，再谈自动释放](days/day18.md)
+  - [第 19 天：失败时怎样保持状态正确——RAII 与异常安全](days/day19.md)
 - 唯一进度源：[progress.md](progress.md)
 - 机器可读发布状态：[release/state.json](release/state.json)
 

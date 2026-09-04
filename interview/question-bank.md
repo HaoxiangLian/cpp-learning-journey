@@ -40,5 +40,7 @@
 | Q034 | `map` 与 `unordered_map` 怎样选择？哈希冲突和重新散列会带来什么影响？ | [Day 17](../days/day17.md#题-2map-与-unorderedmap-怎样选择哈希冲突和重新散列会带来什么影响) | [答案与追问](answers/day17.md#q034) | 顺序需求；平均/最坏复杂度；失效边界 |
 | Q035 | `unique_ptr` 与 `shared_ptr` 有什么区别？应该怎样选择？ | [Day 18](../days/day18.md#题-1unique_ptr-与-shared_ptr-有什么区别应该怎样选择) | [答案与追问](answers/day18.md#q035) | 唯一/共享责任；移动；借用边界 |
 | Q036 | `weak_ptr` 为什么能打破 `shared_ptr` 循环引用？`lock()` 做了什么？ | [Day 18](../days/day18.md#题-2weak_ptr-为什么能打破-shared_ptr-循环引用lock-做了什么) | [答案与追问](answers/day18.md#q036) | 非拥有观察；循环共享；安全锁定 |
+| Q037 | 什么是 RAII？异常发生时为什么仍能避免资源泄漏？ | [Day 19](../days/day19.md#题-1什么是-raii异常发生时为什么仍能避免资源泄漏) | [答案与追问](answers/day19.md#q037) | 生命周期绑定；栈展开；析构边界 |
+| Q038 | 基本保证、强保证和不抛保证有什么区别？`noexcept` 等于不会失败吗？ | [Day 19](../days/day19.md#题-2基本保证强保证和不抛保证有什么区别noexcept-等于不会失败吗) | [答案与追问](answers/day19.md#q038) | 失败状态；先准备后提交；终止边界 |
 
 后续题目随对应学习日发布，编号保持稳定。
