@@ -146,6 +146,12 @@ target_link_libraries(day19_example PRIVATE course_options)
 add_executable(day19_solution solutions/day19/exception_safe_update.cpp)
 target_link_libraries(day19_solution PRIVATE course_options)
 
+add_executable(day20_example examples/day20/main.cpp)
+target_link_libraries(day20_example PRIVATE course_options)
+
+add_executable(day20_solution solutions/day20/forward_message.cpp)
+target_link_libraries(day20_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -336,6 +342,16 @@ set_tests_properties(day19_example_runs PROPERTIES
 add_test(NAME day19_solution_runs COMMAND day19_solution)
 set_tests_properties(day19_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "size: 2"
+)
+
+add_test(NAME day20_example_runs COMMAND day20_example)
+set_tests_properties(day20_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "rvalue route"
+)
+
+add_test(NAME day20_solution_runs COMMAND day20_solution)
+set_tests_properties(day20_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "move message"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -538,4 +554,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day19/broken/noexcept_contract.cpp"
+)
+
+add_test(
+  NAME day20_auto_reference_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day20/broken/bind_auto_reference.cpp"
 )
