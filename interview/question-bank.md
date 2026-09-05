@@ -42,5 +42,7 @@
 | Q036 | `weak_ptr` 为什么能打破 `shared_ptr` 循环引用？`lock()` 做了什么？ | [Day 18](../days/day18.md#题-2weak_ptr-为什么能打破-shared_ptr-循环引用lock-做了什么) | [答案与追问](answers/day18.md#q036) | 非拥有观察；循环共享；安全锁定 |
 | Q037 | 什么是 RAII？异常发生时为什么仍能避免资源泄漏？ | [Day 19](../days/day19.md#题-1什么是-raii异常发生时为什么仍能避免资源泄漏) | [答案与追问](answers/day19.md#q037) | 生命周期绑定；栈展开；析构边界 |
 | Q038 | 基本保证、强保证和不抛保证有什么区别？`noexcept` 等于不会失败吗？ | [Day 19](../days/day19.md#题-2基本保证强保证和不抛保证有什么区别noexcept-等于不会失败吗) | [答案与追问](answers/day19.md#q038) | 失败状态；先准备后提交；终止边界 |
+| Q039 | `auto` 和 `decltype` 有什么区别？为什么 `decltype(name)` 与 `decltype((name))` 可能不同？ | [Day 20](../days/day20.md#题-1auto-和-decltype-有什么区别为什么-decltypename-与-decltypename-可能不同) | [答案与追问](answers/day20.md#q039) | 按值/引用推导；括号规则；生命周期 |
+| Q040 | 什么是值类别和转发引用？`std::move` 与 `std::forward` 分别做什么？ | [Day 20](../days/day20.md#题-2什么是值类别和转发引用stdmove-与-stdforward-分别做什么) | [答案与追问](answers/day20.md#q040) | 值类别；引用折叠；条件转发 |
 
 后续题目随对应学习日发布，编号保持稳定。
