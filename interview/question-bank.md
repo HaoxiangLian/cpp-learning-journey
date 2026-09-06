@@ -44,5 +44,7 @@
 | Q038 | 基本保证、强保证和不抛保证有什么区别？`noexcept` 等于不会失败吗？ | [Day 19](../days/day19.md#题-2基本保证强保证和不抛保证有什么区别noexcept-等于不会失败吗) | [答案与追问](answers/day19.md#q038) | 失败状态；先准备后提交；终止边界 |
 | Q039 | `auto` 和 `decltype` 有什么区别？为什么 `decltype(name)` 与 `decltype((name))` 可能不同？ | [Day 20](../days/day20.md#题-1auto-和-decltype-有什么区别为什么-decltypename-与-decltypename-可能不同) | [答案与追问](answers/day20.md#q039) | 按值/引用推导；括号规则；生命周期 |
 | Q040 | 什么是值类别和转发引用？`std::move` 与 `std::forward` 分别做什么？ | [Day 20](../days/day20.md#题-2什么是值类别和转发引用stdmove-与-stdforward-分别做什么) | [答案与追问](answers/day20.md#q040) | 值类别；引用折叠；条件转发 |
+| Q041 | 什么是数据竞争？互斥量和作用域锁怎样保护共享数据？ | [Day 21](../days/day21.md#题-1什么是数据竞争互斥量和作用域锁怎样保护共享数据) | [答案与追问](answers/day21.md#q041) | 冲突访问；互斥协议；死锁 |
+| Q042 | `std::atomic`、互斥量和 `volatile` 有什么区别？线程间可见性怎样建立？ | [Day 21](../days/day21.md#题-2stdatomic互斥量和-volatile-有什么区别线程间可见性怎样建立) | [答案与追问](answers/day21.md#q042) | 原子操作；发布/获取；`volatile` 边界 |
 
 后续题目随对应学习日发布，编号保持稳定。
