@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(cpp_learning_journey LANGUAGES CXX)
 
+find_package(Threads REQUIRED)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -151,6 +153,12 @@ target_link_libraries(day20_example PRIVATE course_options)
 
 add_executable(day20_solution solutions/day20/forward_message.cpp)
 target_link_libraries(day20_solution PRIVATE course_options)
+
+add_executable(day21_example examples/day21/main.cpp)
+target_link_libraries(day21_example PRIVATE course_options Threads::Threads)
+
+add_executable(day21_solution solutions/day21/safe_counter.cpp)
+target_link_libraries(day21_solution PRIVATE course_options Threads::Threads)
 
 enable_testing()
 
@@ -352,6 +360,16 @@ set_tests_properties(day20_example_runs PROPERTIES
 add_test(NAME day20_solution_runs COMMAND day20_solution)
 set_tests_properties(day20_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "move message"
+)
+
+add_test(NAME day21_example_runs COMMAND day21_example)
+set_tests_properties(day21_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "observed payload: 42"
+)
+
+add_test(NAME day21_solution_runs COMMAND day21_solution)
+set_tests_properties(day21_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "count: 4000"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -562,4 +580,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day20/broken/bind_auto_reference.cpp"
+)
+
+add_test(
+  NAME day21_mutex_copy_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day21/broken/copy_mutex.cpp"
 )
