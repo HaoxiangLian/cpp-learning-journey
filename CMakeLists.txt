@@ -160,6 +160,16 @@ target_link_libraries(day21_example PRIVATE course_options Threads::Threads)
 add_executable(day21_solution solutions/day21/safe_counter.cpp)
 target_link_libraries(day21_solution PRIVATE course_options Threads::Threads)
 
+add_executable(day22_example
+  examples/day22/main.cpp
+  examples/day22/reading.cpp
+)
+target_include_directories(day22_example PRIVATE examples/day22)
+target_link_libraries(day22_example PRIVATE course_options)
+
+add_executable(day22_solution solutions/day22/telemetry.cpp)
+target_link_libraries(day22_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -370,6 +380,16 @@ set_tests_properties(day21_example_runs PROPERTIES
 add_test(NAME day21_solution_runs COMMAND day21_solution)
 set_tests_properties(day21_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "count: 4000"
+)
+
+add_test(NAME day22_example_runs COMMAND day22_example)
+set_tests_properties(day22_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "unknown valid: false"
+)
+
+add_test(NAME day22_solution_runs COMMAND day22_solution)
+set_tests_properties(day22_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "temperature: 36.5 C"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -588,4 +608,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day21/broken/copy_mutex.cpp"
+)
+
+add_test(
+  NAME day22_unguarded_header_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day22/broken/include_twice.cpp"
 )
