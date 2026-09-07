@@ -28,6 +28,7 @@
   - [第 19 天：失败时怎样保持状态正确——RAII 与异常安全](days/day19.md)
   - [第 20 天：表达式的类型和值从哪里来——推导、值类别与转发](days/day20.md)
   - [第 21 天：多线程怎样共享数据——线程、锁与原子操作](days/day21.md)
+  - [第 22 天：代码怎样成为可维护工程——多文件构建、调试与 Sanitizer](days/day22.md)
 - 唯一进度源：[progress.md](progress.md)
 - 机器可读发布状态：[release/state.json](release/state.json)
 
