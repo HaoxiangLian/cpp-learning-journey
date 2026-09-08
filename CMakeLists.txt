@@ -170,6 +170,12 @@ target_link_libraries(day22_example PRIVATE course_options)
 add_executable(day22_solution solutions/day22/telemetry.cpp)
 target_link_libraries(day22_solution PRIVATE course_options)
 
+add_executable(day23_example examples/day23/main.cpp)
+target_link_libraries(day23_example PRIVATE course_options)
+
+add_executable(day23_solution solutions/day23/task_queue.cpp)
+target_link_libraries(day23_solution PRIVATE course_options)
+
 enable_testing()
 
 add_test(NAME day01_example_runs COMMAND day01_example)
@@ -390,6 +396,16 @@ set_tests_properties(day22_example_runs PROPERTIES
 add_test(NAME day22_solution_runs COMMAND day22_solution)
 set_tests_properties(day22_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "temperature: 36.5 C"
+)
+
+add_test(NAME day23_example_runs COMMAND day23_example)
+set_tests_properties(day23_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "tasks destroyed: 2"
+)
+
+add_test(NAME day23_solution_runs COMMAND day23_solution)
+set_tests_properties(day23_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "results: 4 7"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -616,4 +632,12 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day22/broken/include_twice.cpp"
+)
+
+add_test(
+  NAME day23_unique_task_copy_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day23/broken/copy_unique_tasks.cpp"
 )
