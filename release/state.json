@@ -34,6 +34,6 @@
   "last_published_at": "2026-09-08T09:30:06+08:00",
   "last_publication_kind": "scheduled_release",
   "last_release_branch": "release/day23-2026-09-08",
-  "last_release_pr": 0,
-  "last_release_commit": "pending"
+  "last_release_pr": 33,
+  "last_release_commit": "4e3206c93050e85e1624e2da4a4d195552ba0d64"
 }
