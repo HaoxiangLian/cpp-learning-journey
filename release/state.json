@@ -27,12 +27,13 @@
     19,
     20,
     21,
-    22
+    22,
+    23
   ],
-  "next_day": 23,
-  "last_published_at": "2026-09-07T09:27:18+08:00",
+  "next_day": 24,
+  "last_published_at": "2026-09-08T09:30:06+08:00",
   "last_publication_kind": "scheduled_release",
-  "last_release_branch": "release/day22-2026-09-07",
-  "last_release_pr": 32,
-  "last_release_commit": "140c312da1c15fa4c525dd37dc82cefe71f39c2e"
+  "last_release_branch": "release/day23-2026-09-08",
+  "last_release_pr": 33,
+  "last_release_commit": "4e3206c93050e85e1624e2da4a4d195552ba0d64"
 }
