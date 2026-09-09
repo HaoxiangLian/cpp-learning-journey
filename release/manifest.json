@@ -24,6 +24,6 @@
     {"day": 21, "status": "published", "scheduled_date": "2026-09-06", "published_at": "2026-09-06T09:29:38+08:00", "publication_kind": "scheduled_release"},
     {"day": 22, "status": "published", "scheduled_date": "2026-09-07", "published_at": "2026-09-07T09:27:18+08:00", "publication_kind": "scheduled_release"},
     {"day": 23, "status": "published", "scheduled_date": "2026-09-08", "published_at": "2026-09-08T09:30:06+08:00", "publication_kind": "scheduled_release"},
-    {"day": 24, "status": "pending", "scheduled_date": "2026-09-09"}
+    {"day": 24, "status": "published", "scheduled_date": "2026-09-09", "published_at": "2026-09-09T09:30:21+08:00", "publication_kind": "scheduled_release"}
   ]
 }
