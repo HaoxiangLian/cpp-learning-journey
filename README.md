@@ -30,6 +30,7 @@
   - [第 21 天：多线程怎样共享数据——线程、锁与原子操作](days/day21.md)
   - [第 22 天：代码怎样成为可维护工程——多文件构建、调试与 Sanitizer](days/day22.md)
   - [第 23 天：高频知识怎样连续追问——代码辨析与条件化回答](days/day23.md)
+  - [第 24 天：怎样证明已经形成知识骨架——综合验收、任务队列与复习路线](days/day24.md)
 - 唯一进度源：[progress.md](progress.md)
 - 机器可读发布状态：[release/state.json](release/state.json)
 
