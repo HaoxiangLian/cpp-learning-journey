@@ -36,5 +36,21 @@
 | Q030 | 谓词和 Lambda 有什么关系？为什么 `std::sort` 不是任何迭代器都能用？ | [Day 15](../days/day15.md#题-2谓词和-lambda-有什么关系为什么-stdsort-不是任何迭代器都能用) | [答案与追问](answers/day15.md#q030) | 可调用角色；捕获；算法能力要求 |
 | Q031 | `std::vector` 的 `size`、`capacity`、`reserve` 和 `resize` 有什么区别？ | [Day 16](../days/day16.md#题-1stdvector-的-sizecapacityreserve-和-resize-有什么区别) | [答案与追问](answers/day16.md#q031) | 元素与容量；重新分配；摊销复杂度 |
 | Q032 | `vector`、`deque`、`list` 应该怎样选择？容器修改后迭代器何时失效？ | [Day 16](../days/day16.md#题-2vectordequelist-应该怎样选择容器修改后迭代器何时失效) | [答案与追问](answers/day16.md#q032) | 操作模式；复杂度；失效边界 |
+| Q033 | `std::map` 和 `std::set` 有什么区别？比较器为什么必须满足严格弱序？ | [Day 17](../days/day17.md#题-1stdmap-和-stdset-有什么区别比较器为什么必须满足严格弱序) | [答案与追问](answers/day17.md#q033) | 键/映射值；比较器等价；下标副作用 |
+| Q034 | `map` 与 `unordered_map` 怎样选择？哈希冲突和重新散列会带来什么影响？ | [Day 17](../days/day17.md#题-2map-与-unorderedmap-怎样选择哈希冲突和重新散列会带来什么影响) | [答案与追问](answers/day17.md#q034) | 顺序需求；平均/最坏复杂度；失效边界 |
+| Q035 | `unique_ptr` 与 `shared_ptr` 有什么区别？应该怎样选择？ | [Day 18](../days/day18.md#题-1unique_ptr-与-shared_ptr-有什么区别应该怎样选择) | [答案与追问](answers/day18.md#q035) | 唯一/共享责任；移动；借用边界 |
+| Q036 | `weak_ptr` 为什么能打破 `shared_ptr` 循环引用？`lock()` 做了什么？ | [Day 18](../days/day18.md#题-2weak_ptr-为什么能打破-shared_ptr-循环引用lock-做了什么) | [答案与追问](answers/day18.md#q036) | 非拥有观察；循环共享；安全锁定 |
+| Q037 | 什么是 RAII？异常发生时为什么仍能避免资源泄漏？ | [Day 19](../days/day19.md#题-1什么是-raii异常发生时为什么仍能避免资源泄漏) | [答案与追问](answers/day19.md#q037) | 生命周期绑定；栈展开；析构边界 |
+| Q038 | 基本保证、强保证和不抛保证有什么区别？`noexcept` 等于不会失败吗？ | [Day 19](../days/day19.md#题-2基本保证强保证和不抛保证有什么区别noexcept-等于不会失败吗) | [答案与追问](answers/day19.md#q038) | 失败状态；先准备后提交；终止边界 |
+| Q039 | `auto` 和 `decltype` 有什么区别？为什么 `decltype(name)` 与 `decltype((name))` 可能不同？ | [Day 20](../days/day20.md#题-1auto-和-decltype-有什么区别为什么-decltypename-与-decltypename-可能不同) | [答案与追问](answers/day20.md#q039) | 按值/引用推导；括号规则；生命周期 |
+| Q040 | 什么是值类别和转发引用？`std::move` 与 `std::forward` 分别做什么？ | [Day 20](../days/day20.md#题-2什么是值类别和转发引用stdmove-与-stdforward-分别做什么) | [答案与追问](answers/day20.md#q040) | 值类别；引用折叠；条件转发 |
+| Q041 | 什么是数据竞争？互斥量和作用域锁怎样保护共享数据？ | [Day 21](../days/day21.md#题-1什么是数据竞争互斥量和作用域锁怎样保护共享数据) | [答案与追问](answers/day21.md#q041) | 冲突访问；互斥协议；死锁 |
+| Q042 | `std::atomic`、互斥量和 `volatile` 有什么区别？线程间可见性怎样建立？ | [Day 21](../days/day21.md#题-2stdatomic互斥量和-volatile-有什么区别线程间可见性怎样建立) | [答案与追问](answers/day21.md#q042) | 原子操作；发布/获取；`volatile` 边界 |
+| Q043 | 头文件、源文件和 CMake target 怎样共同形成一个可执行程序？如何区分配置、编译与链接错误？ | [Day 22](../days/day22.md#题-1头文件源文件和-cmake-target-怎样共同形成一个可执行程序如何区分配置编译与链接错误) | [答案与追问](answers/day22.md#q043) | 翻译单元；目标依赖；错误阶段 |
+| Q044 | 调试器、ASan 和 UBSan 分别解决什么问题？为什么工具无报告不能证明程序正确？ | [Day 22](../days/day22.md#题-2调试器asan-和-ubsan-分别解决什么问题为什么工具无报告不能证明程序正确) | [答案与追问](answers/day22.md#q044) | 状态追踪；动态检测；覆盖边界 |
+| Q045 | 怎样分析 `vector<unique_ptr<Base>>` 中的移动、失效与多态调用？ | [Day 23](../days/day23.md#题-1怎样分析-vectoruniqueptrbase-中的移动失效与多态调用) | [答案与追问](answers/day23.md#q045) | 对象与责任；元素/对象失效；动态绑定 |
+| Q046 | 怎样把 STL、多态和并发中的绝对化说法改成可验证结论？ | [Day 23](../days/day23.md#题-2怎样把-stl多态和并发中的绝对化说法改成可验证结论) | [答案与追问](answers/day23.md#q046) | 条件化表达；标准/实现边界；连续追问 |
+| Q047 | 请设计一个传感器任务队列，并说明对象、所有权、多态和异常边界 | [Day 24](../days/day24.md#题-1请设计一个传感器任务队列并说明对象所有权多态和异常边界) | [答案与追问](answers/day24.md#q047) | 项目建模；独占责任；失败协议 |
+| Q048 | 怎样证明 24 天学习后已经形成 C++ 知识骨架，并安排后续复习？ | [Day 24](../days/day24.md#题-2怎样证明-24-天学习后已经形成-c-知识骨架并安排后续复习) | [答案与追问](answers/day24.md#q048) | 综合验收；主动提取；复习调整 |
 
-后续题目随对应学习日发布，编号保持稳定。
+Q001—Q048 已全部随 24 个学习日发布，编号保持稳定。

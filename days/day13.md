@@ -63,7 +63,8 @@ inspect(lidar);  // Sensor 64
 **概念落点**：先给函数入口命名，再给调用行为命名。
 
 - [虚函数（virtual function）](../docs/glossary/day13.md#虚函数virtual-function)是在类中首次用 `virtual` 声明、并允许通过基类接口调用时根据完整对象选择相应派生实现的非静态成员函数；派生类中符合规则的对应版本也继续为虚函数。
-- [运行时多态与动态绑定（runtime polymorphism and dynamic binding）](../docs/glossary/day13.md#运行时多态与动态绑定runtime-polymorphism-and-dynamic-binding)：运行时多态是在通过基类接口调用虚函数时，根据该接口实际引用或指向的完整对象选择相应函数实现的行为；这种调用选择称为动态绑定。
+- 基类里某个函数一旦声明成 `virtual`，派生类对它进行正确重写后，派生类里的这个函数即使不再写 `virtual`，它也仍然是虚函数。
+- [运行时多态与动态绑定（runtime polymorphism and dynamic binding）](../docs/glossary/day13.md#运行时多态与动态绑定runtime-polymorphism-and-dynamic-binding)：运行时多态是在==通过基类接口调用虚函数时，根据该接口实际引用或指向的完整对象选择相应函数实现的行为==；这种调用选择称为动态绑定。
 
 这里的“完整对象”就是实际创建的对象。本例创建的是 `Lidar`，`sensor` 只是引用其中的 `Sensor` 基类子对象。
 
@@ -84,7 +85,7 @@ inspect(lidar);  // Sensor 64
 **错误做法与修复**：只把参数从 `Sensor` 值改成 `const Sensor&`，却忘记把需要多态选择的基类函数声明为 `virtual`。代码有明确定义，但仍调用基类普通函数，属于**结果不符合设计预期**。修复是只对确实需要派生行为替换的接口使用虚函数，并在机制二用 `override` 检查派生声明。
 
 **小检查**：为什么同一个 `sensor` 引用调用 `label()` 得到 `Sensor`，调用 `sample_rate()` 却得到 `64`？其中有没有发生切片？
-
+	因为label没有用virtual声明为虚函数，samle_rate用virtual声明成了虚函数，允许基类接口根据传输进的完整派生对象实体选择相应的派生实现函数；没有，因为接口是引用派生实体。
 ### 机制二：`override` 让编译器检查“看起来相同”是否真的覆盖
 
 **实际问题**：我们想让 `Lidar::sample_rate` 替换基类版本，却漏写了末尾的 `const`。

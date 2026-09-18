@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(cpp_learning_journey LANGUAGES CXX)
 
+find_package(Threads REQUIRED)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -127,6 +129,58 @@ target_link_libraries(day16_example PRIVATE course_options)
 
 add_executable(day16_solution solutions/day16/sequence_choices.cpp)
 target_link_libraries(day16_solution PRIVATE course_options)
+
+add_executable(day17_example examples/day17/main.cpp)
+target_link_libraries(day17_example PRIVATE course_options)
+
+add_executable(day17_solution solutions/day17/associative_choices.cpp)
+target_link_libraries(day17_solution PRIVATE course_options)
+
+add_executable(day18_example examples/day18/main.cpp)
+target_link_libraries(day18_example PRIVATE course_options)
+
+add_executable(day18_solution solutions/day18/smart_pointer_choices.cpp)
+target_link_libraries(day18_solution PRIVATE course_options)
+
+add_executable(day19_example examples/day19/main.cpp)
+target_link_libraries(day19_example PRIVATE course_options)
+
+add_executable(day19_solution solutions/day19/exception_safe_update.cpp)
+target_link_libraries(day19_solution PRIVATE course_options)
+
+add_executable(day20_example examples/day20/main.cpp)
+target_link_libraries(day20_example PRIVATE course_options)
+
+add_executable(day20_solution solutions/day20/forward_message.cpp)
+target_link_libraries(day20_solution PRIVATE course_options)
+
+add_executable(day21_example examples/day21/main.cpp)
+target_link_libraries(day21_example PRIVATE course_options Threads::Threads)
+
+add_executable(day21_solution solutions/day21/safe_counter.cpp)
+target_link_libraries(day21_solution PRIVATE course_options Threads::Threads)
+
+add_executable(day22_example
+  examples/day22/main.cpp
+  examples/day22/reading.cpp
+)
+target_include_directories(day22_example PRIVATE examples/day22)
+target_link_libraries(day22_example PRIVATE course_options)
+
+add_executable(day22_solution solutions/day22/telemetry.cpp)
+target_link_libraries(day22_solution PRIVATE course_options)
+
+add_executable(day23_example examples/day23/main.cpp)
+target_link_libraries(day23_example PRIVATE course_options)
+
+add_executable(day23_solution solutions/day23/task_queue.cpp)
+target_link_libraries(day23_solution PRIVATE course_options)
+
+add_executable(day24_example examples/day24/main.cpp)
+target_link_libraries(day24_example PRIVATE course_options)
+
+add_executable(day24_solution solutions/day24/sensor_queue.cpp)
+target_link_libraries(day24_solution PRIVATE course_options)
 
 enable_testing()
 
@@ -288,6 +342,86 @@ set_tests_properties(day16_example_runs PROPERTIES
 add_test(NAME day16_solution_runs COMMAND day16_solution)
 set_tests_properties(day16_solution_runs PROPERTIES
   PASS_REGULAR_EXPRESSION "refreshed reading: 9"
+)
+
+add_test(NAME day17_example_runs COMMAND day17_example)
+set_tests_properties(day17_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "bucket count enough: true"
+)
+
+add_test(NAME day17_solution_runs COMMAND day17_solution)
+set_tests_properties(day17_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "refreshed key: 12"
+)
+
+add_test(NAME day18_example_runs COMMAND day18_example)
+set_tests_properties(day18_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "weak expired: true"
+)
+
+add_test(NAME day18_solution_runs COMMAND day18_solution)
+set_tests_properties(day18_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "after reset: -1"
+)
+
+add_test(NAME day19_example_runs COMMAND day19_example)
+set_tests_properties(day19_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "limit after failure: 3"
+)
+
+add_test(NAME day19_solution_runs COMMAND day19_solution)
+set_tests_properties(day19_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "size: 2"
+)
+
+add_test(NAME day20_example_runs COMMAND day20_example)
+set_tests_properties(day20_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "rvalue route"
+)
+
+add_test(NAME day20_solution_runs COMMAND day20_solution)
+set_tests_properties(day20_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "move message"
+)
+
+add_test(NAME day21_example_runs COMMAND day21_example)
+set_tests_properties(day21_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "observed payload: 42"
+)
+
+add_test(NAME day21_solution_runs COMMAND day21_solution)
+set_tests_properties(day21_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "count: 4000"
+)
+
+add_test(NAME day22_example_runs COMMAND day22_example)
+set_tests_properties(day22_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "unknown valid: false"
+)
+
+add_test(NAME day22_solution_runs COMMAND day22_solution)
+set_tests_properties(day22_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "temperature: 36.5 C"
+)
+
+add_test(NAME day23_example_runs COMMAND day23_example)
+set_tests_properties(day23_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "tasks destroyed: 2"
+)
+
+add_test(NAME day23_solution_runs COMMAND day23_solution)
+set_tests_properties(day23_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "results: 4 7"
+)
+
+add_test(NAME day24_example_runs COMMAND day24_example)
+set_tests_properties(day24_example_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "processed: 2"
+)
+
+add_test(NAME day24_solution_runs COMMAND day24_solution)
+set_tests_properties(day24_solution_runs PROPERTIES
+  PASS_REGULAR_EXPRESSION "processed: 2"
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
@@ -466,4 +600,68 @@ add_test(
     --compiler "${CMAKE_CXX_COMPILER}"
     --stage compile
     --source "${CMAKE_SOURCE_DIR}/exercises/day16/broken/list_subscript.cpp"
+)
+
+add_test(
+  NAME day17_missing_key_order_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day17/broken/missing_key_order.cpp"
+)
+
+add_test(
+  NAME day18_unique_ptr_copy_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day18/broken/copy_unique_ptr.cpp"
+)
+
+add_test(
+  NAME day19_noexcept_contract_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day19/broken/noexcept_contract.cpp"
+)
+
+add_test(
+  NAME day20_auto_reference_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day20/broken/bind_auto_reference.cpp"
+)
+
+add_test(
+  NAME day21_mutex_copy_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day21/broken/copy_mutex.cpp"
+)
+
+add_test(
+  NAME day22_unguarded_header_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day22/broken/include_twice.cpp"
+)
+
+add_test(
+  NAME day23_unique_task_copy_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day23/broken/copy_unique_tasks.cpp"
+)
+
+add_test(
+  NAME day24_sensor_queue_copy_error_is_intentional
+  COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/scripts/expect_failure.py"
+    --compiler "${CMAKE_CXX_COMPILER}"
+    --stage compile
+    --source "${CMAKE_SOURCE_DIR}/exercises/day24/broken/copy_sensor_queue.cpp"
 )
