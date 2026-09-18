@@ -139,20 +139,6 @@
             }
           },
           {
-            "id": "2895f0ac607e067e",
-            "type": "leaf",
-            "state": {
-              "type": "all-properties",
-              "state": {
-                "sortOrder": "frequency",
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-archive",
-              "title": "添加笔记属性"
-            }
-          },
-          {
             "id": "8ade6df73e0d5f17",
             "type": "leaf",
             "state": {
@@ -178,7 +164,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
