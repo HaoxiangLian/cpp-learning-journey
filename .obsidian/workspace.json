@@ -36,6 +36,20 @@
             }
           },
           {
+            "id": "5862b685f1d9c165",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "days/day13.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "day13"
+            }
+          },
+          {
             "id": "fe0a88753ab0debf",
             "type": "leaf",
             "state": {
@@ -50,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -226,10 +240,32 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "9c197e2a4b0d0748",
+  "active": "5862b685f1d9c165",
   "lastOpenFiles": [
-    "days/day12.md",
+    "solutions/day19/exception_safe_update.cpp",
+    "solutions/day19/README.md",
+    "solutions/day19",
+    "solutions/day18/smart_pointer_choices.cpp",
+    "solutions/day18/README.md",
+    "solutions/day18",
+    "interview/answers/day19.md",
+    "interview/answers/day18.md",
+    "exercises/day19/broken/noexcept_contract.cpp",
+    "exercises/day19/README.md",
+    "exercises/day19/exception_safe_update.cpp",
+    "exercises/day19/broken",
+    "exercises/day19",
+    "exercises/day18/smart_pointer_choices.cpp",
+    "exercises/day18/broken/copy_unique_ptr.cpp",
+    "exercises/day18/README.md",
+    "exercises/day18/broken",
+    "docs/glossary/day19.md",
+    "docs/glossary/day18.md",
+    "days/day19.md",
+    "days/day18.md",
+    "days/notes/vtable 和 vptr 是什么.md",
     "days/day13.md",
+    "days/day12.md",
     "days/day14.md",
     "days/day11.md",
     "days/day09.md",
@@ -241,28 +277,6 @@
     "days/notes/C++对象中是否包含成员函数——区分类成员与对象内部存储.md",
     "days/notes/父类_基类与子类_派生类.md",
     "days/notes/为什么这里两个类型的构造函数的成员初始化列表不同？.md",
-    "solutions/day17/README.md",
-    "solutions/day17/associative_choices.cpp",
-    "solutions/day17",
-    "progress.md",
-    "interview/answers/day17.md",
-    "exercises/day17/broken/stale_unordered_iterator.cpp",
-    "exercises/day17/broken/missing_key_order.cpp",
-    "exercises/day17/README.md",
-    "exercises/day17/broken",
-    "exercises/day17/associative_choices.cpp",
-    "exercises/day17",
-    "examples/day17/main.cpp",
-    "examples/day17",
-    "docs/glossary/day17.md",
-    "days/day17.md",
-    "examples/day02/main.cpp",
-    "days/notes/运算符重载.md",
-    "ROADMAP_24_DAYS.md",
-    "days/day06.md",
-    "days/day05.md",
-    "days/notes/notes for day09_4.md",
-    "days/notes/notes for day09_5.md",
-    "days/notes/notes for day09_2.md"
+    "solutions/day17/README.md"
   ]
 }
