@@ -50,6 +50,20 @@
             }
           },
           {
+            "id": "e0cbc5edfee1411d",
+            "type": "leaf",
+            "state": {
+              "type": "split-diff-view",
+              "state": {
+                "aFile": "conflict-files-obsidian-git.md",
+                "bFile": "conflict-files-obsidian-git.md",
+                "aRef": ""
+              },
+              "icon": "diff",
+              "title": "Diff: conflict-files-obsidian-git  (Working Tree)"
+            }
+          },
+          {
             "id": "fe0a88753ab0debf",
             "type": "leaf",
             "state": {
@@ -64,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -240,43 +254,43 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "5862b685f1d9c165",
+  "active": "e0cbc5edfee1411d",
   "lastOpenFiles": [
-    "solutions/day19/exception_safe_update.cpp",
-    "solutions/day19/README.md",
-    "solutions/day19",
-    "solutions/day18/smart_pointer_choices.cpp",
-    "solutions/day18/README.md",
-    "solutions/day18",
-    "interview/answers/day19.md",
-    "interview/answers/day18.md",
-    "exercises/day19/broken/noexcept_contract.cpp",
-    "exercises/day19/README.md",
-    "exercises/day19/exception_safe_update.cpp",
-    "exercises/day19/broken",
-    "exercises/day19",
-    "exercises/day18/smart_pointer_choices.cpp",
-    "exercises/day18/broken/copy_unique_ptr.cpp",
-    "exercises/day18/README.md",
-    "exercises/day18/broken",
-    "docs/glossary/day19.md",
-    "docs/glossary/day18.md",
-    "days/day19.md",
-    "days/day18.md",
-    "days/notes/vtable 和 vptr 是什么.md",
+    "conflict-files-obsidian-git.md",
     "days/day13.md",
-    "days/day12.md",
-    "days/day14.md",
-    "days/day11.md",
-    "days/day09.md",
-    "days/day10.md",
-    "days/notes/析构函数与delete.md",
-    "days/day08.md",
-    "days/day07.md",
-    "问题.md",
-    "days/notes/C++对象中是否包含成员函数——区分类成员与对象内部存储.md",
-    "days/notes/父类_基类与子类_派生类.md",
-    "days/notes/为什么这里两个类型的构造函数的成员初始化列表不同？.md",
-    "solutions/day17/README.md"
+    "exercises/day22/broken/unguarded.hpp",
+    "exercises/day22/broken/include_twice.cpp",
+    "exercises/day22/telemetry.hpp",
+    "exercises/day22/telemetry.cpp",
+    "exercises/day22/README.md",
+    "exercises/day22/main.cpp",
+    "exercises/day22/broken",
+    "exercises/day22",
+    "exercises/day21/broken/copy_mutex.cpp",
+    "exercises/day21/safe_counter.cpp",
+    "exercises/day21/README.md",
+    "exercises/day21/broken",
+    "exercises/day20/README.md",
+    "solutions/day24/README.md",
+    "solutions/day23/README.md",
+    "solutions/day22/README.md",
+    "solutions/day21/README.md",
+    "solutions/day20/README.md",
+    "interview/answers/day24.md",
+    "interview/answers/day23.md",
+    "interview/answers/day22.md",
+    "interview/answers/day21.md",
+    "interview/answers/day20.md",
+    "exercises/day24/README.md",
+    "exercises/day23/README.md",
+    "docs/glossary/day24.md",
+    "docs/glossary/day23.md",
+    "docs/glossary/day22.md",
+    "docs/glossary/day21.md",
+    "docs/glossary/day20.md",
+    "days/day24.md",
+    "days/day23.md",
+    "days/day22.md",
+    "days/day21.md"
   ]
 }
