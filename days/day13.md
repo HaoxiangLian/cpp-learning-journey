@@ -62,7 +62,7 @@ inspect(lidar);  // Sensor 64
 
 **概念落点**：先给函数入口命名，再给调用行为命名。
 
-- [虚函数（virtual function）](../docs/glossary/day13.md#虚函数virtual-function)是在类中首次用 `virtual` 声明、并允许通过基类接口调用时根据完整对象选择相应派生实现的非静态成员函数；派生类中符合规则的对应版本也继续为虚函数。
+- [虚函数（virtual function）](../docs/glossary/day13.md#虚函数virtual-function)是==在类中首次用 `virtual` 声明、并允许通过基类接口调用时根据完整对象选择相应派生实现的非静态成员函数==；派生类中符合规则的对应版本也继续为虚函数。
 - 基类里某个函数一旦声明成 `virtual`，派生类对它进行正确重写后，派生类里的这个函数即使不再写 `virtual`，它也仍然是虚函数。
 - [运行时多态与动态绑定（runtime polymorphism and dynamic binding）](../docs/glossary/day13.md#运行时多态与动态绑定runtime-polymorphism-and-dynamic-binding)：运行时多态是在==通过基类接口调用虚函数时，根据该接口实际引用或指向的完整对象选择相应函数实现的行为==；这种调用选择称为动态绑定。
 
